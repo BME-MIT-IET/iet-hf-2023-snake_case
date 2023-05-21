@@ -1,0 +1,12 @@
+The field has been created, you can use it later with the reference: field0
+Warehouse created.
+Field: Added a neighbour.
+The warehouse has been created, you can use it later with the reference: warehouse1
+The virologist has been created, you can later use it with the reference: virologist0
+Virologist: I have called the 'Move' function.
+Field: The player has been removed from the field.
+Field: The player has been accepted to the field.
+Virologist: The player moved to another field.
+Virologist: I have called the 'Collect' function.
+Inventory: I have changed number of aminoacids I have to: 4
+The virologist took 3 amino acid.
