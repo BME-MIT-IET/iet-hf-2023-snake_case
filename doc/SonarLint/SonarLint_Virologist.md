@@ -9,3 +9,5 @@ A Virologist.java fájlban a SonarLint eléggé sok hibát talált, ezek közül
 </p>
 
 Ezeket Issukba le is jelentettem. "Virologist Random" és "String kiszervezés" neveke.
+
+Ezeket a problémák meg is oldottam és pull requestet is készítettem hozzá.
