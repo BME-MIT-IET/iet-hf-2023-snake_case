@@ -14,6 +14,12 @@ public class Virologist implements Update, Serializable {
     private Effects effects;
     private Field field;
 
+    private static String PARALYZE = "paralyze";
+    private static String GLOVES = "gloves";
+    private static String CAPE = "cape";
+    private static String AXE = "axe";
+    private static String BAG = "bag";
+
     public Virologist(int amino, int nukelo, double dodgeChance, Field field){
         if(dodgeChance > 1.0 || dodgeChance < 0.0){
             System.out.println("The dodgeChance must be between 0 and 1");
@@ -50,7 +56,7 @@ public class Virologist implements Update, Serializable {
     public void Craft(GCode gcode){
         /*Paralyze check*/
         for(int i = 0; i < effects.GetEffects().size();i++){
-            if(effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0){
+            if(effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0){
                 System.out.println("Virologist: I can't do anything i'm paralyzed!");
                 return;
             }
@@ -99,7 +105,7 @@ public class Virologist implements Update, Serializable {
         for(int i = 0; i < effects.GetEffects().size(); i++){
             //Megnezi, hogy az adott elem 'string effect' valtozoja az effects-nek az effects listajaban 'paralyzed'-e
             //Tudom, bonyolult, de nem tudom, hogyan mashogyan lehetne, mert a 'contains' paranccsal nem tudtam dulore jutni
-            if(effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0){
+            if(effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0){
                 System.out.println("Virologist: The player is paralyzed.");
                 return;
             }
@@ -121,14 +127,14 @@ public class Virologist implements Update, Serializable {
         boolean owningTheAgent = false;
         /*CheckIfParalyzed*/
         for(int i = 0; i < effects.GetEffects().size();i++) {
-            if (effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0) {
+            if (effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0) {
                 System.out.println("The player is paralyzed.");
                 return;
             }
         }
         Effect effect = null;
         /*Ide kene szerintem egy checkIfDodge, mert akkor tovabb se menjen, csak vonja le*/
-        if(mivel.equals("paralyze")) {
+        if(mivel.equals(PARALYZE)) {
             effect = new Paralyzed();
         }
         else if(mivel.equals("virusdance")){
@@ -186,7 +192,7 @@ public class Virologist implements Update, Serializable {
         for(int i = 0; i < effects.GetEffects().size(); i++){
             //Megnezi, hogy az adott elem 'string effect' valtozoja az effects-nek az effects listajaban 'paralyzed'-e
             //Tudom, bonyolult, de nem tudom, hogyan mashogyan lehetne, mert a 'contains' paranccsal nem tudtam dulore jutni
-            if(effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0){
+            if(effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0){
                 System.out.println("Virologist: The player is paralyzed.");
                 return;
             }
@@ -221,7 +227,7 @@ public class Virologist implements Update, Serializable {
             boolean wareable = true;
             //Hasznaljuk tenylegesen a glove-ot
             for (int i = 0; i < inv.GetEquipments().size(); i++) {
-                if (inv.GetEquipments().get(i).name.equals("gloves")) {
+                if (inv.GetEquipments().get(i).name.equals(GLOVES)) {
                     Gloves glove = (Gloves)inv.GetEquipments().get(i);
                     wareable = glove.Decrease();
                 }
@@ -229,7 +235,7 @@ public class Virologist implements Update, Serializable {
             //Ha elhasznalodott, akkor toroljuk
             if (!wareable) {
                 for (int i = 0; i < inv.GetEquipments().size(); i++){
-                    if (inv.GetEquipments().get(i).name.equals("gloves")){
+                    if (inv.GetEquipments().get(i).name.equals(GLOVES)){
                         Equipment glove = inv.GetEquipments().get(i);
                         Effect gloveEf = glove.getEffect();
                         //Item torlese
@@ -289,7 +295,7 @@ public class Virologist implements Update, Serializable {
 
         //Paralyze check
         for(int i = 0; i < effects.GetEffects().size();i++){
-            if(effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0){
+            if(effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0){
                 System.out.println("Virologist: I can't do anything i'm paralyzed!");
                 return;
             }
@@ -307,7 +313,7 @@ public class Virologist implements Update, Serializable {
         }
 
         //Milyen itemek vannak a jatekban
-        String[] recogniseable = {"cape", "gloves", "axe", "bag"};
+        String[] recogniseable = {CAPE, GLOVES, AXE, BAG};
         boolean recognised = false;
 
         //Letezik-e az equipment a jatekban amit beírt a felhasznalo
@@ -336,7 +342,7 @@ public class Virologist implements Update, Serializable {
             if(found){
                 //Ha megtalaltuk, akkor ki is toroljuk
                 inv.GetEquipments().get(item).setEquipped();
-                if(inv.GetEquipments().get(item).getName().equals("cape")){
+                if(inv.GetEquipments().get(item).getName().equals(CAPE)){
                     this.dodgeChance = 0.2;
                 }
                 //Honnan vette ki a virologus
@@ -365,7 +371,7 @@ public class Virologist implements Update, Serializable {
         Equipment felsz;
         /*Paralyze check a lopast kezdo virologusnak*/
         for(int i = 0; i < effects.GetEffects().size();i++){
-            if(effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0){
+            if(effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0){
                 System.out.println("Virologist0: I can't do anything i'm paralyzed!");
                 return;
             }
@@ -373,7 +379,7 @@ public class Virologist implements Update, Serializable {
         /*Paralyze chack a masik virologusnak*/
         boolean paraB = false;
         for(int i = 0; i < v.effects.GetEffects().size();i++){
-            if(v.effects.GetEffects().get(i).effect.equals("paralyze") && v.effects.GetEffects().get(i).timeLeft > 0){
+            if(v.effects.GetEffects().get(i).effect.equals(PARALYZE) && v.effects.GetEffects().get(i).timeLeft > 0){
                 paraB = true;
             }
         }
@@ -426,7 +432,7 @@ public class Virologist implements Update, Serializable {
         //System.out.println("StealMat Begins");
         /*Paralyze check a lopast kezdo virologusnak*/
         for(int i = 0; i < effects.GetEffects().size();i++){
-            if(effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0){
+            if(effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0){
                 System.out.println("Virologist0: I can't do anything i'm paralyzed!");
                 return;
             }
@@ -434,7 +440,7 @@ public class Virologist implements Update, Serializable {
         /*Paralyze chack a masik virologusnak*/
         boolean paraB = false;
         for(int i = 0; i < v.effects.GetEffects().size();i++){
-            if(v.effects.GetEffects().get(i).effect.equals("paralyze") && v.effects.GetEffects().get(i).timeLeft > 0){
+            if(v.effects.GetEffects().get(i).effect.equals(PARALYZE) && v.effects.GetEffects().get(i).timeLeft > 0){
                 paraB = true;
             }
         }
@@ -468,7 +474,7 @@ public class Virologist implements Update, Serializable {
     /*AZ update interfacet megvalosito fuggveny*/
     public void Update(){
         for(int i = 0; i < effects.GetEffects().size(); i++){
-            if(effects.GetEffects().get(i).getEffect().equals("paralyze") || effects.GetEffects().get(i).getEffect().contains("virus")){
+            if(effects.GetEffects().get(i).getEffect().equals(PARALYZE) || effects.GetEffects().get(i).getEffect().contains("virus")){
                 effects.GetEffects().get(i).Effect(this);
                 effects.GetEffects().get(i).decrementTimeLeft();
                 if(effects.GetEffects().get(i).getTimeLeft() == 0){
@@ -481,14 +487,14 @@ public class Virologist implements Update, Serializable {
 
     public void UseAxe(Virologist v) {
         for (int i = 0; i < effects.GetEffects().size(); i++) {
-            if (effects.GetEffects().get(i).effect.equals("paralyze") && effects.GetEffects().get(i).timeLeft > 0) {
+            if (effects.GetEffects().get(i).effect.equals(PARALYZE) && effects.GetEffects().get(i).timeLeft > 0) {
                 System.out.println("The player is paralyzed!");
                 return;
             }
         }
         Axe axe = null;
         for(int i = 0; i < inv.GetEquipments().size(); i++){
-            if(inv.GetEquipments().get(i).name.equals("axe")){
+            if(inv.GetEquipments().get(i).name.equals(AXE)){
                 axe = (Axe)inv.GetEquipments().get(i);
             }
         }
