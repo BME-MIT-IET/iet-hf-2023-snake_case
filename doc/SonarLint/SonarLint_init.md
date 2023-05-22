@@ -6,5 +6,3 @@ Ezek után lokálisan az IntelliJ IDE-be telepítettük a SonarLint plugint, maj
 <p align="center" width="100%">
     <img width="100%" src="SonarLint_init_Elso_futtatas.png"> 
 </p>
-
-A hibát felvettük Issue-ba "Túl komplex függvény hívás" néven. Későbbiekben ezt lehetőleg javítani is fogjuk.
