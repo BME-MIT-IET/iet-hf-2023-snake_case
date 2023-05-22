@@ -3,7 +3,6 @@ package src;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-import java.util.Scanner;
 import Effects.*;
 
 public class Virologist implements Update, Serializable {
@@ -14,6 +13,7 @@ public class Virologist implements Update, Serializable {
     private Effects effects;
     private Field field;
 
+    private Random rand = new Random();
     private static String PARALYZE = "paralyze";
     private static String GLOVES = "gloves";
     private static String CAPE = "cape";
@@ -204,7 +204,6 @@ public class Virologist implements Update, Serializable {
     public void Affected(Virologist kezdemenyezo, Effect ef, boolean elso) {
         System.out.println("Affectig eljutott");
         /*Alap valtozok*/
-        Random rand = new Random();
         double dodged = rand.nextDouble();
         boolean gloves = false;
 
