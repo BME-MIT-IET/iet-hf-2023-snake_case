@@ -39,10 +39,6 @@
 
     <build>
         <sourceDirectory>src</sourceDirectory>
-        <sourceDirectory>ActionListeners</sourceDirectory>
-        <sourceDirectory>commands</sourceDirectory>
-        <sourceDirectory>Effects</sourceDirectory>
-        <sourceDirectory>View</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
