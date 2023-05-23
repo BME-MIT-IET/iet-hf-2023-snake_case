@@ -1,0 +1,5 @@
+create field
+create field field0
+create virologist 5 5 0 field0
+create genetical code bearvirus
+applyeffect virologist0 bearvirus
