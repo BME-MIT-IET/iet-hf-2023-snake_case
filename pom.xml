@@ -14,9 +14,6 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <sonar.organization>iet-hf-snake-case</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-        <sonar.sources>src/</sonar.sources>
-        <sonar.sources>ActionListeners/</sonar.sources>
-        <sonar.sources>commands/</sonar.sources>
     </properties>
 
     <dependencies>
@@ -41,6 +38,11 @@
     </dependencies>
 
     <build>
+        <sourceDirectory>src</sourceDirectory>
+        <sourceDirectory>ActionListeners</sourceDirectory>
+        <sourceDirectory>commands</sourceDirectory>
+        <sourceDirectory>Effects</sourceDirectory>
+        <sourceDirectory>View</sourceDirectory>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
