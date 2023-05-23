@@ -6,6 +6,11 @@ import java.util.ArrayList;
 
 public class Create {
 
+    private static final String FIELD = "field";
+    private static final String LABORATORY = "laboratory";
+    private static final String WAREHOUSE = "warehouse";
+    private static final String SHELTER = "shelter";
+
     /*Megkerdezi, hogy az adott genetikai kod benne van-e a genetikaiKodok listaban
      * ezt hasznalja: create laboratory, genetical code
      * @param String a kod neve
@@ -39,16 +44,16 @@ public class Create {
      * @return Visszaadja csak a levagott szamot String-kent*/
     public static String numberCutDown(String[] args, int hanyadik){
         String fieldSzam = "";
-        if(args[hanyadik].contains("field")){
+        if(args[hanyadik].contains(FIELD)){
             fieldSzam = args[hanyadik].substring(5);
         }
-        else if(args[hanyadik].contains("laboratory")){
+        else if(args[hanyadik].contains(LABORATORY)){
             fieldSzam = args[hanyadik].substring(10);
         }
-        else if(args[hanyadik].contains("warehouse")){
+        else if(args[hanyadik].contains(WAREHOUSE)){
             fieldSzam = args[hanyadik].substring(9);
         }
-        else if(args[hanyadik].contains("shelter")){
+        else if(args[hanyadik].contains(SHELTER)){
             fieldSzam = args[hanyadik].substring(7);
         }
         if(fieldSzam.length() == 0){
@@ -65,7 +70,7 @@ public class Create {
             melyik[e] = -1;
         }
         int melyikSzamlalo = 0;
-        if(args[i].contains("field")){
+        if(args[i].contains(FIELD)){
             if((fieldSzam = numberCutDown(args, i)) == null){
                 return null;
             }
@@ -73,7 +78,7 @@ public class Create {
             melyik[melyikSzamlalo] = fieldSzamNum;
             melyikSzamlalo++;
         }
-        else if(args[i].contains("shelter")){
+        else if(args[i].contains(SHELTER)){
             if((fieldSzam = numberCutDown(args, i)) == null){
                 return null;
             }
@@ -81,7 +86,7 @@ public class Create {
             melyik[melyikSzamlalo] = fieldSzamNum;
             melyikSzamlalo++;
         }
-        else if(args[i].contains("laboratory")){
+        else if(args[i].contains(LABORATORY)){
             if((fieldSzam = numberCutDown(args, i)) == null){
                 return null;
             }
@@ -89,7 +94,7 @@ public class Create {
             melyik[melyikSzamlalo] = fieldSzamNum;
             melyikSzamlalo++;
         }
-        else if(args[i].contains("warehouse")){
+        else if(args[i].contains(WAREHOUSE)){
             if((fieldSzam = numberCutDown(args, i)) == null){
                 return null;
             }
@@ -117,7 +122,7 @@ public class Create {
             System.out.println("Too many fields, the maximum number of neighbouring fields can only be 8");
             return null;
         }
-        if(args[1].equals("field")){
+        if(args[1].equals(FIELD)){
             for(int i = 2; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
@@ -133,7 +138,7 @@ public class Create {
                 }
             }
         }
-        else if(args[1].equals("shelter")){
+        else if(args[1].equals(SHELTER)){
             for(int i = 3; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
@@ -149,7 +154,7 @@ public class Create {
                 }
             }
         }
-        else if(args[1].equals("warehouse")){
+        else if(args[1].equals(WAREHOUSE)){
             for(int i = 5; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
@@ -165,7 +170,7 @@ public class Create {
                 }
             }
         }
-        else if(args[1].equals("laboratory")){
+        else if(args[1].equals(LABORATORY)){
             for(int i = 4; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
@@ -233,7 +238,7 @@ public class Create {
             System.out.println("The virologist has been created, " +
                     "you can later use it with the reference: virologist"+(board.getVirologusok().size()-1));
         }
-        else if(args[1].equals("field")){
+        else if(args[1].equals(FIELD)){
             Field f1 = new Field();
 
             /*Ha mar letezik egy masik field, tehat lehet neighbourje es hozza szeretnenk adni*/
@@ -251,7 +256,7 @@ public class Create {
 
         /*Shelter letrehozasa*/
         /*Meg kell adni, hogy melyik mar korabban letrehozott equipment-tel akarjuk letrehozni a sheltert.*/
-        else if(args[1].equals("shelter")){
+        else if(args[1].equals(SHELTER)){
             /*Feltetelek megtermetese*/
             if(board.getFelszerelesek().size() == 0) {
                 System.out.println("If you want to create a shelter, first you need to create an equipment, " +
@@ -316,7 +321,7 @@ public class Create {
                     "you can use it later with the reference: shelter"+(board.getMezok().size()-1));
         }
         /*Laboratorium letrehozasa*/
-        else if(args[1].equals("laboratory")){
+        else if(args[1].equals(LABORATORY)){
             /*Feltetelek megtermetese*/
             if(board.getGenetikaiKodok().size() == 0){
                 System.out.println("If you want to create a laboratory, first you need to create a gcode, " +
@@ -348,7 +353,7 @@ public class Create {
                     "you can use it later with the reference: laboratory"+(board.getMezok().size()-1));
         }
         /*Warehouse letrehozasa*/
-        else if(args[1].equals("warehouse")){
+        else if(args[1].equals(WAREHOUSE)){
             if(args.length < 5){
                 System.out.println("Not enough arguments!");
                 return;
