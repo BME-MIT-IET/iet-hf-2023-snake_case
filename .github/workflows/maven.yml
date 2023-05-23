@@ -10,15 +10,13 @@ name: Java CI with Maven
 
 on:
   push:
-    branches:
-      - master
-      - main
-  pull_request:
-    types: [opened, synchronize, reopened]
+    branches: [ "main" ]
+  #pull_request:
+  #  types: [opened, synchronize, reopened]
   #push:
   #  branches: [ "main" ]
-  #pull_request:
-  #  branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
 
 jobs:
   build:
