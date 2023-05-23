@@ -72,7 +72,8 @@ public class Create {
         int melyikSzamlalo = 0;
         if(args[i].contains(FIELD)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                return null;
+                int[] emptyArray = {};
+                return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
             melyik[melyikSzamlalo] = fieldSzamNum;
@@ -80,7 +81,8 @@ public class Create {
         }
         else if(args[i].contains(SHELTER)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                return null;
+                int[] emptyArray = {};
+                return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
             melyik[melyikSzamlalo] = fieldSzamNum;
@@ -88,7 +90,8 @@ public class Create {
         }
         else if(args[i].contains(LABORATORY)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                return null;
+                int[] emptyArray = {};
+                return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
             melyik[melyikSzamlalo] = fieldSzamNum;
@@ -96,7 +99,8 @@ public class Create {
         }
         else if(args[i].contains(WAREHOUSE)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                return null;
+                int[] emptyArray = {};
+                return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
             melyik[melyikSzamlalo] = fieldSzamNum;
@@ -104,7 +108,8 @@ public class Create {
         }
         else {
             System.out.println("Something is not right with the neighbouring fields.");
-            return null;
+            int[] emptyArray = {};
+            return emptyArray;
         }
         return melyik;
     }
@@ -127,7 +132,7 @@ public class Create {
                 int[] atmeneti = melyik;
                 int x = 0;
                 melyik = MelyikBeallitas(args, i);
-                if(melyik == null){
+                if(melyik.length == 0){
                     return null;
                 }
                 for(int e = 0; e < melyik.length; e++){
@@ -143,7 +148,7 @@ public class Create {
                 int[] atmeneti = melyik;
                 int x = 0;
                 melyik = MelyikBeallitas(args, i);
-                if(melyik == null){
+                if(melyik.length == 0){
                     return null;
                 }
                 for(int e = 0; e < melyik.length; e++){
@@ -159,7 +164,7 @@ public class Create {
                 int[] atmeneti = melyik;
                 int x = 0;
                 melyik = MelyikBeallitas(args, i);
-                if(melyik == null){
+                if(melyik.length == 0){
                     return null;
                 }
                 for(int e = 0; e < melyik.length; e++){
@@ -175,7 +180,7 @@ public class Create {
                 int[] atmeneti = melyik;
                 int x = 0;
                 melyik = MelyikBeallitas(args, i);
-                if(melyik == null){
+                if(melyik.length == 0){
                     return null;
                 }
                 for(int e = 0; e < melyik.length; e++){
