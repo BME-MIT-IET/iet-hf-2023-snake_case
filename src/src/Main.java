@@ -11,8 +11,8 @@ import java.util.HashMap;
 import java.util.Scanner;
 
 public class Main {
-    public static HashMap<String, CommandsInterface> commands = new HashMap<>();
-    private static Board board = new Board();
+    public static HashMap<String, src.CommandsInterface> commands = new HashMap<>();
+    private static src.Board board = new src.Board();
     private static Create crea = new Create();
     private static Move move = new Move();
     private static Collect collect = new Collect();

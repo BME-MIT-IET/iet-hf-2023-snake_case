@@ -1,0 +1,13 @@
+The field has been created, you can use it later with the reference: field0
+CapeEffect: I'm Created
+Cape: I'm Created.
+The cape has been created you can use it later with the reference: cape0
+The virologist has been created, you can later use it with the reference: virologist0
+Inventory: I have added the equipment
+CapeEffect: My Effect is activated
+The effect has been added.
+Virologist0 has equipped the following item: cape0
+CapeEffect: My Effect is removed
+Virologist: The effect has been deleted!
+Virologist: The equipment has been deleted!
+Virologist: The equipment has been dropped

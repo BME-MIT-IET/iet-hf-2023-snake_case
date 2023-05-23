@@ -1,0 +1,16 @@
+The field has been created, you can use it later with the reference: field0
+Field: Added a neighbour.
+The field has been created, you can use it later with the reference: field1
+The virologist has been created, you can later use it with the reference: virologist0
+The genetical code has been created, you can use it later with the reference: bearvirus
+Virologist: I have called the 'Move' function.
+Field: The player has been removed from the field.
+Field: The player has been accepted to the field.
+Virologist: The player moved to another field.
+Virologist: I have called the 'Move' function.
+Field: The player has been removed from the field.
+Field: The player has been accepted to the field.
+Virologist: The player moved to another field.
+The effect has been added.
+Inventory: I learned a new genetical code.
+virologist0 has been affected by bearvirus

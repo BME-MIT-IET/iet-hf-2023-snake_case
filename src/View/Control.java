@@ -8,8 +8,6 @@ import java.util.ArrayList;
 
 public class Control {
 
-
-
     private Board board;
     private Virologist player;
 
