@@ -51,6 +51,8 @@ public class ApplyEffect {
                         }
                         board.getVirologusok().get(Integer.parseInt(vID)).LearnGCode(new GCode(0,0,"bearvirus"));
                         break;
+                    default:
+                        throw new UnsupportedOperationException("This effect has not been implemented to ApplyEffect yet");
                 }
                 System.out.println("virologist" + vID + " has been affected by " + args[2]);
                 break;
