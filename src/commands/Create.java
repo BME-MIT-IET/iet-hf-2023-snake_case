@@ -211,14 +211,14 @@ public class Create {
                 System.out.println("Not enough parameters!");
                 return;
             }
-            if(board.getMezok().size() == 0){
+            if(board.getMezok().isEmpty()){
                 System.out.println("You can't make a virologist without a field to stand on!");
                 return;
             }
             int amino = Integer.parseInt(args[2]);
             int nukleo = Integer.parseInt(args[3]);
             double dodgeChance = Double.parseDouble(args[4]);
-            String fieldSzam = args[5].replaceAll("[^0-9]", "");			///elvileg a replaceAll egy lassu muvelet, de szerintem nem lesz baj  -Dani
+            String fieldSzam = args[5].replaceAll("[^0-9]", "");            ///elvileg a replaceAll egy lassu muvelet, de szerintem nem lesz baj  -Dani
             if(fieldSzam.length() == 0){
                 System.out.println("I can't find that field.");
                 return;

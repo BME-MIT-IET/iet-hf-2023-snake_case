@@ -254,7 +254,7 @@ public class GameWindow extends JFrame {
 
     public void startGame(Menu menu){
         //Megnezi, hogy a start sikerult-e, elvileg soha nem kene az if-be bemenni, de jobb felni
-        if(board.getMezok().size() == 0){
+        if(board.getMezok().isEmpty()){
             System.out.println("The game is not ready!");
             System.exit(1);
             return;
