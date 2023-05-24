@@ -162,7 +162,7 @@ public class OtherStealActionListener implements ActionListener {
 
             }
         }
-        control.InvalidateBasicPanel();
+        control.invalidateBasicPanel();
         //for(int i = 0; i < otherPanel.getComponentCount(); i++){
           //  otherPanel.getComponent(i).setVisible(false);
         // }

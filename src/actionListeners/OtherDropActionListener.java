@@ -48,6 +48,6 @@ public class OtherDropActionListener implements ActionListener {
         }
         dob.drop(args, board);
         gomb.setVisible(false);
-        control.InvalidateBasicPanel();
+        control.invalidateBasicPanel();
     }
 }

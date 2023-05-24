@@ -171,6 +171,6 @@ public class OtherAttackActionListener implements ActionListener {
                 }
             }
         }
-        control.InvalidateBasicPanel();
+        control.invalidateBasicPanel();
     }
 }

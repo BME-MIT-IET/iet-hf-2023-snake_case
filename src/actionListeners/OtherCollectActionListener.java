@@ -28,6 +28,6 @@ public class OtherCollectActionListener implements ActionListener {
         Collect collect = new Collect();
         String[] args = {"collect", "virologist0"};
         collect.collect(args, board);
-        control.InvalidateBasicPanel();
+        control.invalidateBasicPanel();
     }
 }

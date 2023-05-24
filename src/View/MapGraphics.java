@@ -24,6 +24,7 @@ public class MapGraphics extends JPanel {
     }
 
     //Minden ujrarajzolaskor ez meghivodik, frissitve a map-et
+    @Override
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         Graphics2D g2d = (Graphics2D) g;
@@ -33,8 +34,6 @@ public class MapGraphics extends JPanel {
 
         //Mindig nullazodik a poligon arraylist, hogy frissiteni tudjuk a jelenleg latottakat
         polys.clear();
-
-
 
         //Megkeresi, hogy hol van a virologus, illetve a szomszedos mezoket
         int virFieldId = -1;
@@ -169,11 +168,11 @@ public class MapGraphics extends JPanel {
         return clickedY;
     }
 
-    public boolean CheckHit() {
+    public boolean checkHit() {
         for(int i = 0; i < polys.size(); i++){
             if(polys.get(i).contains(clickedX, clickedY)) {
                 if(!board.getAction() && !board.getMove()){
-                    gameWindow.NoMoreAction();
+                    gameWindow.noMoreAction();
                 }
                 System.out.println("Field"+ i +"-re nyomott!");
                 Move move = new Move();
