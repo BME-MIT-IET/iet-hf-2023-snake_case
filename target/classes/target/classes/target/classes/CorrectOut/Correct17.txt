@@ -1,0 +1,36 @@
+The genetical code has been created, you can use it later with the reference: paralyze
+CapeEffect: I'm Created
+Cape: I'm Created.
+The cape has been created you can use it later with the reference: cape0
+A Laboratory has been created.
+The laboratory has been created, you can use it later with the reference: laboratory0
+Shelter has been created.
+Field: Added a neighbour.
+The shelter has been created, you can use it later with the reference: shelter1
+The virologist has been created, you can later use it with the reference: virologist0
+The virologist has been created, you can later use it with the reference: virologist1
+Virologist: I have called the 'Collect' function.
+The virologist tries to take the Equipment
+Inventory: I have added the equipment
+CapeEffect: My Effect is activated
+The effect has been added.
+Virologist: I have called the 'Collect' function.
+The virologist tries to learn the GCode
+Inventory: I learned a new genetical code.
+Virologist: I have called the 'Move' function.
+Field: The player has been removed from the field.
+Field: The player has been accepted to the field.
+Virologist: The player moved to another field.
+Virologist: Checking if I have enough materials
+Virologist: Checking if I have enough space
+Virologist: Checking if I know the Code
+Virologist: Creating new agent
+Inventory: I have created a new paralyze agent
+Inventory: I have changed number of aminoacids I have to: 4
+Inventory: I have changed number of nukleotids I have to: 4
+Virologist: I created a new agent.
+Virologist: I have called the 'Attack' function.
+Virologist: The attacked virologist dodged the attack!
+Virologist: The agent has been used.
+Inventory: I have removed the agent.
+Virologist: The agent has been removed from inventory
