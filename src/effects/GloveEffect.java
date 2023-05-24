@@ -1,4 +1,4 @@
-package Effects;
+package effects;
 
 import src.Effect;
 import src.Virologist;

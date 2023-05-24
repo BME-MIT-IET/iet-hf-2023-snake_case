@@ -1,6 +1,6 @@
 package src;
 
-import Effects.GloveEffect;
+import effects.GloveEffect;
 
 import java.io.Serializable;
 

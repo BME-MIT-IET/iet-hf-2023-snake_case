@@ -1,6 +1,5 @@
-package Effects;
+package effects;
 import src.Effect;
-import src.GCode;
 import src.Virologist;
 
 import java.io.Serializable;

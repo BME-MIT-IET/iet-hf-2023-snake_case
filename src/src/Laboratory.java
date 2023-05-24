@@ -1,6 +1,6 @@
 package src;
 
-import Effects.BearEffect;
+import effects.BearEffect;
 
 import java.io.Serializable;
 

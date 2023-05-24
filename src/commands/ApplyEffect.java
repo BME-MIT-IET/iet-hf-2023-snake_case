@@ -1,7 +1,7 @@
 package commands;
 
 import src.*;
-import Effects.*;
+import effects.*;
 
 public class ApplyEffect {
     public void applyEffect(String[] args, Board board){

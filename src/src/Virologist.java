@@ -3,7 +3,7 @@ package src;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
-import Effects.*;
+import effects.*;
 
 public class Virologist implements Update, Serializable {
     /*Valtozok*/

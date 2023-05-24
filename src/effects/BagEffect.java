@@ -1,4 +1,4 @@
-package Effects;
+package effects;
 
 import src.Effect;
 import src.Virologist;
@@ -12,7 +12,6 @@ public class BagEffect extends Effect implements Serializable {
         effect = "BagEffect";
         System.out.println("BagEffect: I'm Created");
     }
-
 
     public void Effect(Virologist v) {
         /*BagEffect-et majd itt valositsuk meg, ahogyan akarjuk, nekem csak a lete kellett a teszteleshez.*/

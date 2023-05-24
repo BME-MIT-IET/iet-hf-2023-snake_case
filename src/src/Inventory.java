@@ -2,7 +2,7 @@ package src;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import Effects.*;
+import effects.*;
 
 public class Inventory implements Serializable {
     /*Valtozok*/
