@@ -1,6 +1,6 @@
 package src;
 
-import Effects.CapeEffect;
+import effects.CapeEffect;
 
 import java.io.Serializable;
 

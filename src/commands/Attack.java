@@ -1,11 +1,10 @@
 package commands;
 
 import src.Board;
-import src.Field;
 import src.Virologist;
 
 public class Attack {
-    public void Attack(String[] args, Board board){
+    public void attack(String[] args, Board board){
         if(args.length < 4){
             System.out.println("Not enough parameters!");
             return;
@@ -15,19 +14,19 @@ public class Attack {
             return;
         }
         //Virologusok inicializalasa
-        int AttackerV = Integer.parseInt(args[1].substring(10));
-        int AttackedV = Integer.parseInt(args[2].substring(10));
+        int attackerV = Integer.parseInt(args[1].substring(10));
+        int attackedV = Integer.parseInt(args[2].substring(10));
 
-        Virologist attacker = board.getVirologusok().get(AttackerV);
-        Virologist attacked = board.getVirologusok().get(AttackedV);
+        Virologist attacker = board.getVirologusok().get(attackerV);
+        Virologist attacked = board.getVirologusok().get(attackedV);
 
         
         //Teszteli, hogy a virologusnak van e meg akcioja
-        if(AttackerV == 0 && board.getAction()) {
+        if(attackerV == 0 && board.getAction()) {
         	board.setAction(false);
         }
         //Ha nincs nem csinal semmit
-        else if(AttackerV == 0 && !board.getAction()) {
+        else if(attackerV == 0 && !board.getAction()) {
         	System.out.println("The player doesn't have any more actions!");
         	return;
         }
@@ -40,10 +39,10 @@ public class Attack {
         }
 
         if(args[3].equals("axe")){
-            attacker.UseAxe(attacked);
+            attacker.useAxe(attacked);
         }
         else {
-            attacker.Attack(attacker, attacked, args[3]);
+            attacker.attack(attacker, attacked, args[3]);
         }
     }
 }

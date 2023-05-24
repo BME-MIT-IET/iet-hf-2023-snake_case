@@ -67,10 +67,10 @@ public class View {
             String string = "";
             for(int i = 0; i < agentsL.size(); i++){
                 if(i == agentsL.size() - 1){
-                    string = string.concat(agentsL.get(i).getEffect().getEffect());
+                    string = string.concat(agentsL.get(i).getEffect().getMyEffect());
                 }
                 else{
-                    string = string.concat(agentsL.get(i).getEffect().getEffect() + ", ");
+                    string = string.concat(agentsL.get(i).getEffect().getMyEffect() + ", ");
                 }
             }
             agents.setText(string);
@@ -87,14 +87,14 @@ public class View {
             }
             geneticalCodes.setText(string);
         }
-        if(!effects.GetEffects().isEmpty()){
+        if(!effects.getEffects().isEmpty()){
             String string = "";
-            for(int i = 0; i < effects.GetEffects().size(); i++){
-                if(i == effects.GetEffects().size() - 1){
-                    string = string.concat(effects.GetEffects().get(i).getEffect());
+            for(int i = 0; i < effects.getEffects().size(); i++){
+                if(i == effects.getEffects().size() - 1){
+                    string = string.concat(effects.getEffects().get(i).getMyEffect());
                 }
                 else{
-                    string = string.concat(effects.GetEffects().get(i).getEffect() + ", ");
+                    string = string.concat(effects.getEffects().get(i).getMyEffect() + ", ");
                 }
             }
             effectedEffects.setText(string);

@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 public class Agent implements Serializable {
     /*Valtozok*/
-    private Effect effect;
+    private final Effect effect;
 
     Agent(Effect value){
         effect = value;

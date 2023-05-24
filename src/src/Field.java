@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Field implements Serializable {
     //A mezon tartozkodo virologusokat tartalmazo lista.
-    private ArrayList<Virologist> virologists = new ArrayList<>();
+    private final ArrayList<Virologist> virologists = new ArrayList<>();
 
     //A szomszédos mezoket tartalmazo lista.
-    private ArrayList<Field> neighbours = new ArrayList<>();
+    private final ArrayList<Field> neighbours = new ArrayList<>();
 
     public Field(){
         //System.out.println("Field: Field has been created.");
@@ -25,18 +25,18 @@ public class Field implements Serializable {
     }
 
     //Virologus elhelyezése a mezore.
-    public void Accept(Virologist v){
+    public void accept(Virologist v){
         virologists.add(v);
         System.out.println("Field: The player has been accepted to the field.");
     }
 
     //Virológus eltavolitasa a mezorol.
-    public void Remove(Virologist v){
+    public void remove(Virologist v){
         virologists.remove(v);
         System.out.println("Field: The player has been removed from the field.");
     }
 
-    public void AddNeighbour(Field f1){
+    public void addNeighbour(Field f1){
         if(f1 != null){
             neighbours.add(f1);
             f1.neighbours.add(this);
@@ -47,7 +47,7 @@ public class Field implements Serializable {
     }
 
     //Virtualis fuggveny, a tobbi field tipuson talalhato objektumok begyujteseert felel.
-    public void Collect(Virologist v){
+    public void collect(Virologist v){
         System.out.println("Simple field collect.");
     }
 }

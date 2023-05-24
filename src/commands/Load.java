@@ -1,27 +1,26 @@
 package commands;
 
-import commands.Create;
 import src.Board;
 
 import java.io.*;
 import java.util.Scanner;
 
 public class Load {
-    public void Load(String[]args, Board b) throws FileNotFoundException {
+    public void load(String[]args, Board b) throws FileNotFoundException {
         String n = args[1];
         String nev = "Tests/" + n + ".txt";
 
         //Board resetelese
-        b.SetNULLFelszerelesek();
+        b.setNULLFelszerelesek();
         b.SetNULLVirologusok();
-        b.SetNULLMezok();
-        b.SetNULLGenetikaiKodok();
-        boolean Action = b.getAction();
-        boolean Move = b.getMove();
-        if(!Action){
+        b.setNULLMezok();
+        b.setNULLGenetikaiKodok();
+        boolean action = b.getAction();
+        boolean move = b.getMove();
+        if(!action){
             b.setAction(true);
         }
-        if(!Move){
+        if(!move){
             b.setMove(true);
         }
 
@@ -31,77 +30,76 @@ public class Load {
             PrintStream psc = System.out;
             System.setOut(psf);
             Scanner sc = new Scanner(file);
-            //Board b = new Board();
             String[] commands;
             while (sc.hasNextLine()) {
                 String s = sc.nextLine();
                 commands = s.split(" ");
                 if (commands[0].equals("create")) {
                     Create createLoad = new Create();
-                    createLoad.Create(commands, b);
+                    createLoad.create(commands, b);
                 } else if (commands[0].equals("attack")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     Attack atkLoad = new Attack();
-                    atkLoad.Attack(commands, b);
+                    atkLoad.attack(commands, b);
                 } else if (commands[0].equals("collect")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     Collect collLoad = new Collect();
-                    collLoad.Collect(commands, b);
+                    collLoad.collect(commands, b);
                 } else if (commands[0].equals("move")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
-                    Move = b.getMove();
-                    if(!Move){
+                    move = b.getMove();
+                    if(!move){
                         b.setMove(true);
                     }
                     Move moveLoad = new Move();
-                    moveLoad.Move(commands, b);
+                    moveLoad.move(commands, b);
                 } else if (commands[0].equals("craft")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     Craft craftLoad = new Craft();
-                    craftLoad.Craft(commands, b);
+                    craftLoad.craft(commands, b);
                 } else if (commands[0].equals("drop")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     Drop dropLoad = new Drop();
-                    dropLoad.Drop(commands, b);
+                    dropLoad.drop(commands, b);
                 } else if (commands[0].equals("steal")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     Steal stealLoad = new Steal();
-                    stealLoad.Steal(commands, b);
+                    stealLoad.steal(commands, b);
                 } else if (commands[0].equals("list")) {
                     List listLoad = new List();
-                    listLoad.List(commands, b);
+                    listLoad.list(commands, b);
                 } else if (commands[0].equals("applyeffect")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     ApplyEffect afLoad = new ApplyEffect();
-                    afLoad.ApplyEffect(commands, b);
+                    afLoad.applyEffect(commands, b);
                 } else if (commands[0].equals("equip")) {
-                    Action = b.getAction();
-                    if(!Action){
+                    action = b.getAction();
+                    if(!action){
                         b.setAction(true);
                     }
                     Equip equipLoad = new Equip();
-                    equipLoad.Equip(commands, b);
+                    equipLoad.equip(commands, b);
                 }
             }
             System.setOut(psc);
@@ -118,12 +116,12 @@ public class Load {
             int sorSzamlalo = 1;
             while(tester.hasNextLine()){
                 if(helyes.hasNextLine()){
-                    String Correct = helyes.nextLine();
-                    String Tested = tester.nextLine();
-                    if(!Correct.equals(Tested)){
+                    String correct = helyes.nextLine();
+                    String tested = tester.nextLine();
+                    if(!correct.equals(tested)){
                         System.out.println("\t\tTHE TEST FAILED AT LINE: " + sorSzamlalo);
-                        System.out.println("The correct line was: "+Correct);
-                        System.out.println("The line that I got was: "+Tested);
+                        System.out.println("The correct line was: "+correct);
+                        System.out.println("The line that I got was: "+tested);
                         failed = true;
                     }
                     sorSzamlalo++;

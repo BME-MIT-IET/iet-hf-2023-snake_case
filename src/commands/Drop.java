@@ -4,7 +4,7 @@ import src.Board;
 import src.Virologist;
 
 public class Drop {
-    public void Drop(String[] args, Board board){
+    public void drop(String[] args, Board board){
         if(args.length < 3){
             System.out.println("There are not enough arguments");
             return;
@@ -34,6 +34,6 @@ public class Drop {
         }
 
         Virologist virologist = board.getVirologusok().get(virologusID);
-        virologist.Drop(args[2]);
+        virologist.drop(args[2]);
     }
 }

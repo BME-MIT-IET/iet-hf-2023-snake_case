@@ -1,10 +1,8 @@
 package View;
 
-import ActionListeners.*;
-import commands.Craft;
+import actionListeners.*;
 import commands.EndTurn;
 import commands.Start;
-import commands.Move;
 import src.*;
 
 import javax.swing.*;
@@ -12,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -47,13 +44,12 @@ public class GameWindow extends JFrame {
 
 
     GameWindow(JFrame menu){
-        //this.setBackground(Color.ORANGE);
         mainMenu = menu;
         Start start = new Start();
         board = new Board();
         String[] args = {};
         try{
-            start.Start(args, board);
+            start.start(args, board);
         }
         catch(Exception e){
             System.out.println(e);
@@ -67,7 +63,7 @@ public class GameWindow extends JFrame {
 
     //Minden elemet elrejt a panelben
     //Kvazi reseteli
-    public void HideEveryComponentInOtherPanel(JPanel panel){
+    public void hideEveryComponentInOtherPanel(JPanel panel){
         if(panel.getComponentCount() == 0){
             return;
         }
@@ -76,23 +72,22 @@ public class GameWindow extends JFrame {
         }
     }
 
-    public boolean NoMoreAction(){
-        HideEveryComponentInOtherPanel(otherPanel);
+    public void noMoreAction(){
+        hideEveryComponentInOtherPanel(otherPanel);
         JLabel noAction = new JLabel("You don't have any more actions, End Turn.");
         otherPanel.add(noAction);
-        return true;
     }
 
     public Board getBoard(){
         return board;
     }
 
-    public void CraftActionListener(ActionEvent e){
+    public void craftActionListener(ActionEvent e){
         if(!board.getAction()){
-            NoMoreAction();
+            noMoreAction();
         }
         else {
-            HideEveryComponentInOtherPanel(otherPanel);
+            hideEveryComponentInOtherPanel(otherPanel);
             JButton paralyze = new JButton("paralyze");
             JButton forget = new JButton("forget");
             JButton protect = new JButton("protect");
@@ -100,9 +95,9 @@ public class GameWindow extends JFrame {
 
             otherPanel.setLayout(new FlowLayout());
 
-            ArrayList<GCode> geneticalCodes = board.getVirologusok().get(0).GetInventory().GetGcodes();
+            ArrayList<GCode> geneticalCodes = board.getVirologusok().get(0).getInv().getGcodes();
 
-            if (geneticalCodes.size() == 0) {
+            if (geneticalCodes.isEmpty()) {
                 gcodes.setText("You don't know any genetical codes yet.");
                 gcodes.setVisible(true);
                 return;
@@ -126,12 +121,12 @@ public class GameWindow extends JFrame {
         }
     }
 
-    public void CollectActionListener(ActionEvent e){
+    public void collectActionListener(ActionEvent e){
         if(!board.getAction()){
-            NoMoreAction();
+            noMoreAction();
         }
         else {
-            HideEveryComponentInOtherPanel(otherPanel);
+            hideEveryComponentInOtherPanel(otherPanel);
             gcodes.setText("You tried to collect form the field");
             gcodes.setVisible(true);
             OtherCollectActionListener elem = new OtherCollectActionListener(otherPanel, board, control);
@@ -139,19 +134,19 @@ public class GameWindow extends JFrame {
         }
     }
 
-    public void DropActionListener(ActionEvent e){
+    public void dropActionListener(ActionEvent e){
         if(!board.getAction()){
-            NoMoreAction();
+            noMoreAction();
         }
         else {
-            HideEveryComponentInOtherPanel(otherPanel);
+            hideEveryComponentInOtherPanel(otherPanel);
             JButton cape = new JButton("Cape");
             JButton axe = new JButton("Axe");
             JButton bag = new JButton("Bag");
             JButton gloves = new JButton("Gloves");
             otherPanel.setLayout(new FlowLayout());
 
-            ArrayList<Equipment> items = board.getVirologusok().get(0).GetInventory().GetEquipments();
+            ArrayList<Equipment> items = board.getVirologusok().get(0).getInv().GetEquipments();
 
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).getName().equals("cape")) {
@@ -170,33 +165,33 @@ public class GameWindow extends JFrame {
             }
         }
     }
-    public void AttackActionListener(ActionEvent e){
+    public void attackActionListener(ActionEvent e){
         if(!board.getAction()){
-            NoMoreAction();
+            noMoreAction();
         }
         else {
-            HideEveryComponentInOtherPanel(otherPanel);
+            hideEveryComponentInOtherPanel(otherPanel);
             OtherAttackActionListener atvisz = new OtherAttackActionListener(board, otherPanel, control);
             atvisz.InitButtons();
         }
     }
 
-    public void StealActionListener(ActionEvent e){
+    public void stealActionListener(ActionEvent e){
         if(!board.getAction()){
-            NoMoreAction();
+            noMoreAction();
         }
         else {
-            HideEveryComponentInOtherPanel(otherPanel);
+            hideEveryComponentInOtherPanel(otherPanel);
             OtherStealActionListener atvisz = new OtherStealActionListener(board, otherPanel, control);
             atvisz.InitButtons();
         }
     }
 
-    public void ExitActionListener(ActionEvent e){
+    public void exitActionListener(ActionEvent e){
         System.exit(0);
     }
 
-    public void DisableAll(){
+    public void disableAll(){
         attack.setEnabled(false);
         steal.setEnabled(false);
         drop.setEnabled(false);
@@ -206,22 +201,22 @@ public class GameWindow extends JFrame {
         save.setEnabled(false);
     }
 
-    public void EndTurnActionListener(ActionEvent e){
-        HideEveryComponentInOtherPanel(otherPanel);
+    public void endTurnActionListener(ActionEvent e){
+        hideEveryComponentInOtherPanel(otherPanel);
         EndTurn endturn = new EndTurn();
         String[] args;
         String bemenet = "endturn";
         args = bemenet.split(" ");
-        if(board.getVirologusok().get(0).getEffects().SearchForEffect("bearvirus")){
-            HideEveryComponentInOtherPanel(otherPanel);
+        if(board.getVirologusok().get(0).getEffects().searchForEffect("bearvirus")){
+            hideEveryComponentInOtherPanel(otherPanel);
             JLabel bearLabel = new JLabel("You have been infected with the bearvirus, the game is over for you.");
             otherPanel.add(bearLabel);
-            DisableAll();
+            disableAll();
         }
         for(int i = 0; i < board.getVirologusok().size(); i++){
             Virologist vir = board.getVirologusok().get(i);
-            if(!vir.GetEffects().SearchForEffect("bearvirus") && vir.GetInventory().GetGcodes().size() == 4){
-                DisableAll();
+            if(!vir.getEffects().searchForEffect("bearvirus") && vir.getInv().getGcodes().size() == 4){
+                disableAll();
                 if(i == 0){
                     gcodes.setText("The player has earned an EPIC Victory Royale!");
                 }
@@ -232,15 +227,15 @@ public class GameWindow extends JFrame {
                 return;
             }
         }
-        endturn.EndTurn(args, board);
+        endturn.endTurn(args, board);
         JLabel endturnlabel = new JLabel("I have ended my turn.");
         otherPanel.add(endturnlabel);
         mapPanel.repaint();
-        control.InvalidateBasicPanel();
+        control.invalidateBasicPanel();
     }
 
     //A board elemeinek szerializálása, az egész board-ot nem tudtam egyben szerializálni.
-    public void SaveActionListener(ActionEvent e){
+    public void saveActionListener(ActionEvent e){
         try{
             FileOutputStream FileOut = new FileOutputStream("save.txt");
             ObjectOutputStream ObjectOut = new ObjectOutputStream(FileOut);
@@ -249,10 +244,6 @@ public class GameWindow extends JFrame {
             everyting.add(board.getMezok());
             everyting.add(board.getFelszerelesek());
             everyting.add(board.getGenetikaiKodok());
-            //ObjectOut.writeObject(board.getVirologusok());
-            //ObjectOut.writeObject(board.getMezok());
-            //ObjectOut.writeObject(board.getFelszerelesek());
-            //ObjectOut.writeObject(board.getGenetikaiKodok());
             ObjectOut.writeObject(everyting);
             ObjectOut.close();
             System.out.println("Save successful!");
@@ -263,7 +254,7 @@ public class GameWindow extends JFrame {
 
     public void startGame(Menu menu){
         //Megnezi, hogy a start sikerult-e, elvileg soha nem kene az if-be bemenni, de jobb felni
-        if(board.getMezok().size() == 0){
+        if(board.getMezok().isEmpty()){
             System.out.println("The game is not ready!");
             System.exit(1);
             return;
@@ -294,14 +285,14 @@ public class GameWindow extends JFrame {
         exit = new JButton("Exit");
 
         //Buttons ActionListenerek hozzarendeles
-        craft.addActionListener(this::CraftActionListener);
-        drop.addActionListener(this::DropActionListener);
-        collect.addActionListener(this::CollectActionListener);
-        attack.addActionListener(this::AttackActionListener);
-        steal.addActionListener(this::StealActionListener);
-        endTurn.addActionListener(this::EndTurnActionListener);
-        save.addActionListener(this::SaveActionListener);
-        exit.addActionListener(this::ExitActionListener);
+        craft.addActionListener(this::craftActionListener);
+        drop.addActionListener(this::dropActionListener);
+        collect.addActionListener(this::collectActionListener);
+        attack.addActionListener(this::attackActionListener);
+        steal.addActionListener(this::stealActionListener);
+        endTurn.addActionListener(this::endTurnActionListener);
+        save.addActionListener(this::saveActionListener);
+        exit.addActionListener(this::exitActionListener);
 
         //MapPanel es MouseActionListener letrehozasa
         mapPanel = new MapGraphics(board, this);//Elobb kell letrehozni, hogy lehessen ra hivatkozni
@@ -309,15 +300,15 @@ public class GameWindow extends JFrame {
             @Override
             public void mouseClicked(MouseEvent e) {
                 //beallitja, hogy hova nyomott
-            	mapPanel.setClickedX(e.getX());
+                mapPanel.setClickedX(e.getX());
                 mapPanel.setClickedY(e.getY());
                 
                 //Tesztkiiras
                 System.out.println("You clicked: x:"+mapPanel.getClickedX()+" y:"+mapPanel.getClickedY());
                 
                 //Ha valamire nyomott, ujrarajzolas!            Egyebkent ez nem ide kell feltetlenul, de nem tuom hova tegyuk, egyenlore szerintem jo ide -Dani
-                if(mapPanel.CheckHit()) {
-                	mapPanel.repaint();
+                if(mapPanel.checkHit()) {
+                    mapPanel.repaint();
                 }
             }
 
@@ -380,7 +371,6 @@ public class GameWindow extends JFrame {
 
         
         //Panelekhez gombok, egyeb vizualis dolgok addolasa
-        //mapPanel.add(textMap);
         actionsPanelB.add(textActions);
         actionsPanelA.add(craft);
         actionsPanelA.add(drop);
@@ -391,7 +381,6 @@ public class GameWindow extends JFrame {
         actionsPanelA.add(save);
         actionsPanelA.add(exit);
         basicPanel.add(textBasicInfo);
-        //otherPanel.add(textOther);
         otherPanel.add(gcodes);
 
         //Panelekhez panelek addolasa
@@ -440,7 +429,7 @@ public class GameWindow extends JFrame {
 
         control = new Control(board, this, view);
 
-        control.InvalidateBasicPanel();
+        control.invalidateBasicPanel();
         //Ablak valtas
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);

@@ -6,7 +6,7 @@ public class Move {
     /*Mozgas
      *@param args = A teljes parancs sor amit kap a felhasznalotol
      * Syntax: move [kit] [hova]*/
-    public void Move(String args[], Board con){
+    public void move(String[] args, Board con){
         if(con.getMezok().size()<2){
             System.out.println("Not enough fields! You need at least 2 to move from one to another.");
             return;
@@ -23,9 +23,6 @@ public class Move {
             return;
         }
         int sz = Integer.parseInt(szam);
-
-        
-        
         
         int FID = Integer.parseInt(args[2].replaceAll("[^0-9]", ""));
         if(con.getMezok().get(FID).getNeighbours().contains(con.getVirologusok().get(sz).getField())) {
@@ -47,9 +44,7 @@ public class Move {
         	System.out.println("The chosen field is not neighbour of the field you are standing on!");
         	return;
         }
-        
-        
-        
+
         
         if(args[2].contains("field")){
             String szam2 = args[2].substring(5);
@@ -60,7 +55,7 @@ public class Move {
             int hva = Integer.parseInt(szam2);
             /*Megnezi, hogy ahova lepni szeretnenk, az szomszedja-e a jelenlegi mezonek*/
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }
@@ -72,7 +67,7 @@ public class Move {
             }
             int hva = Integer.parseInt(szam2);
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }
@@ -84,7 +79,7 @@ public class Move {
             }
             int hva = Integer.parseInt(szam2);
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }
@@ -96,7 +91,7 @@ public class Move {
             }
             int hva = Integer.parseInt(szam2);
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }

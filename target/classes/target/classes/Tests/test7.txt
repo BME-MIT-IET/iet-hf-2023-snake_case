@@ -1,0 +1,6 @@
+create field
+create equipment cape 0
+create shelter cape0 field0
+create virologist 5 5 0.5 field0
+move virologist0 shelter1
+collect virologist0

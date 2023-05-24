@@ -2,17 +2,15 @@ package View;
 
 import src.*;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Control {
 
-    private Board board;
-    private Virologist player;
+    private final Board board;
+    private final Virologist player;
 
-    private GameWindow gameWindow;
-    private View view;
+    private final GameWindow gameWindow;
+    private final View view;
 
     public Control(Board board, GameWindow gameWindow, View view){
         this.board = board;
@@ -21,14 +19,14 @@ public class Control {
         player = board.getVirologusok().get(0);
     }
 
-    public void InvalidateBasicPanel(){
+    public void invalidateBasicPanel(){
         Materials mat = player.getInv().getMaterials();
         ArrayList<Equipment> eq = player.getInv().GetEquipments();
         ArrayList<Agent> agents = player.getInv().getAgents();
-        ArrayList<GCode> gcodes = player.getInv().GetGcodes();
-        Effects effects = player.GetEffects();
+        ArrayList<GCode> gcodes = player.getInv().getGcodes();
+        Effects effects = player.getEffects();
 
-        gameWindow.HideEveryComponentInOtherPanel(gameWindow.getBasicPanel());
+        gameWindow.hideEveryComponentInOtherPanel(gameWindow.getBasicPanel());
         view.reDrawBasicPanel(mat, eq, agents, gcodes, gameWindow.getBasicPanel(), effects);
     }
 
