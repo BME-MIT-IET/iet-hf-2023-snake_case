@@ -1,6 +1,6 @@
 package src;
 
-import Effects.BagEffect;
+import effects.BagEffect;
 
 import java.io.Serializable;
 

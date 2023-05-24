@@ -1,7 +1,6 @@
 package src;
 
 import java.io.Serializable;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Board implements Serializable {
@@ -15,8 +14,8 @@ public class Board implements Serializable {
     private static ArrayList<int[]> polyKoordok = new ArrayList<>();  //Ez szukseges a polygon kirajzolashoz -Dani
     
     /*Szamon tartja a jatekos hatralevo akcioit, ahol a jatekos a virologist0 (0 idx-u virologus)*/
-    private boolean VirAction = true;
-    private boolean VirMove = true;
+    private boolean virAction = true;
+    private boolean virMove = true;
 
     //Getterek
     public ArrayList<Virologist> getVirologusok(){
@@ -32,10 +31,10 @@ public class Board implements Serializable {
         return genetikaiKodok;
     }
     public boolean getAction() {
-    	return VirAction;
+    	return virAction;
     }
     public boolean getMove() {
-    	return VirMove;
+    	return virMove;
     }
     public ArrayList<int[]> getPolyKoordok(){   //Uj! -Dani
     	return polyKoordok;
@@ -45,20 +44,20 @@ public class Board implements Serializable {
     public void SetNULLVirologusok(){
         virologusok = new ArrayList<>();
     }
-    public void SetNULLMezok(){
+    public void setNULLMezok(){
         fields = new ArrayList<>();
     }
-    public void SetNULLFelszerelesek(){
+    public void setNULLFelszerelesek(){
         felszerelesek = new ArrayList<>();
     }
-    public void SetNULLGenetikaiKodok(){
+    public void setNULLGenetikaiKodok(){
         genetikaiKodok = new ArrayList<>();
     }
     public void setAction(boolean b) {
-    	VirAction = b;
+    	virAction = b;
     }
     public void setMove(boolean b) {
-    	VirMove = b;
+    	virMove = b;
     }
     public void setNULLPolyKoordok(){   //Uj! -Dani
     	polyKoordok = new ArrayList<>();
@@ -77,9 +76,5 @@ public class Board implements Serializable {
     }
 
     public Board(){
-    }
-
-    //A jatekter egy mezojet hozza letre.
-    public void FieldGen(){
     }
 }

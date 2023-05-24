@@ -1,6 +1,6 @@
 package src;
 
-import Effects.GloveEffect;
+import effects.GloveEffect;
 
 import java.io.Serializable;
 
@@ -13,7 +13,7 @@ public class Gloves extends Equipment implements Serializable {
         System.out.println("Gloves: I'm Created.");
     }
 
-    public boolean Decrease(){
+    public boolean decrease(){
         usesLeft--;
         if(usesLeft == 0){
             return false;

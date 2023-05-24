@@ -1,0 +1,9 @@
+create field
+create genetical code paralyze
+create laboratory paralyze 0 field0
+create virologist 5 5 0 laboratory1
+create virologist 5 5 0 field0
+collect virologist0
+craft virologist0 paralyze
+move virologist0 field0
+attack virologist0 virologist1 paralyze

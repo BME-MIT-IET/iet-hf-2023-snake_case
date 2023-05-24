@@ -16,7 +16,7 @@ public class Materials implements Serializable {
 
     /*Fuggvenyek*/
     /*Megvaltoztatja az amino erteket, az argumentumkent megadott szammal*/
-    public void ChangeAmino(int amount){
+    public void changeAmino(int amount){
         if(amount < 0){
             aminoacid = aminoacid + amount;
             return;
@@ -30,7 +30,7 @@ public class Materials implements Serializable {
     }
 
     /*Megvaltoztatja a nukleo erteket, az argumentumkent megadott szammal*/
-    public void ChangeNukleo(int amount){
+    public void changeNukleo(int amount){
         if(amount < 0){
             nukleotid = nukleotid + amount;
             return;
@@ -44,7 +44,7 @@ public class Materials implements Serializable {
     }
 
     /*Visszaadja az amino erteket*/
-    public int GetAmino(){
+    public int getAmino(){
         return aminoacid;
     }
 
@@ -54,11 +54,11 @@ public class Materials implements Serializable {
     }
 
     /*Visszaadja a "capacity" erteket*/
-    public int GetCapacity(){
+    public int getCapacity(){
         return capacity;
     }
 
-    public void SetCapacity(int value){capacity = value;}
+    public void setCapacity(int value){capacity = value;}
 
     @Override
     public String toString() {

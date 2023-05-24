@@ -1,0 +1,4 @@
+create field
+create field field0
+create virologist 5 5 0.5 field0
+move virologist0 field1

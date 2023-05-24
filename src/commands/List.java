@@ -20,7 +20,7 @@ public class List {
      * 			list shelter[szam] [virologists/neighbours/equipment]
      * 			list warehouse[szam] [virologists/neighbours/material]
      * 																		*/
-	public void List (String[] args, Board board) {
+	public void list(String[] args, Board board) {
 		if(args.length < 2) {
             System.out.println("Not enough parameters!");
             return;
@@ -67,7 +67,6 @@ public class List {
 	        			System.out.println(v1.getField().getClass().getSimpleName().toLowerCase() + i);
 	        		}
 	        	}
-	        	return;
 	        }
 	        /*Lekerdezi, hogy kik allnak a virologus mezojen*/
 	        else if(args[2].equals("virologists")) {
@@ -77,52 +76,44 @@ public class List {
 						System.out.println("virologist" + i);
 					}
 				}
-	        	return;
 	        }
 	        /*Lekerdezi, hogy milyen Genetikai Kodokat ismer a virologus*/
 	        else if(args[2].equals("gcodes")) {
 	        	System.out.println("Genetical Codes the virologist knows:");
-	        	for (int i = 0; i < v1.GetInventory().GetGcodes().size(); i++) {
-					System.out.println(v1.GetInventory().GetGcodes().get(i).getEffect());
+	        	for (int i = 0; i < v1.getInv().getGcodes().size(); i++) {
+					System.out.println(v1.getInv().getGcodes().get(i).getEffect());
 				}
-	        	return;
 	        }
 	        /*Lekerdezi milyen felszerelesei vannak a virologusnak*/
 	        else if(args[2].equals("equipment")) {
 	        	System.out.println("Equipment the virologist has:");
-	        	for (int i = 0; i < v1.GetInventory().GetEquipments().size(); i++) {
-					System.out.println(v1.GetInventory().GetEquipments().get(i).getName());
+	        	for (int i = 0; i < v1.getInv().GetEquipments().size(); i++) {
+					System.out.println(v1.getInv().GetEquipments().get(i).getName());
 				}
-	        	return;
 	        }
 	        /*Lekerdezi milyen agensei vannak a virologusnak*/
 	        /*FONTOS: ez meg csak az osztalyok nevevel foglalkozik, mert mast nem erek el, igy a parancs neve es az agens neve nem egyezik meg!!!!!
 	         * 			Ezt az egysegesiteskor at kell majd irni*/
 	        else if(args[2].equals("agents")) {
 	        	System.out.println("Agents the virologist has:");
-	        	for (int i = 0; i < v1.GetInventory().getAgents().size(); i++) {
-					System.out.println(v1.GetInventory().getAgents().get(i).getEffect().getClass().getSimpleName().toLowerCase()); //Emiatt nem jó, hogy nincsenek jó nevek. -Dani
+	        	for (int i = 0; i < v1.getInv().getAgents().size(); i++) {
+					System.out.println(v1.getInv().getAgents().get(i).getEffect().getClass().getSimpleName().toLowerCase()); //Emiatt nem jï¿½, hogy nincsenek jï¿½ nevek. -Dani
 				}
-	        	return;
 	        }
 	        /*Lekerdezi milyen effectek vann a virologuson
 	         * FONTOS: -||- */
 	        else if(args[2].equals("effects")) {
 	        	System.out.println("Effects affecting the virologist:");
-	        	for (int i = 0; i < v1.GetEffects().GetEffects().size(); i++) {    //GETEFFECTS.GETEFFECTS ?????
-					System.out.println(v1.GetEffects().GetEffects().get(i).getClass().getSimpleName().toLowerCase()); 
+	        	for (int i = 0; i < v1.getEffects().getEffects().size(); i++) {    //GETEFFECTS.GETEFFECTS ?????
+					System.out.println(v1.getEffects().getEffects().get(i).getClass().getSimpleName().toLowerCase());
 				}
-	        	return;
 	        }
 	        /*Lekerdezi, mennyi materialja van a virologusnak*/
 	        else if(args[2].equals("materials")) {
 	        	System.out.println("Materials the virologist has:");
-	        	System.out.println("Aminoacid: " + v1.GetInventory().getMaterials().GetAmino() + "\nNukleotid: " + v1.GetInventory().getMaterials().getNukleo());
-	        	return;
+	        	System.out.println("Aminoacid: " + v1.getInv().getMaterials().getAmino() + "\nNukleotid: " + v1.getInv().getMaterials().getNukleo());
 	        }
-  
 		}
-		
 		/*Genetikai kodok arat adja vissza*/
 		else if(args[1].contains("cost") && args[1].length() < 5) {
 			for (int i = 0; i < board.getGenetikaiKodok().size(); i++) {
@@ -133,7 +124,6 @@ public class List {
 				}
 			}
 			System.out.println("I can't find that Genetical Code.");
-			return;
 		}
 		
 		/*Mindegyik field kiirasa*/
@@ -144,7 +134,6 @@ public class List {
 				for (int i = 0; i < board.getMezok().size();i++) {
 					System.out.println(board.getMezok().get(i).getClass().getSimpleName().toLowerCase() + i);
 				}
-				return;
 			}
 		}
 		/*Egyes fieldek tulajdonsagainak kiirasa*/
@@ -183,7 +172,6 @@ public class List {
 						System.out.println("virologist" + i);
 					}
 				}
-				return;
 			}
 			/*Kiirja a megadott mezo szomszedait*/
 			else if (args[2].equals("neighbours")) {
@@ -196,30 +184,21 @@ public class List {
 						}
 					}
 				}
-				return;
 			}
 			/*Labor eseten kiirja a laborban talalhato genetikai kodot*/
 			else if (args[1].contains("laboratory") && args[2].equals("gcode")) {
 				System.out.println("The Laboratory's Genetical Code is: " + ((Laboratory)board.getMezok().get(fieldID)).getGCode().getEffect());
-				return;
 			}
 			else if(args[1].contains("shelter") && args[2].equals("equipment")) {
 				System.out.println("The Shelter's Equipment is: " + ((Shelter)board.getMezok().get(fieldID)).getEquipment().getName());
-				return;
 			}
 			else if(args[1].contains("warehouse") && args[2].equals("material")) {
 				System.out.println("The Warehouse currently stores: " + ((Warehouse)board.getMezok().get(fieldID)).getAmount() 
 						+ ( ((Warehouse)board.getMezok().get(fieldID)).getType() == 'a' ? " Aminoacid":" Nukleotid" ) );
-				return;
 			}
 		}
 		else {
 			System.out.println("Unknown list command!");
 		}
-		
-
-
-
-		
 	}
 }

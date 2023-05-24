@@ -4,12 +4,11 @@ import src.Board;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Start {
 
-    public void Start(String[]args, Board b) throws FileNotFoundException {
+    public void start(String[] args, Board b) throws FileNotFoundException {
         File file = new File("map1.txt");
         Scanner sc = new Scanner(file);
         String[] commands;
@@ -18,7 +17,7 @@ public class Start {
             commands = s.split(" ");
             if (commands[0].equals("create")) {
                 Create createLoad = new Create();
-                createLoad.Create(commands, b);
+                createLoad.create(commands, b);
             }
         }
         sc.close();

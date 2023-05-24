@@ -8,7 +8,7 @@ public class Collect {
     /*Virologus felvehet felszereleseket
      * @param args = A felhasznalotol kapott input
      * Syntax: collect [kivel]*/
-    public void Collect(String[] args, Board board){
+    public void collect(String[] args, Board board){
         if(args.length < 2){
             System.out.println("There are not enough arguments!");
             return;
@@ -42,17 +42,7 @@ public class Collect {
         	return;
         }
         
-        
-        
-        
         Virologist v1 = board.getVirologusok().get(virologusID);
-        /*Felvetel shelterbol*/
-        ///Ezt a reszt nem ertettem, mivel args[2] nem is letezhet itt, igy inkabb csak kivettem az if-bol, itt hagyom ha valamit szandekoznatok vele megiscsak -Dani
-        /*
-	        if(args[2].equals("shelter") || args[2].equals("warehouse") || args[2].equals("laboratory")){
-	            v1.getField().Collect(v1);
-	        }
-	    */
-        v1.Collect();
+        v1.collect();
     }
 }

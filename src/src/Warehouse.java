@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class Warehouse extends Field implements Update, Serializable {
     //Az anyag ujratermelesenek az ideje.
-    private int cooldown;
+    private final int cooldown;
 
     //Az anyag tipusa, lehet nukleotid vagy aminosav.
-    private char type;
+    private final char type;
 
     //Tarolja, hogy mennyi anyag van a raktarban
     private int amount;
 
     /*Mennyi anyag van a raktarban maximum*/
-    private int capacity;
+    private final int capacity;
 
     /*Ujratoltesig meg hatra van ennyi*/
     private int timeUntilRefill;
@@ -28,9 +28,10 @@ public class Warehouse extends Field implements Update, Serializable {
     }
 
     //A virologus ennek segitsegevel gyujtheti ossze a mezon levo anyagokat.
-    public void Collect(Virologist v){
+    @Override
+    public void collect(Virologist v){
         if(amount != 0) {
-        	v.GetInventory().ChangeMaterial(type, amount);
+        	v.getInv().changeMaterial(type, amount);
         	
         	if(type == 'a')
                 System.out.println("The virologist took " + amount + " amino acid.");
@@ -56,7 +57,7 @@ public class Warehouse extends Field implements Update, Serializable {
     }
 
     //Ennek a fuggvenynek a hatasara tolti ujra az anyagkeszletet
-    public void Update(){
+    public void update(){
         timeUntilRefill--;
         if(timeUntilRefill == 0){
             amount = capacity;
