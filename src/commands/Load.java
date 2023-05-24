@@ -11,10 +11,10 @@ public class Load {
         String nev = "Tests/" + n + ".txt";
 
         //Board resetelese
-        b.SetNULLFelszerelesek();
+        b.setNULLFelszerelesek();
         b.SetNULLVirologusok();
-        b.SetNULLMezok();
-        b.SetNULLGenetikaiKodok();
+        b.setNULLMezok();
+        b.setNULLGenetikaiKodok();
         boolean action = b.getAction();
         boolean move = b.getMove();
         if(!action){

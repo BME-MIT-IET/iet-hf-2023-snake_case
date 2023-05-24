@@ -1,0 +1,27 @@
+The field has been created, you can use it later with the reference: field0
+Field: Added a neighbour.
+The field has been created, you can use it later with the reference: field1
+CapeEffect: I'm Created
+Cape: I'm Created.
+The cape has been created you can use it later with the reference: cape0
+CapeEffect: I'm Created
+Cape: I'm Created.
+The cape has been created you can use it later with the reference: cape1
+The genetical code has been created, you can use it later with the reference: paralyze
+The virologist has been created, you can later use it with the reference: virologist0
+The virologist has been created, you can later use it with the reference: virologist1
+Inventory: I have added the equipment
+CapeEffect: My Effect is activated
+The effect has been added.
+Virologist1 has equipped the following item: cape0
+Inventory: I have added the equipment
+CapeEffect: My Effect is activated
+The effect has been added.
+Virologist0 has equipped the following item: cape1
+The effect has been added.
+virologist1 has been affected by paralyze
+Virologist: I have called the 'Move' function.
+Field: The player has been removed from the field.
+Field: The player has been accepted to the field.
+Virologist: The player moved to another field.
+Virologist0: I already have this equipment, so I can't steal it.

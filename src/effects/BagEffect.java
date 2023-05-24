@@ -9,16 +9,16 @@ public class BagEffect extends Effect implements Serializable {
     public BagEffect() {
         duration = 0;
         timeLeft = 0;
-        effect = "BagEffect";
+        myEffect = "BagEffect";
         System.out.println("BagEffect: I'm Created");
     }
 
-    public void Effect(Virologist v) {
+    public void effect(Virologist v) {
         /*BagEffect-et majd itt valositsuk meg, ahogyan akarjuk, nekem csak a lete kellett a teszteleshez.*/
-        v.getInv().getMaterials().SetCapacity(8);
+        v.getInv().getMaterials().setCapacity(8);
         System.out.println("BagEffect: My Effect is activated");
     }
-    public void RemoveEffect(Virologist v){
-        v.getInv().getMaterials().SetCapacity(5);
+    public void removeEffect(Virologist v){
+        v.getInv().getMaterials().setCapacity(5);
     }
 }

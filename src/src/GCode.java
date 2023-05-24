@@ -4,9 +4,9 @@ import java.io.Serializable;
 
 public class GCode implements Serializable {
     /*Valtozok*/
-    private int amino;
-    private int nukleo;
-    private String effect;
+    private final int amino;
+    private final int nukleo;
+    private final String effect;
 
     public GCode(int amino, int nukelo, String effect){
         this.amino = amino;

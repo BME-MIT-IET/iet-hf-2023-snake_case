@@ -43,6 +43,6 @@ public class Collect {
         }
         
         Virologist v1 = board.getVirologusok().get(virologusID);
-        v1.Collect();
+        v1.collect();
     }
 }

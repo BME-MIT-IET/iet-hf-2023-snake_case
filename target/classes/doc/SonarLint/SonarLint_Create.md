@@ -11,4 +11,3 @@ Itt is megtaláltam a szokásos problémát, miszerint olyan változókat amiket
 Ezt a hibát ugyan úgy a Create fájlban találtam: Ez pedig az, hogy üres listák helyett null objektumokat adnak vissza a függvények, hogy egy üres listát adnának, ami plussz komplexitást ad a kódnak.
 
 Így se jártam sikerrel...
-

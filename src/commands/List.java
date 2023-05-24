@@ -80,15 +80,15 @@ public class List {
 	        /*Lekerdezi, hogy milyen Genetikai Kodokat ismer a virologus*/
 	        else if(args[2].equals("gcodes")) {
 	        	System.out.println("Genetical Codes the virologist knows:");
-	        	for (int i = 0; i < v1.GetInventory().GetGcodes().size(); i++) {
-					System.out.println(v1.GetInventory().GetGcodes().get(i).getEffect());
+	        	for (int i = 0; i < v1.getInv().getGcodes().size(); i++) {
+					System.out.println(v1.getInv().getGcodes().get(i).getEffect());
 				}
 	        }
 	        /*Lekerdezi milyen felszerelesei vannak a virologusnak*/
 	        else if(args[2].equals("equipment")) {
 	        	System.out.println("Equipment the virologist has:");
-	        	for (int i = 0; i < v1.GetInventory().GetEquipments().size(); i++) {
-					System.out.println(v1.GetInventory().GetEquipments().get(i).getName());
+	        	for (int i = 0; i < v1.getInv().GetEquipments().size(); i++) {
+					System.out.println(v1.getInv().GetEquipments().get(i).getName());
 				}
 	        }
 	        /*Lekerdezi milyen agensei vannak a virologusnak*/
@@ -96,22 +96,22 @@ public class List {
 	         * 			Ezt az egysegesiteskor at kell majd irni*/
 	        else if(args[2].equals("agents")) {
 	        	System.out.println("Agents the virologist has:");
-	        	for (int i = 0; i < v1.GetInventory().getAgents().size(); i++) {
-					System.out.println(v1.GetInventory().getAgents().get(i).getEffect().getClass().getSimpleName().toLowerCase()); //Emiatt nem j�, hogy nincsenek j� nevek. -Dani
+	        	for (int i = 0; i < v1.getInv().getAgents().size(); i++) {
+					System.out.println(v1.getInv().getAgents().get(i).getEffect().getClass().getSimpleName().toLowerCase()); //Emiatt nem j�, hogy nincsenek j� nevek. -Dani
 				}
 	        }
 	        /*Lekerdezi milyen effectek vann a virologuson
 	         * FONTOS: -||- */
 	        else if(args[2].equals("effects")) {
 	        	System.out.println("Effects affecting the virologist:");
-	        	for (int i = 0; i < v1.GetEffects().GetEffects().size(); i++) {    //GETEFFECTS.GETEFFECTS ?????
-					System.out.println(v1.GetEffects().GetEffects().get(i).getClass().getSimpleName().toLowerCase()); 
+	        	for (int i = 0; i < v1.getEffects().getEffects().size(); i++) {    //GETEFFECTS.GETEFFECTS ?????
+					System.out.println(v1.getEffects().getEffects().get(i).getClass().getSimpleName().toLowerCase());
 				}
 	        }
 	        /*Lekerdezi, mennyi materialja van a virologusnak*/
 	        else if(args[2].equals("materials")) {
 	        	System.out.println("Materials the virologist has:");
-	        	System.out.println("Aminoacid: " + v1.GetInventory().getMaterials().GetAmino() + "\nNukleotid: " + v1.GetInventory().getMaterials().getNukleo());
+	        	System.out.println("Aminoacid: " + v1.getInv().getMaterials().getAmino() + "\nNukleotid: " + v1.getInv().getMaterials().getNukleo());
 	        }
 		}
 		/*Genetikai kodok arat adja vissza*/

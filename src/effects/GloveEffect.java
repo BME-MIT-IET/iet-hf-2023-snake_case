@@ -9,16 +9,16 @@ public class GloveEffect extends Effect implements Serializable {
     public GloveEffect() {
         duration = 0;
         timeLeft = 0;
-        effect = "GloveEffect";
+        myEffect = "GloveEffect";
         System.out.println("GloveEffect: I'm Created");
     }
 
 
-    public void Effect(Virologist v) {
+    public void effect(Virologist v) {
         /*CapeEffect-et majd itt valositsuk meg, ahogyan akarjuk, nekem csak a lete kellett a teszteleshez.*/
         System.out.println("GloveEffect: My Effect is activated");
     }
-    public void RemoveEffect(Virologist v){
+    public void removeEffect(Virologist v){
 
     }
 }

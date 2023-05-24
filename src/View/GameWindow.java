@@ -1,6 +1,6 @@
 package View;
 
-import ActionListeners.*;
+import actionListeners.*;
 import commands.EndTurn;
 import commands.Start;
 import src.*;
@@ -97,7 +97,7 @@ public class GameWindow extends JFrame {
 
             otherPanel.setLayout(new FlowLayout());
 
-            ArrayList<GCode> geneticalCodes = board.getVirologusok().get(0).GetInventory().GetGcodes();
+            ArrayList<GCode> geneticalCodes = board.getVirologusok().get(0).getInv().getGcodes();
 
             if (geneticalCodes.size() == 0) {
                 gcodes.setText("You don't know any genetical codes yet.");
@@ -148,7 +148,7 @@ public class GameWindow extends JFrame {
             JButton gloves = new JButton("Gloves");
             otherPanel.setLayout(new FlowLayout());
 
-            ArrayList<Equipment> items = board.getVirologusok().get(0).GetInventory().GetEquipments();
+            ArrayList<Equipment> items = board.getVirologusok().get(0).getInv().GetEquipments();
 
             for (int i = 0; i < items.size(); i++) {
                 if (items.get(i).getName().equals("cape")) {
@@ -209,7 +209,7 @@ public class GameWindow extends JFrame {
         String[] args;
         String bemenet = "endturn";
         args = bemenet.split(" ");
-        if(board.getVirologusok().get(0).getEffects().SearchForEffect("bearvirus")){
+        if(board.getVirologusok().get(0).getEffects().searchForEffect("bearvirus")){
             HideEveryComponentInOtherPanel(otherPanel);
             JLabel bearLabel = new JLabel("You have been infected with the bearvirus, the game is over for you.");
             otherPanel.add(bearLabel);
@@ -217,7 +217,7 @@ public class GameWindow extends JFrame {
         }
         for(int i = 0; i < board.getVirologusok().size(); i++){
             Virologist vir = board.getVirologusok().get(i);
-            if(!vir.GetEffects().SearchForEffect("bearvirus") && vir.GetInventory().GetGcodes().size() == 4){
+            if(!vir.getEffects().searchForEffect("bearvirus") && vir.getInv().getGcodes().size() == 4){
                 DisableAll();
                 if(i == 0){
                     gcodes.setText("The player has earned an EPIC Victory Royale!");

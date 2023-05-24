@@ -35,19 +35,19 @@ public class Main {
         String s[];
 
         /*Parancsok hozzaddasa a hashmaphez*/
-        commands.put("create", Main::Create);
-        commands.put("attack", Main::Attack);
-        commands.put("collect", Main::Collect);
-        commands.put("move", Main::Move);
-        commands.put("craft", Main::Craft);
-        commands.put("drop", Main::Drop);
-        commands.put("steal", Main::Steal);
-        commands.put("list", Main::List);
-        commands.put("applyeffect", Main::ApplyEffect);
-        commands.put("equip", Main::Equip);
-        commands.put("load", Main::Load);
-        commands.put("endturn", Main::EndTurn);
-        commands.put("start", Main::Start);
+        commands.put("create", Main::create);
+        commands.put("attack", Main::attack);
+        commands.put("collect", Main::collect);
+        commands.put("move", Main::move);
+        commands.put("craft", Main::craft);
+        commands.put("drop", Main::drop);
+        commands.put("steal", Main::steal);
+        commands.put("list", Main::list);
+        commands.put("applyeffect", Main::applyEffect);
+        commands.put("equip", Main::equip);
+        commands.put("load", Main::load);
+        commands.put("endturn", Main::endTurn);
+        commands.put("start", Main::start);
 
         //VISUAL START
         menu = new Menu();
@@ -70,48 +70,48 @@ public class Main {
         }
     }
 
-    public static void Create(String[] args){
+    public static void create(String[] args){
         crea.create(args, board);
     }
 
-    public static void Move(String[] args){
+    public static void move(String[] args){
         move.move(args, board);
     }
 
-    public static void Collect(String[] args){
+    public static void collect(String[] args){
         collect.collect(args, board);
     }
 
-    public static void Steal(String[] args) { steal.steal(args, board); }
+    public static void steal(String[] args) { steal.steal(args, board); }
     
-    public static void Craft(String[] args) {
+    public static void craft(String[] args) {
     	craft.craft(args, board);
     }
 
     /*Syntax: attack 'who is attacking' 'who do you want to attack' 'with what' */
-    public static void Attack(String[] args){
+    public static void attack(String[] args){
         attack.attack(args, board);
     }
 
-    public static void Drop(String[] args){
+    public static void drop(String[] args){
         drop.drop(args, board);
     }
 
-    public static void List(String[] args){
+    public static void list(String[] args){
     	list.list(args, board);
     }
     
-    public static void EndTurn(String[] args){
+    public static void endTurn(String[] args){
     	endturn.endTurn(args, board);
     }
 
-    public static void ApplyEffect(String[] args){applyeffect.applyEffect(args, board);}
+    public static void applyEffect(String[] args){applyeffect.applyEffect(args, board);}
 
-    public static void Equip(String[] args){equip.equip(args, board);}
+    public static void equip(String[] args){equip.equip(args, board);}
 
-    public static void Load(String[] args) throws FileNotFoundException {load.load(args, board);}
+    public static void load(String[] args) throws FileNotFoundException {load.load(args, board);}
 
-    public static void Start(String[] args) throws FileNotFoundException {start.start(args, board);}
+    public static void start(String[] args) throws FileNotFoundException {start.start(args, board);}
 
 }
 

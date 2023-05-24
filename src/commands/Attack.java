@@ -39,10 +39,10 @@ public class Attack {
         }
 
         if(args[3].equals("axe")){
-            attacker.UseAxe(attacked);
+            attacker.useAxe(attacked);
         }
         else {
-            attacker.Attack(attacker, attacked, args[3]);
+            attacker.attack(attacker, attacked, args[3]);
         }
     }
 }

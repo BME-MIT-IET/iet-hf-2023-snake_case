@@ -42,10 +42,10 @@ public class Steal {
         }
 
         if(args[3].equals("material")){
-            stealer.StealMat(victim);
+            stealer.stealMaterial(victim);
         }
         else{
-            stealer.StealEq(victim, args[3]);
+            stealer.stealEq(victim, args[3]);
         }
     }
 }

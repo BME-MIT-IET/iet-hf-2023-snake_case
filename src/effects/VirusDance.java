@@ -10,23 +10,23 @@ public class VirusDance extends Effect implements Serializable {
 
     public VirusDance(){
         duration = 3;
-        effect = "virusdance";
+        myEffect = "virusdance";
         timeLeft = duration;
     }
 
     @Override
-    public void Effect(Virologist v){
+    public void effect(Virologist v){
         Random rand  = new Random();
         /*Merre mozog*/
         int randommove = rand.nextInt(v.getField().getNeighbours().size());
         /*Elmozdul a random szomszedos mezore*/
-        v.Move(v.getField().getNeighbours().get(randommove));
+        v.move(v.getField().getNeighbours().get(randommove));
         /*Ujra*/
         randommove = rand.nextInt(v.getField().getNeighbours().size());
         /*Elmozdul a random szomszedos mezore*/
-        v.Move(v.getField().getNeighbours().get(randommove));
+        v.move(v.getField().getNeighbours().get(randommove));
     }
-    public void RemoveEffect(Virologist v){
+    public void removeEffect(Virologist v){
 
     }
 }

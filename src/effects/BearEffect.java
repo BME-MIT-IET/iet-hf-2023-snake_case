@@ -7,32 +7,32 @@ import java.util.Random;
 
 public class BearEffect extends Effect implements Serializable {
     public BearEffect(){
-        effect = "bearvirus";
+        myEffect = "bearvirus";
         duration = 0;
         timeLeft = 0;
     }
 
     @Override
-    public void Effect(Virologist v) {
+    public void effect(Virologist v) {
         Random rand  = new Random();
         /*Merre mozog a medve, először mindig lép*/
         int randommove = rand.nextInt(v.getField().getNeighbours().size());
         /*Elmozdul a random szomszedos mezore*/
-        v.Move(v.getField().getNeighbours().get(randommove));
+        v.move(v.getField().getNeighbours().get(randommove));
 
 
         /*Ha vannak azon a mezon akkor megtamad mindenkit ott*/
         if(v.getField().getVirologists().size() > 1){
             for(int i = 0; i < v.getField().getVirologists().size(); i++){
                 /*Akin nincs beareffect azt megtamadja egy bearvirus-al*/
-                if(!v.getField().getVirologists().get(i).GetEffects().SearchForEffect("bearvirus")){
+                if(!v.getField().getVirologists().get(i).getEffects().searchForEffect("bearvirus")){
                     /*Ezzel fog támadni, ingyen craftolja, mert végtelen van neki*/
-                    for(int e = 0; e < v.GetInventory().GetGcodes().size(); e++){
-                        if(v.GetInventory().GetGcodes().get(i).getEffect().equals("bearvirus")){
-                            v.Craft(v.GetInventory().GetGcodes().get(i));
+                    for(int e = 0; e < v.getInv().getGcodes().size(); e++){
+                        if(v.getInv().getGcodes().get(i).getEffect().equals("bearvirus")){
+                            v.craft(v.getInv().getGcodes().get(i));
                         }
                     }
-                    v.Attack(v, v.getField().getVirologists().get(i), "bearvirus");
+                    v.attack(v, v.getField().getVirologists().get(i), "bearvirus");
                 }
             }
         }
@@ -42,13 +42,13 @@ public class BearEffect extends Effect implements Serializable {
             /*Elmozdul a random szomszedos mezore*/
 
             if(v.getField().getClass().getSimpleName().equals("Warehouse")){
-                    v.Collect();
+                    v.collect();
                     System.out.println("I have destroyed the materials in the warehouse!");}
-            else{v.Move(v.getField().getNeighbours().get(randommove));}
+            else{v.move(v.getField().getNeighbours().get(randommove));}
 
         }
 
     }
 
-    public void RemoveEffect(Virologist v){}
+    public void removeEffect(Virologist v){}
 }

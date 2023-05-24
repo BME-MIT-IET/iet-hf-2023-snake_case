@@ -4,22 +4,23 @@ import java.io.Serializable;
 
 public class Shelter extends Field implements Serializable {
     //A mezon megtalalhato felszereles.
-    private Equipment equipment;
-    private int Counter;
+    private final Equipment equipment;
+    private int counter;
 
     public Shelter(Equipment equipment){
         this.equipment = equipment;
         this.equipment.setHovaTartozas(this);
-        Counter = 3;
+        counter = 3;
         System.out.println("Shelter has been created.");
     }
 
     //Az ovohelyen talalhato vedofelszereles felvetelet valositja meg.
-    public void Collect(Virologist v){
+    @Override
+    public void collect(Virologist v){
     	System.out.println("The virologist tries to take the Equipment");
-        if(Counter > 0){
-            v.Equip(equipment);
-            Counter--;
+        if(counter > 0){
+            v.equip(equipment);
+            counter--;
         }
         else{
             System.out.println("This shelter is empty");
@@ -30,7 +31,7 @@ public class Shelter extends Field implements Serializable {
     	return equipment;
     }
 
-    public void IncreaeCounter(){
-        Counter++;
+    public void increaseCounter(){
+        counter++;
     }
 }

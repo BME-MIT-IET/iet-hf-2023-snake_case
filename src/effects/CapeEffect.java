@@ -12,17 +12,17 @@ public class CapeEffect extends Effect implements Serializable {
 		duration = 0;
 		timeLeft = 0;
 		dodgeChance = dc;
-		effect = "CapeEffect";
+		myEffect = "CapeEffect";
 		System.out.println("CapeEffect: I'm Created");
 	}
 	
-	public void Effect(Virologist v) {
+	public void effect(Virologist v) {
 		/*CapeEffect-et majd itt valositsuk meg, ahogyan akarjuk, nekem csak a lete kellett a teszteleshez.*/
 		System.out.println("CapeEffect: My Effect is activated");
-		v.SetDodgeChance(dodgeChance);
+		v.setDodgeChance(dodgeChance);
 	}
-	public void RemoveEffect(Virologist v){
-		v.SetDodgeChance(v.getOriginalDodgeChance());
+	public void removeEffect(Virologist v){
+		v.setDodgeChance(v.getOriginalDodgeChance());
 		System.out.println("CapeEffect: My Effect is removed");
 	}
 

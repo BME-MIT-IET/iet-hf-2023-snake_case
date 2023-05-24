@@ -10,16 +10,16 @@ public class ForgetEffect extends Effect implements Serializable {
     public ForgetEffect() {
         duration = 1;
         timeLeft = duration;
-        effect = "forgetvirus";
+        myEffect = "forgetvirus";
         System.out.println("ForgetEffect: I'm Created");
     }
 
-    public void Effect(Virologist v) {
-        v.getInv().GetGcodes().clear();
+    public void effect(Virologist v) {
+        v.getInv().getGcodes().clear();
         System.out.println("ForgetEffect: My Effect is activated");
     }
 
-    public void RemoveEffect(Virologist v){
+    public void removeEffect(Virologist v){
 
     }
 

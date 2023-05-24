@@ -6,8 +6,8 @@ import java.io.Serializable;
 
 public class Laboratory extends Field implements Serializable {
     //ez a genetikai kod talalhato a mezon.
-    private GCode gcode;
-    private double bearChance;
+    private final GCode gcode;
+    private final double bearChance;
 
     public Laboratory(GCode gc, double bearChance){
         gcode = gc;
@@ -16,20 +16,21 @@ public class Laboratory extends Field implements Serializable {
     }
 
     //A virologus felveszi a laborban talalhato genetikai kodot.
-    public void Collect(Virologist v){
+    @Override
+    public void collect(Virologist v){
     	System.out.println("The virologist tries to learn the GCode");
-    	v.LearnGCode(gcode);
+    	v.learnGCode(gcode);
         /*Ha nincs köpenye*/
-        if(!v.getEffects().SearchForEffect("CapeEffect")){
+        if(!v.getEffects().searchForEffect("CapeEffect")){
             /*Ha nem sikerül kikerülnie*/
             if(Math.random() < bearChance){
                 /*Megkapja a medveeffectet*/
-                v.getEffects().ApplyEffect(v, new BearEffect());
+                v.getEffects().applyEffect(v, new BearEffect());
                 /*Elvesszuk tole az osszes agenset, hogy legyen hely a bearvirus agenseknek*/
-                for(int i = 0; i < v.GetInventory().getAgents().size(); i++){
-                    v.GetInventory().RemoveAgent(v.GetInventory().getAgents().get(i));
+                for(int i = 0; i < v.getInv().getAgents().size(); i++){
+                    v.getInv().removeAgent(v.getInv().getAgents().get(i));
                 }
-                v.LearnGCode(new GCode(0,0,"bearvirus"));
+                v.learnGCode(new GCode(0,0,"bearvirus"));
             }
         }
     }

@@ -2,8 +2,6 @@ package View;
 
 import src.*;
 
-import javax.swing.*;
-import java.awt.*;
 import java.util.ArrayList;
 
 public class Control {
@@ -25,8 +23,8 @@ public class Control {
         Materials mat = player.getInv().getMaterials();
         ArrayList<Equipment> eq = player.getInv().GetEquipments();
         ArrayList<Agent> agents = player.getInv().getAgents();
-        ArrayList<GCode> gcodes = player.getInv().GetGcodes();
-        Effects effects = player.GetEffects();
+        ArrayList<GCode> gcodes = player.getInv().getGcodes();
+        Effects effects = player.getEffects();
 
         gameWindow.HideEveryComponentInOtherPanel(gameWindow.getBasicPanel());
         view.reDrawBasicPanel(mat, eq, agents, gcodes, gameWindow.getBasicPanel(), effects);

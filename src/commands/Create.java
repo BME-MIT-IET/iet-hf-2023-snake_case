@@ -186,7 +186,7 @@ public class Create {
         }
         for(int i = 0; i < melyik.length; i++){
             if(melyik[i] != -1){
-                f1.AddNeighbour(board.getMezok().get(melyik[i]));
+                f1.addNeighbour(board.getMezok().get(melyik[i]));
             }
         }
         return f1;

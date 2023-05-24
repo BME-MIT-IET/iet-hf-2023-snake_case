@@ -9,11 +9,11 @@ public class Paralyzed extends Effect implements Serializable {
 
     public Paralyzed(){
         duration = 3;
-        effect = "paralyze";
+        myEffect = "paralyze";
         timeLeft = duration;
     }
 
     @Override
-    public void Effect(Virologist v){}
-    public void RemoveEffect(Virologist v){}
+    public void effect(Virologist v){}
+    public void removeEffect(Virologist v){}
 }

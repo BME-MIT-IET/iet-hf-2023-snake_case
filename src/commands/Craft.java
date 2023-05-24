@@ -53,7 +53,7 @@ public class Craft {
         	/*Vegigmegy az osszes letrehozott GCode-on, es ha megtalalja azt a nevut, ami az inputon van, akkor lefuttatja a craft metodust*/
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
         		if(board.getGenetikaiKodok().get(i).getEffect().equals("paralyze")) {
-        			v1.Craft(board.getGenetikaiKodok().get(i));
+        			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}
@@ -61,7 +61,7 @@ public class Craft {
         else if(args[2].equals("virusdance")) {
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
         		if(board.getGenetikaiKodok().get(i).getEffect().equals("virusdance")) {
-        			v1.Craft(board.getGenetikaiKodok().get(i));
+        			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}
@@ -69,7 +69,7 @@ public class Craft {
         else if(args[2].equals("protectvirus")) {
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
         		if(board.getGenetikaiKodok().get(i).getEffect().equals("protectvirus")) {
-        			v1.Craft(board.getGenetikaiKodok().get(i));
+        			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}
@@ -77,7 +77,7 @@ public class Craft {
         else if(args[2].equals("forgetvirus")) {
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
         		if(board.getGenetikaiKodok().get(i).getEffect().equals("forgetvirus")) {
-        			v1.Craft(board.getGenetikaiKodok().get(i));
+        			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}

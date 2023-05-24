@@ -7,17 +7,17 @@ import java.io.Serializable;
 
 public class ProtectEffect extends Effect implements Serializable {
     public ProtectEffect(){
-        effect = "protectvirus";
+        myEffect = "protectvirus";
         duration = 5;
         timeLeft = duration;
     }
 
     @Override
-    public void Effect(Virologist v) {
-        v.SetDodgeChance(1);
+    public void effect(Virologist v) {
+        v.setDodgeChance(1);
     }
 
-    public void RemoveEffect(Virologist v){
-        v.SetDodgeChance(v.getOriginalDodgeChance());
+    public void removeEffect(Virologist v){
+        v.setDodgeChance(v.getOriginalDodgeChance());
     }
 }

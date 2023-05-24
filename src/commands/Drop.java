@@ -34,6 +34,6 @@ public class Drop {
         }
 
         Virologist virologist = board.getVirologusok().get(virologusID);
-        virologist.Drop(args[2]);
+        virologist.drop(args[2]);
     }
 }

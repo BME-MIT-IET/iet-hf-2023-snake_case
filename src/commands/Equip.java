@@ -33,7 +33,7 @@ public class Equip {
         }
         else{
             /*ha nincs valakinel mar akkor felveszi*/
-            board.getVirologusok().get(Integer.parseInt(vID)).Equip(board.getFelszerelesek().get(Integer.parseInt(eqID)));
+            board.getVirologusok().get(Integer.parseInt(vID)).equip(board.getFelszerelesek().get(Integer.parseInt(eqID)));
             System.out.println("Virologist" + vID +  " has equipped the following item: "
                     + board.getFelszerelesek().get(Integer.parseInt(eqID)).getName() + eqID);
         }

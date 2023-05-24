@@ -55,7 +55,7 @@ public class Move {
             int hva = Integer.parseInt(szam2);
             /*Megnezi, hogy ahova lepni szeretnenk, az szomszedja-e a jelenlegi mezonek*/
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }
@@ -67,7 +67,7 @@ public class Move {
             }
             int hva = Integer.parseInt(szam2);
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }
@@ -79,7 +79,7 @@ public class Move {
             }
             int hva = Integer.parseInt(szam2);
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }
@@ -91,7 +91,7 @@ public class Move {
             }
             int hva = Integer.parseInt(szam2);
             if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).Move(con.getMezok().get(hva));
+                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
                 return;
             }
         }

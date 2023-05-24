@@ -5,14 +5,14 @@ import java.io.Serializable;
 public abstract class Effect implements Serializable {
     /*Valtozok*/
     protected int duration;
-    protected String effect;
+    protected String myEffect;
     protected int timeLeft;
 
     /*Fuggvenyek*/
-    public abstract void Effect(Virologist v);
-    public abstract void RemoveEffect(Virologist v);
+    public abstract void effect(Virologist v);
+    public abstract void removeEffect(Virologist v);
 
-    public String getEffect(){return effect;}
+    public String getMyEffect(){return myEffect;}
     public int getTimeLeft(){return timeLeft;}
     public void decrementTimeLeft(){timeLeft--;}
 }
