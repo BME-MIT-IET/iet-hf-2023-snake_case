@@ -180,7 +180,7 @@ public class MapGraphics extends JPanel {
                 String[] args;
                 String bemenet = "move virologist0 field" + i;
                 args = bemenet.split(" ");
-                move.Move(args, board);
+                move.move(args, board);
                 return true;
             }
         }

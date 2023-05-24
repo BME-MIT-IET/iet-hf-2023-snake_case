@@ -1,9 +1,7 @@
 package ActionListeners;
 
 import View.Control;
-import commands.Attack;
 import commands.Steal;
-import commands.Drop;
 import src.Board;
 import src.Virologist;
 
@@ -160,7 +158,7 @@ public class OtherStealActionListener implements ActionListener {
                 String[] args;
                 String bemenet = "steal virologist0 virologist" + targetID + " " + item;
                 args = bemenet.split(" ");
-                stl.Steal(args, board);
+                stl.steal(args, board);
 
             }
         }

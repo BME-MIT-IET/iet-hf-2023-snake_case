@@ -3,12 +3,10 @@ package ActionListeners;
 import View.Control;
 import commands.Collect;
 import src.Board;
-import src.Field;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.PrintStream;
 
 public class OtherCollectActionListener implements ActionListener {
     private JPanel panel;
@@ -29,7 +27,7 @@ public class OtherCollectActionListener implements ActionListener {
         label.setVisible(true);
         Collect collect = new Collect();
         String[] args = {"collect", "virologist0"};
-        collect.Collect(args, board);
+        collect.collect(args, board);
         control.InvalidateBasicPanel();
     }
 }

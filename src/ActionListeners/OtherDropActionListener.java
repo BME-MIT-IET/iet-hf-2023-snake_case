@@ -1,9 +1,7 @@
 package ActionListeners;
 
 import View.Control;
-import commands.Craft;
 import commands.Drop;
-import commands.Equip;
 import src.Board;
 import src.Equipment;
 
@@ -48,7 +46,7 @@ public class OtherDropActionListener implements ActionListener {
             System.out.println("I can't find that equipment!");
             return;
         }
-        dob.Drop(args, board);
+        dob.drop(args, board);
         gomb.setVisible(false);
         control.InvalidateBasicPanel();
     }

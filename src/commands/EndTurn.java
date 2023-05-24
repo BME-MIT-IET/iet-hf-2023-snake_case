@@ -10,7 +10,7 @@ public class EndTurn {
 	/*Jatekos koret lezarja
      * @param args = A felhasznalotol kapott input
      * Syntax: endturn <testing>*/
-    public void EndTurn(String[] args, Board board){
+    public void endTurn(String[] args, Board board){
         if(args.length > 2){
             System.out.println("Too many arguments!");
             return;

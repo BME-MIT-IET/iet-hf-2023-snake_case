@@ -8,7 +8,7 @@ public class Craft {
     /*Virologus letrehozhat agenseket
      * @param args = A felhasznalotol kapott input
      * Syntax: craft [ki] [mit]*/
-	public void Craft (String[] args, Board board) {
+	public void craft(String[] args, Board board) {
 		/* Teszteli, hogy van-e egyaltalan eleg parameter */
 		if(args.length < 3){
             System.out.println("There are not enough parameters!");

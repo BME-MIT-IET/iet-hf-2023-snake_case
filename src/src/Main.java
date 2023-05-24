@@ -2,11 +2,9 @@ package src;
 
 import View.Menu;
 import commands.*;
-import Effects.*;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Scanner;
 
@@ -73,47 +71,47 @@ public class Main {
     }
 
     public static void Create(String[] args){
-        crea.Create(args, board);
+        crea.create(args, board);
     }
 
     public static void Move(String[] args){
-        move.Move(args, board);
+        move.move(args, board);
     }
 
     public static void Collect(String[] args){
-        collect.Collect(args, board);
+        collect.collect(args, board);
     }
 
-    public static void Steal(String[] args) { steal.Steal(args, board); }
+    public static void Steal(String[] args) { steal.steal(args, board); }
     
     public static void Craft(String[] args) {
-    	craft.Craft(args, board);
+    	craft.craft(args, board);
     }
 
     /*Syntax: attack 'who is attacking' 'who do you want to attack' 'with what' */
     public static void Attack(String[] args){
-        attack.Attack(args, board);
+        attack.attack(args, board);
     }
 
     public static void Drop(String[] args){
-        drop.Drop(args, board);
+        drop.drop(args, board);
     }
 
     public static void List(String[] args){
-    	list.List(args, board);
+    	list.list(args, board);
     }
     
     public static void EndTurn(String[] args){
-    	endturn.EndTurn(args, board);
+    	endturn.endTurn(args, board);
     }
 
-    public static void ApplyEffect(String[] args){applyeffect.ApplyEffect(args, board);}
+    public static void ApplyEffect(String[] args){applyeffect.applyEffect(args, board);}
 
-    public static void Equip(String[] args){equip.Equip(args, board);}
+    public static void Equip(String[] args){equip.equip(args, board);}
 
-    public static void Load(String[] args) throws FileNotFoundException {load.Load(args, board);}
+    public static void Load(String[] args) throws FileNotFoundException {load.load(args, board);}
 
-    public static void Start(String[] args) throws FileNotFoundException {start.Start(args, board);}
+    public static void Start(String[] args) throws FileNotFoundException {start.start(args, board);}
 
 }
 

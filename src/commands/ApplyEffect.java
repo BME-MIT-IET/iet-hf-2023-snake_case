@@ -1,9 +1,10 @@
 package commands;
+
 import src.*;
 import Effects.*;
 
 public class ApplyEffect {
-    public void ApplyEffect(String[] args, Board board){
+    public void applyEffect(String[] args, Board board){
         if (args.length > 3 || args.length < 2){
             System.out.println("Number of parameters doesn't match!");
         }

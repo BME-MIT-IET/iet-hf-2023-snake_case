@@ -2,10 +2,7 @@ package commands;
 
 import src.*;
 
-import java.util.ArrayList;
-
 public class Create {
-
     private static final String FIELD = "field";
     private static final String LABORATORY = "laboratory";
     private static final String WAREHOUSE = "warehouse";
@@ -63,16 +60,16 @@ public class Create {
         return fieldSzam;
     }
 
-    public static int[] MelyikBeallitas(String[] args, int i){
+    public static int[] whichSetting(String[] args, int i){
         String fieldSzam = "";
         int[] melyik = new int[8];
+        int[] emptyArray = {};
         for(int e = 0; e < melyik.length; e++){
             melyik[e] = -1;
         }
         int melyikSzamlalo = 0;
         if(args[i].contains(FIELD)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                int[] emptyArray = {};
                 return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
@@ -81,7 +78,6 @@ public class Create {
         }
         else if(args[i].contains(SHELTER)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                int[] emptyArray = {};
                 return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
@@ -90,7 +86,6 @@ public class Create {
         }
         else if(args[i].contains(LABORATORY)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                int[] emptyArray = {};
                 return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
@@ -99,7 +94,6 @@ public class Create {
         }
         else if(args[i].contains(WAREHOUSE)){
             if((fieldSzam = numberCutDown(args, i)) == null){
-                int[] emptyArray = {};
                 return emptyArray;
             }
             int fieldSzamNum = Integer.parseInt(fieldSzam);
@@ -108,7 +102,6 @@ public class Create {
         }
         else {
             System.out.println("Something is not right with the neighbouring fields.");
-            int[] emptyArray = {};
             return emptyArray;
         }
         return melyik;
@@ -131,7 +124,7 @@ public class Create {
             for(int i = 2; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
-                melyik = MelyikBeallitas(args, i);
+                melyik = whichSetting(args, i);
                 if(melyik.length == 0){
                     return null;
                 }
@@ -147,7 +140,7 @@ public class Create {
             for(int i = 3; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
-                melyik = MelyikBeallitas(args, i);
+                melyik = whichSetting(args, i);
                 if(melyik.length == 0){
                     return null;
                 }
@@ -163,7 +156,7 @@ public class Create {
             for(int i = 5; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
-                melyik = MelyikBeallitas(args, i);
+                melyik = whichSetting(args, i);
                 if(melyik.length == 0){
                     return null;
                 }
@@ -179,7 +172,7 @@ public class Create {
             for(int i = 4; i < args.length; i++){
                 int[] atmeneti = melyik;
                 int x = 0;
-                melyik = MelyikBeallitas(args, i);
+                melyik = whichSetting(args, i);
                 if(melyik.length == 0){
                     return null;
                 }
@@ -208,7 +201,7 @@ public class Create {
      * Syntax ha equipment: create [mit]
      * Syntax ha warehouse: create [mit] [visszatoltesi ido] [tipus] [mennyiseg] [*optional* milyen szomszeddal]
      * Syntax ha GCode: 	create genetical code [mit]*/
-    public void Create(String[] args, Board board){
+    public void create(String[] args, Board board){
         if(args.length < 2) {
             System.out.println("Not enough parameters!");
             return;

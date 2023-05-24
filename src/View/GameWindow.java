@@ -1,10 +1,8 @@
 package View;
 
 import ActionListeners.*;
-import commands.Craft;
 import commands.EndTurn;
 import commands.Start;
-import commands.Move;
 import src.*;
 
 import javax.swing.*;
@@ -12,7 +10,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectOutputStream;
@@ -53,7 +50,7 @@ public class GameWindow extends JFrame {
         board = new Board();
         String[] args = {};
         try{
-            start.Start(args, board);
+            start.start(args, board);
         }
         catch(Exception e){
             System.out.println(e);
@@ -232,7 +229,7 @@ public class GameWindow extends JFrame {
                 return;
             }
         }
-        endturn.EndTurn(args, board);
+        endturn.endTurn(args, board);
         JLabel endturnlabel = new JLabel("I have ended my turn.");
         otherPanel.add(endturnlabel);
         mapPanel.repaint();

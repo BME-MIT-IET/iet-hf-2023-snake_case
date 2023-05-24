@@ -2,7 +2,6 @@ package ActionListeners;
 
 import View.Control;
 import commands.Attack;
-import commands.Drop;
 import src.Board;
 import src.Virologist;
 
@@ -173,7 +172,7 @@ public class OtherAttackActionListener implements ActionListener {
                     String[] args;
                     String bemenet = "attack virologist0 virologist" + kitID + " " + mivel;
                     args = bemenet.split(" ");
-                    atk.Attack(args, board);
+                    atk.attack(args, board);
                     for (int i = 0; i < otherPanel.getComponentCount(); i++) {
                         otherPanel.getComponent(i).setVisible(false);
                     }

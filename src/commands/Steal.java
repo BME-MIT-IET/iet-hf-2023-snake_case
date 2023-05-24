@@ -1,11 +1,10 @@
 package commands;
 
 import src.Board;
-import src.Field;
 import src.Virologist;
 
 public class Steal {
-    public void Steal(String[] args, Board board){
+    public void steal(String[] args, Board board){
         if(args.length < 4){
             System.out.println("Not enough parameters!");
             return;
@@ -19,11 +18,11 @@ public class Steal {
             return;
         }
         //Virologusok inicializalasa
-        int StealerV = Integer.parseInt(args[1].substring(10));
-        int VictimV = Integer.parseInt(args[2].substring(10));
+        int stealerV = Integer.parseInt(args[1].substring(10));
+        int victimV = Integer.parseInt(args[2].substring(10));
 
-        Virologist stealer = board.getVirologusok().get(StealerV);
-        Virologist victim = board.getVirologusok().get(VictimV);
+        Virologist stealer = board.getVirologusok().get(stealerV);
+        Virologist victim = board.getVirologusok().get(victimV);
 
         //Ha nem ugyan azon a mezon allnak
         if(stealer.getField() != victim.getField()){
@@ -33,17 +32,15 @@ public class Steal {
 
         
         //Teszteli, hogy a virologusnak van e meg akcioja
-        if(StealerV == 0 && board.getAction()) {
+        if(stealerV == 0 && board.getAction()) {
         	board.setAction(false);
         }
         //Ha nincs nem csinal semmit
-        else if(StealerV == 0 && !board.getAction()) {
+        else if(stealerV == 0 && !board.getAction()) {
         	System.out.println("The player doesn't have any more actions!");
         	return;
         }
-        
-        
-        
+
         if(args[3].equals("material")){
             stealer.StealMat(victim);
         }

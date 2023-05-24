@@ -1,9 +1,9 @@
 package commands;
+
 import src.*;
-import Effects.*;
 
 public class Equip {
-    public void Equip(String[] args, Board board){
+    public void equip(String[] args, Board board){
         if (args.length > 3 || args.length < 2){
             System.out.println("Number of parameters doesn't match!");
         }

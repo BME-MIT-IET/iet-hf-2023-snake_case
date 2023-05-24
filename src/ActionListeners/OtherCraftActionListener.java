@@ -45,7 +45,7 @@ public class OtherCraftActionListener implements ActionListener {
             return;
         }
 
-        elem.Craft(args, board);
+        elem.craft(args, board);
         control.InvalidateBasicPanel();
     }
 }
