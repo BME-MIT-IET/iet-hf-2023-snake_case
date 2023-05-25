@@ -361,36 +361,18 @@ public class Virologist implements Update, Serializable {
                 return;
             }
         }
-        /*Paralyze chack a masik virologusnak*/
-        boolean paraB = false;
-        for(int i = 0; i < v.effects.getEffects().size(); i++){
-            if(v.effects.getEffects().get(i).myEffect.equals(PARALYZE) && v.effects.getEffects().get(i).timeLeft > 0){
-                paraB = true;
-            }
-        }
-        if(!paraB){
-            /*Nincs paralyze a masik virologuson*/
-            System.out.println("Virologist1: You can't steal from me because I'm not paralyzed!");
+        /*Paralyze check a masik virologusnak*/
+        if(isTheOtherVirologistParalyzed(v)){
             return;
         }
 
-        if(inv.GetEquipments().size() == 3){
-            System.out.println("Virologist0: My inventory is full! I can't steal right now.");
+        //Check if the Inventory is full or empty
+        if(invIsFullOrInvIsEmpty(v)){
             return;
         }
 
-        if(v.getInv().GetEquipments().isEmpty()){
-            System.out.println("Virologist1: You can't steal from me right now, because my inventory is empty.");
-            return;
-        }
-        boolean van = false;
-        for(int i = 0; i < v.getInv().GetEquipments().size(); i++){
-            if(eq.equals(v.getInv().GetEquipments().get(i).name)){
-                van = true;
-            }
-        }
-        if(!van){
-            System.out.println("Virologist1: I don't have the equipment, you want to steal.");
+        //Check if the item is in the inventory
+        if(isItInMyInv(v, eq)){
             return;
         }
 
@@ -409,7 +391,39 @@ public class Virologist implements Update, Serializable {
             }
         }
         System.out.println("Virologist0: I stole  " + eq + " from Virologist1");
+    }
 
+    private boolean invIsFullOrInvIsEmpty(Virologist v){
+        if(inv.GetEquipments().size() == 3){
+            System.out.println("Virologist0: My inventory is full! I can't steal right now.");
+            return true;
+        }
+
+        if(v.getInv().GetEquipments().isEmpty()){
+            System.out.println("Virologist1: You can't steal from me right now, because my inventory is empty.");
+            return true;
+        }
+        return false;
+    }
+
+    private boolean isItInMyInv(Virologist v, String eq){
+        for(int i = 0; i < v.getInv().GetEquipments().size(); i++){
+            if(eq.equals(v.getInv().GetEquipments().get(i).name)){
+                System.out.println("Virologist1: I don't have the equipment, you want to steal.");
+                return true;
+            }
+        }
+        return false;
+    }
+
+    private boolean isTheOtherVirologistParalyzed(Virologist v){
+        for(int i = 0; i < v.effects.getEffects().size(); i++){
+            if(v.effects.getEffects().get(i).myEffect.equals(PARALYZE) && v.effects.getEffects().get(i).timeLeft > 0){
+                System.out.println("Virologist1: You can't steal from me because I'm not paralyzed!");
+                return true;
+            }
+        }
+        return false;
     }
 
     /*Ellop egy adag alapanyagot az argumentumban megadott virologustol*/
