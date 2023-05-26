@@ -3,6 +3,7 @@ package actionListeners;
 import View.Control;
 import commands.Attack;
 import src.Board;
+import src.StringConstants;
 import src.Virologist;
 
 import javax.swing.*;
@@ -57,7 +58,7 @@ public class OtherAttackActionListener implements ActionListener {
         for(int i = 0; i < virologusokAMezon.size(); i++){
             for(int e = 0; e < virologusok.size(); e++){
                 if(virologusok.get(e) == virologusokAMezon.get(i)){
-                    if(virologusok.get(e).getEffects().searchForEffect("bearvirus")){
+                    if(virologusok.get(e).getEffects().searchForEffect(StringConstants.BEARVIRUS)){
                         virologist = new JRadioButton("Bear");
                     }
                     else if(e == 0){
@@ -150,7 +151,7 @@ public class OtherAttackActionListener implements ActionListener {
         }
         else if(e.getSource() == confirm){
             if(kit != null && mivel != null){
-                if(mivel.equals("axe") && !kit.getEffects().searchForEffect("bearvirus")){
+                if(mivel.equals(StringConstants.AXE) && !kit.getEffects().searchForEffect(StringConstants.BEARVIRUS)){
                     for(int i = 0; i < otherPanel.getComponentCount(); i++) {
                         otherPanel.getComponent(i).setVisible(false);
                     }

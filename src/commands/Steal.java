@@ -1,6 +1,7 @@
 package commands;
 
 import src.Board;
+import src.StringConstants;
 import src.Virologist;
 
 public class Steal {
@@ -13,7 +14,7 @@ public class Steal {
             System.out.println("There have to be at least 2 virologist on the board");
             return;
         }
-        if(!args[1].contains("virologist") && !args[2].contains("virologist")){
+        if(!args[1].contains(StringConstants.VIROLOGIST) && !args[2].contains(StringConstants.VIROLOGIST)){
             System.out.println("These are not virolgists!");
             return;
         }

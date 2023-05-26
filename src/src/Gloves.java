@@ -8,7 +8,7 @@ public class Gloves extends Equipment implements Serializable {
     int usesLeft;
     public Gloves() {
         effect = new GloveEffect();
-        name = "gloves";
+        name = StringConstants.GLOVES;
         usesLeft = 3;
         System.out.println("Gloves: I'm Created.");
     }

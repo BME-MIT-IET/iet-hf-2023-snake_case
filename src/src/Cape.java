@@ -8,7 +8,7 @@ public class Cape extends Equipment implements Serializable {                   
 	
 	public Cape(double dc) {
 		effect = new CapeEffect(dc);
-		name = "cape";
+		name = StringConstants.CAPE;
 		System.out.println("Cape: I'm Created.");
 	}
 }

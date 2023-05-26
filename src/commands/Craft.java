@@ -1,6 +1,7 @@
 package commands;
 
 import src.Board;
+import src.StringConstants;
 import src.Virologist;
 
 public class Craft {
@@ -17,7 +18,7 @@ public class Craft {
 		
 		/*Melyik virologushoz adunk*/
         /*A parancsban virologist vot-e megadva*/
-        if(args[1].length() < 10 || !args[1].substring(0,10).equals("virologist")) {
+        if(args[1].length() < 10 || !args[1].substring(0,10).equals(StringConstants.VIROLOGIST)) {
         	System.out.println("virologist was expected, but got something else!");
         	return;
         }
@@ -49,34 +50,34 @@ public class Craft {
         
         boolean exists = false;
         /*Megnezi, hogy megadott nevu GCode letezik-e*/
-        if(args[2].equals("paralyze")) {
+        if(args[2].equals(StringConstants.PARALYZE)) {
         	/*Vegigmegy az osszes letrehozott GCode-on, es ha megtalalja azt a nevut, ami az inputon van, akkor lefuttatja a craft metodust*/
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
-        		if(board.getGenetikaiKodok().get(i).getEffect().equals("paralyze")) {
+        		if(board.getGenetikaiKodok().get(i).getEffect().equals(StringConstants.PARALYZE)) {
         			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}
         }
-        else if(args[2].equals("virusdance")) {
+        else if(args[2].equals(StringConstants.DANCEVIRUS)) {
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
-        		if(board.getGenetikaiKodok().get(i).getEffect().equals("virusdance")) {
+        		if(board.getGenetikaiKodok().get(i).getEffect().equals(StringConstants.DANCEVIRUS)) {
         			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}
         }
-        else if(args[2].equals("protectvirus")) {
+        else if(args[2].equals(StringConstants.PROTECTVIRUS)) {
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
-        		if(board.getGenetikaiKodok().get(i).getEffect().equals("protectvirus")) {
+        		if(board.getGenetikaiKodok().get(i).getEffect().equals(StringConstants.PROTECTVIRUS)) {
         			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}
         	}
         }
-        else if(args[2].equals("forgetvirus")) {
+        else if(args[2].equals(StringConstants.FORGETVIRUS)) {
         	for(int i = 0; i < board.getGenetikaiKodok().size(); i++) {
-        		if(board.getGenetikaiKodok().get(i).getEffect().equals("forgetvirus")) {
+        		if(board.getGenetikaiKodok().get(i).getEffect().equals(StringConstants.FORGETVIRUS)) {
         			v1.craft(board.getGenetikaiKodok().get(i));
         			exists = true;
         		}

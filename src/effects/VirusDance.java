@@ -1,6 +1,7 @@
 package effects;
 
 import src.Effect;
+import src.StringConstants;
 import src.Virologist;
 
 import java.io.Serializable;
@@ -10,7 +11,7 @@ public class VirusDance extends Effect implements Serializable {
 
     public VirusDance(){
         duration = 3;
-        myEffect = "virusdance";
+        myEffect = StringConstants.DANCEVIRUS;
         timeLeft = duration;
     }
 

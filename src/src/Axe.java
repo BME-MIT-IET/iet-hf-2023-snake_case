@@ -5,7 +5,7 @@ import java.io.Serializable;
 public class Axe extends Equipment implements Serializable {
     protected boolean broken;
     public Axe() {
-        name = "axe";
+        name = StringConstants.AXE;
         broken = false;
         System.out.println("Axe: I'm Created.");
     }

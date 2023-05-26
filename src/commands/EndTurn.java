@@ -1,9 +1,6 @@
 package commands;
 
-import src.Board;
-import src.Effect;
-import src.Virologist;
-import src.Warehouse;
+import src.*;
 
 public class EndTurn {
 
@@ -21,7 +18,7 @@ public class EndTurn {
             board.setAction(true);
             board.setMove(true);
 			for(Effect ef : board.getVirologusok().get(0).getEffects().getEffects()){
-				if(ef.getMyEffect().equals("bearvirus") || ef.getMyEffect().equals("virusdance")){
+				if(ef.getMyEffect().equals(StringConstants.BEARVIRUS) || ef.getMyEffect().equals(StringConstants.DANCEVIRUS)){
 					board.setAction(false);
 					board.setMove(false);
 				}
@@ -42,7 +39,7 @@ public class EndTurn {
         board.setMove(true);
 		/*Ha jatekos medve akkor ne tudjon lepni*/
 		for(Effect ef : board.getVirologusok().get(0).getEffects().getEffects()){
-			if(ef.getMyEffect().equals("bearvirus") || ef.getMyEffect().equals("virusdance")){
+			if(ef.getMyEffect().equals(StringConstants.BEARVIRUS) || ef.getMyEffect().equals(StringConstants.DANCEVIRUS)){
 				board.setAction(false);
 				board.setMove(false);
 			}
@@ -59,7 +56,7 @@ public class EndTurn {
         		double movedecision = Math.random();
         		Virologist v = board.getVirologusok().get(i);
 				/*Ha medve akkor a BearEffect mozgast hajtsa vegre*/
-				if(v.getEffects().searchForEffect("bearvirus") || v.getEffects().searchForEffect("virusdance")){
+				if(v.getEffects().searchForEffect(StringConstants.BEARVIRUS) || v.getEffects().searchForEffect(StringConstants.DANCEVIRUS)){
 					v.update();
 				}
 				else{
@@ -73,7 +70,7 @@ public class EndTurn {
 					//utana probal dolgokat csinalni
 					double actiondecision = Math.random();
 
-					if(actiondecision >= 0.6 && v.getField().getVirologists().size() != 0 && v.getInv().getAgents().size() != 0) {
+					if(actiondecision >= 0.6 && !v.getField().getVirologists().isEmpty() && !v.getInv().getAgents().isEmpty()) {
 						//Tamadni probal, de csak akkor, ha van egy masik virologus vele egy mezon es ha van mivel
 						String mivel = v.getInv().getAgents().get( (int)(Math.random() * v.getInv().getAgents().size()) ).getEffect().getMyEffect();
 						Virologist celpont = v.getField().getVirologists().get( (int)Math.random() * v.getField().getVirologists().size());

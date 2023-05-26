@@ -2,12 +2,13 @@ package commands;
 
 import src.*;
 
-public class Create {
-    private static final String FIELD = "field";
-    private static final String LABORATORY = "laboratory";
-    private static final String WAREHOUSE = "warehouse";
-    private static final String SHELTER = "shelter";
+import static src.StringConstants.*;
 
+public class Create {
+    private static final String FIELDERROR = "I couldn't create the field.";
+    private static final String CODE_EXISTS = "This genetical code already exists!";
+    private static final String CODE_CREATED = "The genetical code has been created, you can use it later with the reference: ";
+    private static final String EQ_CREATED = "has been created you can use it later with the reference: ";
     /*Megkerdezi, hogy az adott genetikai kod benne van-e a genetikaiKodok listaban
      * ezt hasznalja: create laboratory, genetical code
      * @param String a kod neve
@@ -206,7 +207,7 @@ public class Create {
             System.out.println("Not enough parameters!");
             return;
         }
-        if(args[1].equals("virologist")){
+        if(args[1].equals(StringConstants.VIROLOGIST)){
             if(args.length < 5){
                 System.out.println("Not enough parameters!");
                 return;
@@ -243,7 +244,7 @@ public class Create {
             if(args.length > 2){
                 f1 = addingNeighbours(args, f1, board);
                 if(f1 == null){
-                    System.out.println("I couldn't create the field.");
+                    System.out.println(FIELDERROR);
                     return;
                 }
             }
@@ -256,12 +257,12 @@ public class Create {
         /*Meg kell adni, hogy melyik mar korabban letrehozott equipment-tel akarjuk letrehozni a sheltert.*/
         else if(args[1].equals(SHELTER)){
             /*Feltetelek megtermetese*/
-            if(board.getFelszerelesek().size() == 0) {
+            if(board.getFelszerelesek().isEmpty()) {
                 System.out.println("If you want to create a shelter, first you need to create an equipment, " +
                         "that you can put in it.");
                 return;
             }
-            if(args[2].contains("bag")){
+            if(args[2].contains(StringConstants.BAG)){
                 String eqSzam = args[2].substring(3);
                 if(eqSzam.length() == 0){
                     System.out.println("I can't find that bag.");
@@ -273,7 +274,7 @@ public class Create {
                     s1 = (Shelter)addingNeighbours(args, s1, board);
                 }
                 board.getMezok().add(s1);
-            }else if(args[2].contains("cape")){
+            }else if(args[2].contains(StringConstants.CAPE)){
                 String eqSzam = args[2].substring(4);
                 if(eqSzam.length() == 0){
                     System.out.println("I can't find that cape.");
@@ -285,27 +286,27 @@ public class Create {
                     s1 = (Shelter)addingNeighbours(args, s1, board);
                 }
                 board.getMezok().add(s1);
-            }else if(args[2].contains("gloves")){
+            }else if(args[2].contains(StringConstants.GLOVES)){
                 int melyik = Integer.parseInt(args[2].substring(6));
                 Shelter s1 = new Shelter(board.getFelszerelesek().get(melyik));
                 if(args.length > 3){
                     s1 = (Shelter)addingNeighbours(args, s1, board);
                     //Ha ferlecsuszna vmi a szomszedok hozzaadasa kozben
                     if(s1 == null){
-                        System.out.println("I couldn't create the field.");
+                        System.out.println(FIELDERROR);
                         return;
                     }
                 }
                 board.getMezok().add(s1);
             }
-            else if(args[2].contains("axe")){
+            else if(args[2].contains(StringConstants.AXE)){
                 int melyik = Integer.parseInt(args[2].substring(3));
                 Shelter s1 = new Shelter(board.getFelszerelesek().get(melyik));
                 if(args.length > 3){
                     s1 = (Shelter)addingNeighbours(args, s1, board);
                     //Ha ferlecsuszna vmi a szomszedok hozzaadasa kozben
                     if(s1 == null){
-                        System.out.println("I couldn't create the field.");
+                        System.out.println(FIELDERROR);
                         return;
                     }
                 }
@@ -321,7 +322,7 @@ public class Create {
         /*Laboratorium letrehozasa*/
         else if(args[1].equals(LABORATORY)){
             /*Feltetelek megtermetese*/
-            if(board.getGenetikaiKodok().size() == 0){
+            if(board.getGenetikaiKodok().isEmpty()){
                 System.out.println("If you want to create a laboratory, first you need to create a gcode, " +
                         "that you can put in it.");
                 return;
@@ -339,7 +340,7 @@ public class Create {
                 if(args.length > 4){
                     lab1 = (Laboratory)addingNeighbours(args, lab1, board);
                     if(lab1 == null){
-                        System.out.println("I couldn't create the field.");
+                        System.out.println(FIELDERROR);
                         return;
                     }
                 }
@@ -376,7 +377,7 @@ public class Create {
                 w1 = (Warehouse) addingNeighbours(args, w1, board);
                 //Ha ferlecsuszna vmi a szomszedok hozzaadasa kozben
                 if(w1 == null){
-                    System.out.println("I couldn't create the field.");
+                    System.out.println(FIELDERROR);
                     return;
                 }
             }
@@ -390,53 +391,48 @@ public class Create {
             if(args.length < 4){
                 System.out.println("Not enough information!");
             }
-            else if(args[3].equals("paralyze")){
+            else if(args[3].equals(StringConstants.PARALYZE)){
                 /*Ha mar letezik a kod ne keszitsunk tobbet, ezt azert gondolom, mert szerintem nem kell tobb kod, mert amik vannak azokat
                  * csak masolgatni fogjuk a virologusokba es a mezokre, de ha mas a megallapodas ki lehet javitani*/
                 /*EZT NAGYON JÓL GONDOLOD. by: He. Bence*/
-                if(hasGCode("paralyze", board)){
-                    System.out.println("This genetical code already exists!");
+                if(hasGCode(StringConstants.PARALYZE, board)){
+                    System.out.println(CODE_EXISTS);
                     return;
                 }
-                board.getGenetikaiKodok().add(new GCode(1, 1, "paralyze"));
-                System.out.println("The genetical code has been created, " +
-                        "you can use it later with the reference: paralyze");
+                board.getGenetikaiKodok().add(new GCode(1, 1, StringConstants.PARALYZE));
+                System.out.println(CODE_CREATED + StringConstants.PARALYZE);
             }
-            else if(args[3].equals("virusdance")){
-                if(hasGCode("virusdance", board)){
-                    System.out.println("This genetical code already exists!");
+            else if(args[3].equals(StringConstants.DANCEVIRUS)){
+                if(hasGCode(StringConstants.DANCEVIRUS, board)){
+                    System.out.println(CODE_EXISTS);
                     return;
                 }
-                board.getGenetikaiKodok().add(new GCode(1, 1, "virusdance"));
-                System.out.println("The genetical code has been created, " +
-                        "you can use it later with the reference: virusdance");
+                board.getGenetikaiKodok().add(new GCode(1, 1, StringConstants.DANCEVIRUS));
+                System.out.println(CODE_CREATED+StringConstants.DANCEVIRUS);
             }
-            else if(args[3].equals("protectvirus")){
-                if(hasGCode("protectvirus", board)){
-                    System.out.println("This genetical code already exists!");
+            else if(args[3].equals(StringConstants.PROTECTVIRUS)){
+                if(hasGCode(StringConstants.PROTECTVIRUS, board)){
+                    System.out.println(CODE_EXISTS);
                     return;
                 }
-                board.getGenetikaiKodok().add(new GCode(1, 1, "protectvirus"));
-                System.out.println("The genetical code has been created, " +
-                        "you can use it later with the reference: protectvirus");
+                board.getGenetikaiKodok().add(new GCode(1, 1, StringConstants.PROTECTVIRUS));
+                System.out.println(CODE_CREATED+StringConstants.PROTECTVIRUS);
             }
-            else if(args[3].equals("forgetvirus")){
-                if(hasGCode("forgetvirus", board)){
-                    System.out.println("This genetical code already exists!");
+            else if(args[3].equals(StringConstants.FORGETVIRUS)){
+                if(hasGCode(StringConstants.FORGETVIRUS, board)){
+                    System.out.println(CODE_EXISTS);
                     return;
                 }
-                board.getGenetikaiKodok().add(new GCode(1, 1, "forgetvirus"));
-                System.out.println("The genetical code has been created, " +
-                        "you can use it later with the reference: forgetvirus");
+                board.getGenetikaiKodok().add(new GCode(1, 1, StringConstants.FORGETVIRUS));
+                System.out.println(CODE_CREATED+StringConstants.FORGETVIRUS);
             }
-            else if(args[3].equals("bearvirus")){
-                if(hasGCode("bearvirus", board)){
-                    System.out.println("This genetical code already exists!");
+            else if(args[3].equals(StringConstants.BEARVIRUS)){
+                if(hasGCode(StringConstants.BEARVIRUS, board)){
+                    System.out.println(CODE_EXISTS);
                     return;
                 }
-                board.getGenetikaiKodok().add(new GCode(0, 0, "bearvirus"));
-                System.out.println("The genetical code has been created, " +
-                        "you can use it later with the reference: bearvirus");
+                board.getGenetikaiKodok().add(new GCode(0, 0, StringConstants.BEARVIRUS));
+                System.out.println(CODE_CREATED+StringConstants.BEARVIRUS);
             }
             /*Ha elirnanak valamit*/
             else{
@@ -446,23 +442,23 @@ public class Create {
             /*A konzolon beirtnak megfelelo equipmentet hoz letre.*/
         }
         else if(args[1].equals("equipment")){
-            if(args[2].equals("cape")) {
+            if(args[2].equals(StringConstants.CAPE)) {
                 Cape kopeny = new Cape(Double.parseDouble(args[3]));
                 board.getFelszerelesek().add(kopeny);
-                System.out.println("The cape has been created you can use it later with the reference: cape"+(board.getFelszerelesek().size()-1));
-            }else if(args[2].equals("bag")){
+                System.out.println("The"+StringConstants.CAPE+EQ_CREATED+StringConstants.CAPE+(board.getFelszerelesek().size()-1));
+            }else if(args[2].equals(StringConstants.BAG)){
                 Bag taska = new Bag();
                 board.getFelszerelesek().add(taska);
-                System.out.println("The bag has been created you can use it later with the reference: bag"+(board.getFelszerelesek().size()-1));
-            }else if(args[2].equals("gloves")) {
+                System.out.println("The"+StringConstants.BAG+EQ_CREATED+StringConstants.BAG+(board.getFelszerelesek().size()-1));
+            }else if(args[2].equals(StringConstants.GLOVES)) {
                 Gloves kesztyu = new Gloves();
                 board.getFelszerelesek().add(kesztyu);
-                System.out.println("The gloves has been created you can use it later with the reference: gloves" + (board.getFelszerelesek().size() - 1));
+                System.out.println("The"+StringConstants.GLOVES+EQ_CREATED+StringConstants.GLOVES + (board.getFelszerelesek().size() - 1));
             }
-            else if(args[2].equals("axe")){
+            else if(args[2].equals(StringConstants.AXE)){
                 Axe axe = new Axe();
                 board.getFelszerelesek().add(axe);
-                System.out.println("The axe has been created you can use it later with the reference: axe" + (board.getFelszerelesek().size() - 1));
+                System.out.println("The"+StringConstants.AXE+EQ_CREATED+ StringConstants.AXE + (board.getFelszerelesek().size() - 1));
                 }
             else{
                 System.out.println("No such item can be created!");

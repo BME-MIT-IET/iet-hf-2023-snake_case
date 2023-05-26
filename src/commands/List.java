@@ -1,11 +1,8 @@
 package commands;
 
-import src.Board;
-import src.Laboratory;
-import src.Shelter;
-import src.Virologist;
-import src.Warehouse;
+import src.*;
 
+import static src.StringConstants.*;
 
 
 public class List {
@@ -20,19 +17,22 @@ public class List {
      * 			list shelter[szam] [virologists/neighbours/equipment]
      * 			list warehouse[szam] [virologists/neighbours/material]
      * 																		*/
+
+
+	private static final String NOT_ENOUGH_PARAM = "Not enough parameters!";
 	public void list(String[] args, Board board) {
 		if(args.length < 2) {
-            System.out.println("Not enough parameters!");
+            System.out.println(NOT_ENOUGH_PARAM);
             return;
         }
 		
 		/* Virologussal kapcsolatos kilistazasok*/
-		if ( args[1].contains("virologist")) {
+		if ( args[1].contains(StringConstants.VIROLOGIST)) {
 			/* kilistazza az osszes virologust, akit eddig letrehoztunk*/
 			if ( args.length < 3 && args[1].length() == 10) {
 				System.out.println("Currently created virologists:");
 				for (int i = 0; i < board.getVirologusok().size();i++) {
-					System.out.println("virologist" + i);
+					System.out.println(StringConstants.VIROLOGIST + i);
 				}
 				return;
 			}
@@ -54,14 +54,14 @@ public class List {
 	        	return;
 	        }
 	        else if(args.length < 3) {
-	        	System.out.println("Not enough parameters!");
+	        	System.out.println(NOT_ENOUGH_PARAM);
 	        	return;
 	        }
 	        
 	        Virologist v1 = board.getVirologusok().get(Integer.parseInt(vID));
 	        
 	        /*Lekerdezi, hol all a virologus*/
-	        if(args[2].equals("field")){
+	        if(args[2].equals(FIELD)){
 	        	for (int i = 0; i < board.getMezok().size(); i++) {
 	        		if (v1.getField().equals(board.getMezok().get(i))) {
 	        			System.out.println(v1.getField().getClass().getSimpleName().toLowerCase() + i);
@@ -73,7 +73,7 @@ public class List {
 	        	System.out.println("Virologists on the same field:");
 	        	for (int i = 0; i < board.getVirologusok().size(); i++) {
 	        		if(v1.getField().equals(board.getVirologusok().get(i).getField())) {
-						System.out.println("virologist" + i);
+						System.out.println(StringConstants.VIROLOGIST + i);
 					}
 				}
 	        }
@@ -127,7 +127,7 @@ public class List {
 		}
 		
 		/*Mindegyik field kiirasa*/
-		else if ( args[1].contains("field") && args[1].length() == 5) {
+		else if ( args[1].contains(FIELD) && args[1].length() == 5) {
 			/* kilistazza az osszes virologust, akit eddig letrehoztunk*/
 			if ( args.length < 3) {
 				System.out.println("Currently created fields:");
@@ -137,9 +137,9 @@ public class List {
 			}
 		}
 		/*Egyes fieldek tulajdonsagainak kiirasa*/
-		else if (args[1].contains("field") || args[1].contains("laboratory") || args[1].contains("shelter") || args[1].contains("warehouse")) {
+		else if (args[1].contains(FIELD) || args[1].contains(LABORATORY) || args[1].contains(SHELTER) || args[1].contains(WAREHOUSE)) {
 			if(args.length < 3) {
-	            System.out.println("Not enough parameters!");
+	            System.out.println(NOT_ENOUGH_PARAM);
 	            return;
 	        }
 			
@@ -169,7 +169,7 @@ public class List {
 				System.out.println("Virologists currently on the field:");
 				for (int i = 0; i < board.getVirologusok().size(); i++) {
 					if(board.getMezok().get(fieldID).equals(board.getVirologusok().get(i).getField())) {
-						System.out.println("virologist" + i);
+						System.out.println(StringConstants.VIROLOGIST + i);
 					}
 				}
 			}
@@ -186,13 +186,13 @@ public class List {
 				}
 			}
 			/*Labor eseten kiirja a laborban talalhato genetikai kodot*/
-			else if (args[1].contains("laboratory") && args[2].equals("gcode")) {
+			else if (args[1].contains(LABORATORY) && args[2].equals("gcode")) {
 				System.out.println("The Laboratory's Genetical Code is: " + ((Laboratory)board.getMezok().get(fieldID)).getGCode().getEffect());
 			}
-			else if(args[1].contains("shelter") && args[2].equals("equipment")) {
+			else if(args[1].contains(SHELTER) && args[2].equals("equipment")) {
 				System.out.println("The Shelter's Equipment is: " + ((Shelter)board.getMezok().get(fieldID)).getEquipment().getName());
 			}
-			else if(args[1].contains("warehouse") && args[2].equals("material")) {
+			else if(args[1].contains(WAREHOUSE) && args[2].equals("material")) {
 				System.out.println("The Warehouse currently stores: " + ((Warehouse)board.getMezok().get(fieldID)).getAmount() 
 						+ ( ((Warehouse)board.getMezok().get(fieldID)).getType() == 'a' ? " Aminoacid":" Nukleotid" ) );
 			}
