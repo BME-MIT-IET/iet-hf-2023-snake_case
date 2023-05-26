@@ -2,11 +2,9 @@ package commands;
 
 import src.*;
 
+import static src.StringConstants.*;
+
 public class Create {
-    private static final String FIELD = "field";
-    private static final String LABORATORY = "laboratory";
-    private static final String WAREHOUSE = "warehouse";
-    private static final String SHELTER = "shelter";
     private static final String FIELDERROR = "I couldn't create the field.";
     private static final String CODE_EXISTS = "This genetical code already exists!";
     private static final String CODE_CREATED = "The genetical code has been created, you can use it later with the reference: ";
