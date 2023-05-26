@@ -4,6 +4,7 @@ import View.Control;
 import commands.Drop;
 import src.Board;
 import src.Equipment;
+import src.StringConstants;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -22,24 +23,26 @@ public class OtherDropActionListener implements ActionListener {
         this.control = control;
     }
 
+    private static final String DROP_VIROLOGIST0 = "drop virologist0 ";
+
     @Override
     public void actionPerformed(ActionEvent e){
         Drop dob = new Drop();
         String[] args;
-        if(eq.getName().equals("axe")){
-            String bemenet = "drop virologist0 axe";
+        if(eq.getName().equals(StringConstants.AXE)){
+            String bemenet = DROP_VIROLOGIST0+StringConstants.AXE;
             args = bemenet.split(" ");
         }
-        else if(eq.getName().equals("cape")){
-            String bemenet = "drop virologist0 cape";
+        else if(eq.getName().equals(StringConstants.CAPE)){
+            String bemenet = DROP_VIROLOGIST0+StringConstants.CAPE;
             args = bemenet.split(" ");
         }
-        else if(eq.getName().equals("gloves")){
-            String bemenet = "drop virologist0 gloves";
+        else if(eq.getName().equals(StringConstants.GLOVES)){
+            String bemenet = DROP_VIROLOGIST0+StringConstants.GLOVES;
             args = bemenet.split(" ");
         }
-        else if(eq.getName().equals("bag")){
-            String bemenet = "drop virologist0 bag";
+        else if(eq.getName().equals(StringConstants.BAG)){
+            String bemenet = DROP_VIROLOGIST0+StringConstants.BAG;
             args = bemenet.split(" ");
         }
         else{

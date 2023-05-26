@@ -3,6 +3,7 @@ package actionListeners;
 import View.Control;
 import commands.Steal;
 import src.Board;
+import src.StringConstants;
 import src.Virologist;
 
 import javax.swing.*;
@@ -98,16 +99,16 @@ public class OtherStealActionListener implements ActionListener {
             axe.setVisible(false);
             confirm.setVisible(false);
             for(int i = 0; i < target.getInv().GetEquipments().size(); i++){
-                if(target.getInv().GetEquipments().get(i).getName().equals("cape")){
+                if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.CAPE)){
                     cape.setVisible(true);
                 }
-                else if(target.getInv().GetEquipments().get(i).getName().equals("axe")){
+                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.AXE)){
                     axe.setVisible(true);
                 }
-                else if(target.getInv().GetEquipments().get(i).getName().equals("gloves")){
+                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.GLOVES)){
                     gloves.setVisible(true);
                 }
-                else if(target.getInv().GetEquipments().get(i).getName().equals("bag")){
+                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.BAG)){
                     bag.setVisible(true);
                 }
             }
@@ -124,16 +125,16 @@ public class OtherStealActionListener implements ActionListener {
             axe.setVisible(false);
             confirm.setVisible(false);
             for(int i = 0; i < target.getInv().GetEquipments().size(); i++){
-                if(target.getInv().GetEquipments().get(i).getName().equals("cape")){
+                if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.CAPE)){
                     cape.setVisible(true);
                 }
-                else if(target.getInv().GetEquipments().get(i).getName().equals("axe")){
+                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.AXE)){
                     axe.setVisible(true);
                 }
-                else if(target.getInv().GetEquipments().get(i).getName().equals("gloves")){
+                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.GLOVES)){
                     gloves.setVisible(true);
                 }
-                else if(target.getInv().GetEquipments().get(i).getName().equals("bag")){
+                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.BAG)){
                     bag.setVisible(true);
                 }
             }
@@ -141,13 +142,13 @@ public class OtherStealActionListener implements ActionListener {
             confirm.setVisible(true);
         }
         else if(e.getSource() == cape){
-            item = "cape";
+            item = StringConstants.CAPE;
         }else if(e.getSource() == axe){
-            item = "axe";
+            item = StringConstants.AXE;
         }else if(e.getSource() == gloves){
-            item = "gloves";
+            item = StringConstants.GLOVES;
         }else if(e.getSource() == bag){
-            item = "bag";
+            item = StringConstants.BAG;
         }
         else if(e.getSource() == mat){
             item = "material";

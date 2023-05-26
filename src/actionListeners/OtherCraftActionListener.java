@@ -4,6 +4,7 @@ import View.Control;
 import commands.Craft;
 import src.Board;
 import src.GCode;
+import src.StringConstants;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,24 +21,26 @@ public class OtherCraftActionListener implements ActionListener {
         this.control = control;
     }
 
+    private static final String CRAFT_VIROLOGIST0 = "craft virologist0 ";
+
     @Override
     public void actionPerformed(ActionEvent e) {
         Craft elem = new Craft();
         String[] args;
-        if(genetical.getEffect().equals("paralyze")){
-            String bemenet = "craft virologist0 paralyze";
+        if(genetical.getEffect().equals(StringConstants.PARALYZE)){
+            String bemenet = CRAFT_VIROLOGIST0+StringConstants.PARALYZE;
             args = bemenet.split(" ");
         }
-        else if(genetical.getEffect().equals("forgetvirus")){
-            String bemenet = "craft virologist0 forgetvirus";
+        else if(genetical.getEffect().equals(StringConstants.FORGETVIRUS)){
+            String bemenet = CRAFT_VIROLOGIST0+StringConstants.FORGETVIRUS;
             args = bemenet.split(" ");
         }
-        else if(genetical.getEffect().equals("protectvirus")){
-            String bemenet = "craft virologist0 protectvirus";
+        else if(genetical.getEffect().equals(StringConstants.PROTECTVIRUS)){
+            String bemenet = CRAFT_VIROLOGIST0+StringConstants.PROTECTVIRUS;
             args = bemenet.split(" ");
         }
-        else if(genetical.getEffect().equals("virusdance")){
-            String bemenet = "craft virologist0 virusdance";
+        else if(genetical.getEffect().equals(StringConstants.DANCEVIRUS)){
+            String bemenet = CRAFT_VIROLOGIST0+StringConstants.DANCEVIRUS;
             args = bemenet.split(" ");
         }
         else{
