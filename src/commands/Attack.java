@@ -1,6 +1,7 @@
 package commands;
 
 import src.Board;
+import src.StringConstants;
 import src.Virologist;
 
 public class Attack {
@@ -9,7 +10,7 @@ public class Attack {
             System.out.println("Not enough parameters!");
             return;
         }
-        if(!args[1].contains("virologist") && !args[2].contains("virologist")){
+        if(!args[1].contains(StringConstants.VIROLOGIST) && !args[2].contains(StringConstants.VIROLOGIST)){
             System.out.println("These are not virolgists!");
             return;
         }

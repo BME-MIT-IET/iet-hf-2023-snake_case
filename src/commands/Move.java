@@ -6,6 +6,8 @@ public class Move {
     /*Mozgas
      *@param args = A teljes parancs sor amit kap a felhasznalotol
      * Syntax: move [kit] [hova]*/
+
+    private static final  String NO_FIELD = "I can't find that field.";
     public void move(String[] args, Board con){
         if(con.getMezok().size()<2){
             System.out.println("Not enough fields! You need at least 2 to move from one to another.");
@@ -49,7 +51,7 @@ public class Move {
         if(args[2].contains("field")){
             String szam2 = args[2].substring(5);
             if(szam2.length() == 0){
-                System.out.println("I can't find that field.");
+                System.out.println(NO_FIELD);
                 return;
             }
             int hva = Integer.parseInt(szam2);
@@ -62,7 +64,7 @@ public class Move {
         else if(args[2].contains("laboratory")){
             String szam2 = args[2].substring(10);
             if(szam2.length() == 0){
-                System.out.println("I can't find that field.");
+                System.out.println(NO_FIELD);
                 return;
             }
             int hva = Integer.parseInt(szam2);
@@ -74,7 +76,7 @@ public class Move {
         else if(args[2].contains("warehouse")){
             String szam2 = args[2].substring(9);
             if(szam2.length() == 0){
-                System.out.println("I can't find that field.");
+                System.out.println(NO_FIELD);
                 return;
             }
             int hva = Integer.parseInt(szam2);
@@ -86,7 +88,7 @@ public class Move {
         else if(args[2].contains("shelter")) {
             String szam2 = args[2].substring(7);
             if(szam2.length() == 0){
-                System.out.println("I can't find that field.");
+                System.out.println(NO_FIELD);
                 return;
             }
             int hva = Integer.parseInt(szam2);

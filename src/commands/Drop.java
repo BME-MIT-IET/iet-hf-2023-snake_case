@@ -9,7 +9,7 @@ public class Drop {
             System.out.println("There are not enough arguments");
             return;
         }
-        if(board.getVirologusok().size() == 0){
+        if(board.getVirologusok().isEmpty()){
             System.out.println("There are no virologists on the board");
             return;
         }

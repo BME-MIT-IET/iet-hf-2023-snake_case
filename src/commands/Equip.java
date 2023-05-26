@@ -9,7 +9,7 @@ public class Equip {
         }
         /*Melyik virologushoz adunk*/
         /*A parancsban virologist volt-e megadva*/
-        if(args[1].length() < 10 || !args[1].substring(0,10).equals("virologist")) {
+        if(args[1].length() < 10 || !args[1].substring(0,10).equals(StringConstants.VIROLOGIST)) {
             System.out.println("virologist was expected, but got something else!");
             return;
         }
