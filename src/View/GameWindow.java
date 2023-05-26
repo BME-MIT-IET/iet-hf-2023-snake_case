@@ -104,16 +104,16 @@ public class GameWindow extends JFrame {
             }
 
             for (int i = 0; i < geneticalCodes.size(); i++) {
-                if (geneticalCodes.get(i).getEffect().equals("paralyze")) {
+                if (geneticalCodes.get(i).getEffect().equals(StringConstants.PARALYZE)) {
                     paralyze.addActionListener(new OtherCraftActionListener(geneticalCodes.get(i), board, control));
                     otherPanel.add(paralyze);
-                } else if (geneticalCodes.get(i).getEffect().equals("forgetvirus")) {
+                } else if (geneticalCodes.get(i).getEffect().equals(StringConstants.FORGETVIRUS)) {
                     forget.addActionListener(new OtherCraftActionListener(geneticalCodes.get(i), board, control));
                     otherPanel.add(forget);
-                } else if (geneticalCodes.get(i).getEffect().equals("protectvirus")) {
+                } else if (geneticalCodes.get(i).getEffect().equals(StringConstants.PROTECTVIRUS)) {
                     protect.addActionListener(new OtherCraftActionListener(geneticalCodes.get(i), board, control));
                     otherPanel.add(protect);
-                } else if (geneticalCodes.get(i).getEffect().equals("virusdance")) {
+                } else if (geneticalCodes.get(i).getEffect().equals(StringConstants.DANCEVIRUS)) {
                     virusdance.addActionListener(new OtherCraftActionListener(geneticalCodes.get(i), board, control));
                     otherPanel.add(virusdance);
                 }
@@ -149,16 +149,16 @@ public class GameWindow extends JFrame {
             ArrayList<Equipment> items = board.getVirologusok().get(0).getInv().GetEquipments();
 
             for (int i = 0; i < items.size(); i++) {
-                if (items.get(i).getName().equals("cape")) {
+                if (items.get(i).getName().equals(StringConstants.CAPE)) {
                     cape.addActionListener(new OtherDropActionListener(items.get(i), board, cape, control));
                     otherPanel.add(cape);
-                } else if (items.get(i).getName().equals("axe")) {
+                } else if (items.get(i).getName().equals(StringConstants.AXE)) {
                     axe.addActionListener(new OtherDropActionListener(items.get(i), board, axe, control));
                     otherPanel.add(axe);
-                } else if (items.get(i).getName().equals("bag")) {
+                } else if (items.get(i).getName().equals(StringConstants.BAG)) {
                     bag.addActionListener(new OtherDropActionListener(items.get(i), board, bag, control));
                     otherPanel.add(bag);
-                } else if (items.get(i).getName().equals("gloves")) {
+                } else if (items.get(i).getName().equals(StringConstants.GLOVES)) {
                     gloves.addActionListener(new OtherDropActionListener(items.get(i), board, gloves, control));
                     otherPanel.add(gloves);
                 }
@@ -207,7 +207,7 @@ public class GameWindow extends JFrame {
         String[] args;
         String bemenet = "endturn";
         args = bemenet.split(" ");
-        if(board.getVirologusok().get(0).getEffects().searchForEffect("bearvirus")){
+        if(board.getVirologusok().get(0).getEffects().searchForEffect(StringConstants.BEARVIRUS)){
             hideEveryComponentInOtherPanel(otherPanel);
             JLabel bearLabel = new JLabel("You have been infected with the bearvirus, the game is over for you.");
             otherPanel.add(bearLabel);
@@ -215,7 +215,7 @@ public class GameWindow extends JFrame {
         }
         for(int i = 0; i < board.getVirologusok().size(); i++){
             Virologist vir = board.getVirologusok().get(i);
-            if(!vir.getEffects().searchForEffect("bearvirus") && vir.getInv().getGcodes().size() == 4){
+            if(!vir.getEffects().searchForEffect(StringConstants.BEARVIRUS) && vir.getInv().getGcodes().size() == 4){
                 disableAll();
                 if(i == 0){
                     gcodes.setText("The player has earned an EPIC Victory Royale!");
