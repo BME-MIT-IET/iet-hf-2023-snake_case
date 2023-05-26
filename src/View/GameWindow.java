@@ -235,21 +235,24 @@ public class GameWindow extends JFrame {
     }
 
     //A board elemeinek szerializálása, az egész board-ot nem tudtam egyben szerializálni.
-    public void saveActionListener(ActionEvent e){
-        try{
-            FileOutputStream FileOut = new FileOutputStream("save.txt");
-            ObjectOutputStream ObjectOut = new ObjectOutputStream(FileOut);
+    public void saveActionListener(ActionEvent e) {
+
+        try (
+                FileOutputStream FileOut = new FileOutputStream("save.txt");
+                ObjectOutputStream ObjectOut = new ObjectOutputStream(FileOut)
+        ){
+
             ArrayList<Object> everyting = new ArrayList<>();
             everyting.add(board.getVirologusok());
             everyting.add(board.getMezok());
             everyting.add(board.getFelszerelesek());
             everyting.add(board.getGenetikaiKodok());
             ObjectOut.writeObject(everyting);
-            ObjectOut.close();
             System.out.println("Save successful!");
-        }catch(IOException ex){
+        } catch (IOException ex) {
             System.out.println(ex);
         }
+
     }
 
     public void startGame(Menu menu){
