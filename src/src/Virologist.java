@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Random;
 import effects.*;
 
+import static src.StringConstants.*;
+
 public class Virologist implements Update, Serializable {
     /*Valtozok*/
     private double dodgeChance;
@@ -14,11 +16,6 @@ public class Virologist implements Update, Serializable {
     private Field field;
 
     private final Random rand = new Random();
-    private static final String PARALYZE = "paralyze";
-    private static final String GLOVES = "gloves";
-    private static final String CAPE = "cape";
-    private static final String AXE = "axe";
-    private static final String BAG = "bag";
 
     public Virologist(int amino, int nukelo, double dodgeChance, Field field){
         if(dodgeChance > 1.0 || dodgeChance < 0.0){

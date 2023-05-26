@@ -10,6 +10,7 @@ public class Inventory implements Serializable {
     private final ArrayList<Equipment> equipment = new ArrayList<>();
     private final ArrayList<Agent> agents = new ArrayList<>();
     private final Materials materials;
+    private static final String INV_CREATED = "Inventory: I have created a new ";
 
     Inventory(int amino, int nukelo){
         materials = new Materials(amino, nukelo);
@@ -21,35 +22,35 @@ public class Inventory implements Serializable {
         /*Megnezi, hogy a listaban bent van-e a genetikai kod*/
         if(gCodes.contains(code)) {
             /*A genetikai kod benulas*/
-            if (code.getEffect().equals("paralyze")) {
+            if (code.getEffect().equals(StringConstants.PARALYZE)) {
                 /*Nem tudom, hogy ide kell-e a material check, levonas, de egyenlore nem teszzem be*/
                 Agent newAgent = new Agent(new Paralyzed());
                 agents.add(newAgent);
-                System.out.println("Inventory: I have created a new paralyze agent");
+                System.out.println(INV_CREATED+StringConstants.PARALYZE+" agent");
                 return true;
             }
-            else if(code.getEffect().equals("virusdance")){
+            else if(code.getEffect().equals(StringConstants.DANCEVIRUS)){
                 Agent newAgent = new Agent(new VirusDance());
                 agents.add(newAgent);
-                System.out.println("Inventory: I have created a new virusdance agent");
+                System.out.println(INV_CREATED+StringConstants.DANCEVIRUS);
                 return true;
             }
-            else if(code.getEffect().equals("protectvirus")){
+            else if(code.getEffect().equals(StringConstants.PROTECTVIRUS)){
                 Agent newAgent = new Agent(new ProtectEffect());
                 agents.add(newAgent);
-                System.out.println("Inventory: I have created a new protect agent");
+                System.out.println(INV_CREATED+StringConstants.PROTECTVIRUS);
                 return true;
             }
-            else if(code.getEffect().equals("forgetvirus")){
+            else if(code.getEffect().equals(StringConstants.FORGETVIRUS)){
                 Agent newAgent = new Agent(new ForgetEffect());
                 agents.add(newAgent);
-                System.out.println("Invenotry: I have created a new forgetvirus agent");
+                System.out.println(INV_CREATED+StringConstants.FORGETVIRUS);
                 return true;
             }
-            else if(code.getEffect().equals("bearvirus")){
+            else if(code.getEffect().equals(StringConstants.BEARVIRUS)){
                 Agent newAgent = new Agent(new BearEffect());
                 agents.add(newAgent);
-                System.out.println("Invenotry: I have created a new bearvirus agent");
+                System.out.println(INV_CREATED+StringConstants.BEARVIRUS);
                 return true;
             }
             /*---------------------------------------------------------------------------------------------

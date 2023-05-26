@@ -7,7 +7,7 @@ import java.io.Serializable;
 public class Bag extends Equipment implements Serializable {
     public Bag() {
         effect = new BagEffect();
-        name = "bag";
+        name = StringConstants.BAG;
         System.out.println("Bag: I'm Created.");
     }
 }

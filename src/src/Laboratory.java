@@ -30,7 +30,7 @@ public class Laboratory extends Field implements Serializable {
                 for(int i = 0; i < v.getInv().getAgents().size(); i++){
                     v.getInv().removeAgent(v.getInv().getAgents().get(i));
                 }
-                v.learnGCode(new GCode(0,0,"bearvirus"));
+                v.learnGCode(new GCode(0,0,StringConstants.BEARVIRUS));
             }
         }
     }
