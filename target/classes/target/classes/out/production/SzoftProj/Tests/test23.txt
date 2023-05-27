@@ -1,8 +1,0 @@
-create field
-create virologist 5 5 0 field0
-create virologist 5 5 0 field0
-create equipment cape 0
-create genetical code paralyze
-equip virologist0 cape0
-applyeffect virologist0 paralyze
-steal virologist1 virologist0 cape

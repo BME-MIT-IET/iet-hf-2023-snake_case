@@ -1,9 +1,0 @@
-The field has been created, you can use it later with the reference: field0
-Field: Added a neighbour.
-The field has been created, you can use it later with the reference: field1
-The virologist has been created, you can later use it with the reference: virologist0
-The genetical code has been created, you can use it later with the reference: paralyze
-The effect has been added.
-virologist0 has been affected by paralyze
-Virologist: I have called the 'Move' function.
-Virologist: The player is paralyzed.

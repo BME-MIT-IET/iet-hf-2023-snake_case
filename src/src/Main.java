@@ -1,6 +1,7 @@
 package src;
 
 import View.Menu;
+import View.SystemCall;
 import commands.*;
 
 import java.io.FileNotFoundException;
@@ -50,7 +51,8 @@ public class Main {
         commands.put("start", Main::start);
 
         //VISUAL START
-        menu = new Menu();
+        SystemCall system = new SystemCall();
+        menu = new Menu(system);
         menu.setVisible(true);
 
         while(!exit) {

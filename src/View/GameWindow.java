@@ -17,8 +17,9 @@ import java.util.ArrayList;
 
 public class GameWindow extends JFrame {
 
-    private JFrame mainMenu;
     private Board board;
+
+    private SystemCall system;
     
     //Buttons
     private JButton endTurn;
@@ -43,18 +44,12 @@ public class GameWindow extends JFrame {
     private View view;
 
 
-    GameWindow(JFrame menu){
-        mainMenu = menu;
+    public GameWindow(SystemCall systemCall, View view, Board board){
         Start start = new Start();
-        board = new Board();
-        String[] args = {};
-        try{
-            start.start(args, board);
-        }
-        catch(Exception e){
-            System.out.println(e);
-        }
-        view = new View();
+        system = systemCall;
+        this.board = board;
+
+        this.view = view;
     }
 
     public JPanel getBasicPanel(){
@@ -89,9 +84,13 @@ public class GameWindow extends JFrame {
         else {
             hideEveryComponentInOtherPanel(otherPanel);
             JButton paralyze = new JButton("paralyze");
+            paralyze.setName("ParalyzeButton");
             JButton forget = new JButton("forget");
+            forget.setName("ForgetButton");
             JButton protect = new JButton("protect");
+            protect.setName("ProtectButton");
             JButton virusdance = new JButton("virusdance");
+            virusdance.setName("VirusDanceButton");
 
             otherPanel.setLayout(new FlowLayout());
 
@@ -141,9 +140,13 @@ public class GameWindow extends JFrame {
         else {
             hideEveryComponentInOtherPanel(otherPanel);
             JButton cape = new JButton("Cape");
+            cape.setName("CapeButton");
             JButton axe = new JButton("Axe");
+            axe.setName("AxeButton");
             JButton bag = new JButton("Bag");
+            bag.setName("BagButton");
             JButton gloves = new JButton("Gloves");
+            gloves.setName("GloveButton");
             otherPanel.setLayout(new FlowLayout());
 
             ArrayList<Equipment> items = board.getVirologusok().get(0).getInv().GetEquipments();
@@ -188,7 +191,7 @@ public class GameWindow extends JFrame {
     }
 
     public void exitActionListener(ActionEvent e){
-        System.exit(0);
+        system.exit(0);
     }
 
     public void disableAll(){
@@ -248,18 +251,18 @@ public class GameWindow extends JFrame {
             everyting.add(board.getFelszerelesek());
             everyting.add(board.getGenetikaiKodok());
             ObjectOut.writeObject(everyting);
-            System.out.println("Save successful!");
+            system.out().println("Save successful!");
         } catch (IOException ex) {
-            System.out.println(ex);
+            system.out().println(ex);
         }
 
     }
 
-    public void startGame(Menu menu){
+    public void startGame(){
         //Megnezi, hogy a start sikerult-e, elvileg soha nem kene az if-be bemenni, de jobb felni
         if(board.getMezok().isEmpty()){
-            System.out.println("The game is not ready!");
-            System.exit(1);
+            system.out().println("The game is not ready!");
+            system.exit(1);
             return;
         }
 
@@ -279,13 +282,21 @@ public class GameWindow extends JFrame {
 
         //Buttons
         craft = new JButton("Craft");
+        craft.setName("CraftButton");
         drop = new JButton("Drop");
+        drop.setName("DropButton");
         collect = new JButton("Collect");
+        collect.setName("CollectButton");
         endTurn = new JButton("END TURN");
+        endTurn.setName("EndTurnButton");
         attack = new JButton("Attack");
+        attack.setName("AttackButton");
         steal = new JButton("Steal");
+        steal.setName("StealButton");
         save = new JButton("Save Game");
+        save.setName("SaveButton");
         exit = new JButton("Exit");
+        exit.setName("ExitButton");
 
         //Buttons ActionListenerek hozzarendeles
         craft.addActionListener(this::craftActionListener);
@@ -298,47 +309,8 @@ public class GameWindow extends JFrame {
         exit.addActionListener(this::exitActionListener);
 
         //MapPanel es MouseActionListener letrehozasa
-        mapPanel = new MapGraphics(board, this);//Elobb kell letrehozni, hogy lehessen ra hivatkozni
-        mapPanel.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-                //beallitja, hogy hova nyomott
-                mapPanel.setClickedX(e.getX());
-                mapPanel.setClickedY(e.getY());
-                
-                //Tesztkiiras
-                System.out.println("You clicked: x:"+mapPanel.getClickedX()+" y:"+mapPanel.getClickedY());
-                
-                //Ha valamire nyomott, ujrarajzolas!            Egyebkent ez nem ide kell feltetlenul, de nem tuom hova tegyuk, egyenlore szerintem jo ide -Dani
-                if(mapPanel.checkHit()) {
-                    mapPanel.repaint();
-                }
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
-        
-        
-        
-        
+        mapPanel = new MapGraphics(board, this, system);//Elobb kell letrehozni, hogy lehessen ra hivatkozni
+        mapPanel.setName("MapPanel");
         
         //Gomb igazitasok beallitasa(LEFT/CENTER/RIGHT)
         craft.setAlignmentX(Component.CENTER_ALIGNMENT);
@@ -356,6 +328,7 @@ public class GameWindow extends JFrame {
         actionsPanelA = new JPanel();
         actionsPanelB = new JPanel();
         basicPanel = new JPanel();
+        basicPanel.setName("BasicPanel");
         otherPanel = new JPanel();
 
         //Hatter szinek(atmeneti)
@@ -367,10 +340,6 @@ public class GameWindow extends JFrame {
         actionsPanelMain.setLayout(new BorderLayout());
         actionsPanelA.setLayout(new BoxLayout(actionsPanelA, BoxLayout.PAGE_AXIS));
         actionsPanelB.setLayout(new FlowLayout());
-
-
-        //Meret beallitas
-        mapPanel.setPreferredSize(new Dimension(800, 400));
 
         
         //Panelekhez gombok, egyeb vizualis dolgok addolasa
@@ -430,13 +399,11 @@ public class GameWindow extends JFrame {
         this.setTitle("The World of Blind Virologists");
         this.setResizable(false);
 
-        control = new Control(board, this, view);
-
+        control = new Control(board.getVirologusok().get(0), this, view);
         control.invalidateBasicPanel();
         //Ablak valtas
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setVisible(true);
-        menu.setVisible(false);
     }
 
     public void setBoard(Board br){

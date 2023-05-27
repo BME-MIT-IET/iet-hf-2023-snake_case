@@ -1,5 +1,0 @@
-create field
-create equipment cape 0
-create virologist 5 5 0.5 field0
-equip virologist0 cape0
-drop virologist0 cape

@@ -1,5 +1,0 @@
-create field
-create genetical code bearvirus
-create warehouse 50 amino 3 field0
-create virologist 5 5 0 field0
-applyeffect virologist0 bearvirus

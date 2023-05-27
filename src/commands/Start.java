@@ -9,7 +9,13 @@ import java.util.Scanner;
 public class Start {
 
     public void start(String[] args, Board b) throws FileNotFoundException {
-        File file = new File("map1.txt");
+        File file = null;
+        if(args.length>=1){
+            file = new File(args[0]);
+        }else{
+            file = new File("map1.txt");
+        }
+
         Scanner sc = new Scanner(file);
         String[] commands;
         while (sc.hasNextLine()) {
@@ -23,7 +29,11 @@ public class Start {
         sc.close();
         
         //Map pont txt beolvasas, ami kell a megjeleniteshez
-        file = new File("mapkoord1.txt");
+        if(args.length>=2){
+            file = new File(args[0]);
+        }else{
+            file = new File("mapkoord1.txt");
+        }
         sc = new Scanner(file);
         while (sc.hasNextLine()) {
         	String s = sc.nextLine();

@@ -1,5 +1,0 @@
-create field
-create warehouse 50 amino 3 field0
-create virologist 1 1 0.5 field0
-move virologist0 warehouse1
-collect virologist0
