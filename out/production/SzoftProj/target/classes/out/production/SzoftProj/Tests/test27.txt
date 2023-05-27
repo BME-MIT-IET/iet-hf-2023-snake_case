@@ -1,0 +1,8 @@
+create field
+create field field0
+create genetical code paralyze
+create virologist 1 1 0 field0
+create virologist 5 5 0 field1
+applyeffect virologist1 paralyze
+move virologist0 field1
+steal virologist0 virologist1 material
