@@ -5,6 +5,12 @@ import src.*;
 import static src.StringConstants.*;
 
 public class Create {
+
+    /*Seged fuggveny a parseNeighbour*/
+    private static class ParseNeighbourReturnClass{
+        int[] melyik = new int[8];
+        boolean sikertelen = false;
+    }
     private static final String FIELDERROR = "I couldn't create the field.";
     private static final String CODE_EXISTS = "This genetical code already exists!";
     private static final String CODE_CREATED = "The genetical code has been created, you can use it later with the reference: ";
@@ -128,26 +134,36 @@ public class Create {
         }
 
         String fieldType = args[1];
+        System.out.println("A FIELD TYPE: " + fieldType);
+        ParseNeighbourReturnClass eredmeny;
         switch(fieldType){
             case FIELD:
-                if(parseNeighbours(args, CREATE_FIELD_PAR_NUM, melyik)){
+                eredmeny = parseNeighbours(args, CREATE_FIELD_PAR_NUM, melyik);
+                if(eredmeny.sikertelen){
                     return null;
                 }
+                melyik = eredmeny.melyik;
                 break;
             case SHELTER:
-                if(parseNeighbours(args, CREATE_SHELTER_PAR_NUM, melyik)){
+                eredmeny = parseNeighbours(args, CREATE_SHELTER_PAR_NUM, melyik);
+                if(eredmeny.sikertelen){
                     return null;
                 }
+                melyik = eredmeny.melyik;
                 break;
             case WAREHOUSE:
-                if(parseNeighbours(args, CREATE_WAREHOUSE_PAR_NUM, melyik)){
+                eredmeny = parseNeighbours(args, CREATE_WAREHOUSE_PAR_NUM, melyik);
+                if(eredmeny.sikertelen){
                     return null;
                 }
+                melyik = eredmeny.melyik;
                 break;
             case LABORATORY:
-                if(parseNeighbours(args, CREATE_LABORATORY_PAR_NUM, melyik)){
+                eredmeny = parseNeighbours(args, CREATE_LABORATORY_PAR_NUM, melyik);
+                if(eredmeny.sikertelen){
                     return null;
                 }
+                melyik = eredmeny.melyik;
                 break;
             default:
                 throw new UnsupportedOperationException();
@@ -160,13 +176,16 @@ public class Create {
         return f1;
     }
 
-    private static boolean parseNeighbours(String[] args, int paramNum, int[] melyik){
+    private static ParseNeighbourReturnClass parseNeighbours(String[] args, int paramNum, int[] melyik){
+        ParseNeighbourReturnClass returnable = new ParseNeighbourReturnClass();
         for(int i = paramNum; i < args.length; i++){
             int[] atmeneti = melyik;
             int x = 0;
             melyik = whichSetting(args, i);
             if(melyik.length == 0){
-                return true;
+                returnable.melyik = melyik;
+                returnable.sikertelen = true;
+                return returnable;
             }
             for(int e = 0; e < melyik.length; e++){
                 if(melyik[e] == -1){
@@ -175,7 +194,9 @@ public class Create {
                 }
             }
         }
-        return false;
+        returnable.melyik = melyik;
+        returnable.sikertelen = false;
+        return returnable;
     }
 
     /*Ezzel lehet letrehozni uj dolgokat a jatekterrre
@@ -353,7 +374,7 @@ public class Create {
     private boolean createShelterPhysically(String[] args, Board board, String item){
         String eqSzam = args[2].substring(item.length());
         if(eqSzam.length() == 0){
-            System.out.println("I can't find that cape.");
+            System.out.println("I can't find that item.");
             return true;
         }
         int melyik = Integer.parseInt(eqSzam);
@@ -409,30 +430,30 @@ public class Create {
         }
 
         String itemName = args[2];
-        switch(itemName){
-            case BAG:
-                if(createShelterPhysically(args, board, BAG)){
-                    return true;
-                }
-                break;
-            case CAPE:
-                if(createShelterPhysically(args, board, CAPE)){
-                    return true;
-                }
-                break;
-            case GLOVES:
-                if(createShelterPhysically(args, board, GLOVES)){
-                    return true;
-                }
-                break;
-            case AXE:
-                if(createShelterPhysically(args, board, AXE)){
-                    return true;
-                }
-                break;
-            default:
-                System.out.println("Something is not right! I can't find the equipment.");
-                throw new UnsupportedOperationException();
+        System.out.println("AZ ITEM NAME: " + itemName);
+        if(itemName.contains(BAG)){
+            if(createShelterPhysically(args, board, BAG)){
+                return true;
+            }
+        }
+        else if(itemName.contains(CAPE)){
+            if(createShelterPhysically(args, board, CAPE)){
+                return true;
+            }
+        }
+        else if(itemName.contains(GLOVES)){
+            if(createShelterPhysically(args, board, GLOVES)){
+                return true;
+            }
+        }
+        else if(itemName.contains(AXE)){
+            if(createShelterPhysically(args, board, AXE)){
+                return true;
+            }
+        }
+        else{
+            System.out.println("Something is not right! I can't find the equipment.");
+            throw new UnsupportedOperationException();
         }
         return false;
     }
