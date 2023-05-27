@@ -16,5 +16,5 @@ public final class StringConstants {
     public static final String SHELTER = "shelter";
     public static final String WAREHOUSE = "warehouse";
 
-    private StringConstants(){}
+    public StringConstants(){}
 }

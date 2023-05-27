@@ -27,3 +27,4 @@ Ezután a create függvény legfőbb if-else szerkezetét lecseréltük egy swit
 
 A komplexitást sikeresen lecsökkentettük 43-ra az eredeti 111-ről. Ez egy nagyon jó végeredmény, sokkal átláthatóbb és karbantarthatóbb lett a kód. Nem értük el a SonarLint által javasolt 15-ös komplexitási küszöbértéket, de úgy véljük, hogy ennek elérése indokolatlan. Ha ennél is tovább tördelnénk a kódot és mégtöbb függvényt hoznánk létre, az a olvashatóság rovására menne.
 
+Manuális teszt során problémák jöttek elő, amiket a korábban leírt változtatások eredményeztek. Szükséges volt egy új belső osztály létrehozása is. A hibákat kijavítottuk, a program ismét működépes.
