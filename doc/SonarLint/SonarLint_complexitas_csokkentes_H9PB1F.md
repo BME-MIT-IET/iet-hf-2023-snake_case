@@ -15,3 +15,7 @@ Ez alapján azzal, ha összeolvasztom a két if-et(amiben semmi nem állít meg,
 Amennyiben az alsó if-nek a feltételét egy külön, beszédesebb nevű függvénybe szervezem ki, akkor igen, ez valóban egy könyebben olvasható, könnyebben karbantartható kód lesz. (A SonarLint által mutattott példakódban is így szerepel)
 
 Az **OtherStealActionListener**-ben találtam egy **kód duplikálást**, aminek kiszereverzésével a komplexitást is megoldottam. A kiszervezést a "setWhichButtonShouldBeVisible" függvényben valósítottam meg.
+
+Az **ApplyEffect**-ben keresés közben találtam egy másik ajánlást amit a SonarLint generált, miszerint ha a **substring** paranncsal a az adott string elején keresünk, akkor van egy másik egyszerűbb alternatíva a **startwith()** függvény. Erről nem tudtam, hogy létezik, de most már aktívon fogom tudni használni.
+
+Az **ApplyEffect**-et tovább vizsgálva elég nehezen találtam olyan megoldást, amivel a komplixtástt lehetne csökkenteni. Végül úgy döntöttem, hogy az **applyEffect** függvény elején lévő két bemenetet ellenőrző if-et összeolvasztom és kiszervezem egy külön függvénybe. Ez lett az **inputSyntaxCheck(String[] args)**
