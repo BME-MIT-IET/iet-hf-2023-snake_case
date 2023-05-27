@@ -1,6 +1,6 @@
 package View;
 
-import actionListeners.*;
+import action_listeners.*;
 import commands.EndTurn;
 import commands.Start;
 import src.*;
@@ -172,7 +172,7 @@ public class GameWindow extends JFrame {
         else {
             hideEveryComponentInOtherPanel(otherPanel);
             OtherAttackActionListener atvisz = new OtherAttackActionListener(board, otherPanel, control);
-            atvisz.InitButtons();
+            atvisz.initButtons();
         }
     }
 

@@ -5,13 +5,7 @@ import effects.*;
 
 public class    ApplyEffect {
     public void applyEffect(String[] args, Board board){
-        if (args.length > 3 || args.length < 2){
-            System.out.println("Number of parameters doesn't match!");
-        }
-        /*Melyik virologushoz adunk*/
-        /*A parancsban virologist volt-e megadva*/
-        if(args[1].length() < 10 || !args[1].substring(0,10).equals("virologist")) {
-            System.out.println("virologist was expected, but got something else!");
+        if(inputSyntaxCheck(args)){
             return;
         }
         String vID = args[1].substring(10);
@@ -59,6 +53,18 @@ public class    ApplyEffect {
                 break;
             }
         }
-
+    }
+    private boolean inputSyntaxCheck(String[] args){
+        if (args.length > 3 || args.length < 2){
+            System.out.println("Number of parameters doesn't match!");
+            return true;
+        }
+        /*Melyik virologushoz adunk*/
+        /*A parancsban virologist volt-e megadva*/
+        if(args[1].length() < 10 || !args[1].startsWith("virologist")) {
+            System.out.println("virologist was expected, but got something else!");
+            return true;
+        }
+        return false;
     }
 }

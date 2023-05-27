@@ -1,4 +1,4 @@
-package actionListeners;
+package action_listeners;
 
 import View.Control;
 import commands.Steal;
@@ -98,20 +98,9 @@ public class OtherStealActionListener implements ActionListener {
             bag.setVisible(false);
             axe.setVisible(false);
             confirm.setVisible(false);
-            for(int i = 0; i < target.getInv().GetEquipments().size(); i++){
-                if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.CAPE)){
-                    cape.setVisible(true);
-                }
-                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.AXE)){
-                    axe.setVisible(true);
-                }
-                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.GLOVES)){
-                    gloves.setVisible(true);
-                }
-                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.BAG)){
-                    bag.setVisible(true);
-                }
-            }
+
+            setWhichButtonShouldBeVisible(target);
+
             mat.setVisible(true);
             confirm.setVisible(true);
         }
@@ -124,20 +113,9 @@ public class OtherStealActionListener implements ActionListener {
             bag.setVisible(false);
             axe.setVisible(false);
             confirm.setVisible(false);
-            for(int i = 0; i < target.getInv().GetEquipments().size(); i++){
-                if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.CAPE)){
-                    cape.setVisible(true);
-                }
-                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.AXE)){
-                    axe.setVisible(true);
-                }
-                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.GLOVES)){
-                    gloves.setVisible(true);
-                }
-                else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.BAG)){
-                    bag.setVisible(true);
-                }
-            }
+
+            setWhichButtonShouldBeVisible(target);
+
             mat.setVisible(true);
             confirm.setVisible(true);
         }
@@ -153,20 +131,35 @@ public class OtherStealActionListener implements ActionListener {
         else if(e.getSource() == mat){
             item = "material";
         }
-        else if(e.getSource() == confirm){
-            if(target != null && item != null){
-                Steal stl = new Steal();
-                String[] args;
-                String bemenet = "steal virologist0 virologist" + targetID + " " + item;
-                args = bemenet.split(" ");
-                stl.steal(args, board);
-
-            }
+        else if(e.getSource() == confirm && isTargetAndItemNotNull()){
+            Steal stl = new Steal();
+            String[] args;
+            String bemenet = "steal virologist0 virologist" + targetID + " " + item;
+            args = bemenet.split(" ");
+            stl.steal(args, board);
         }
         control.invalidateBasicPanel();
-        //for(int i = 0; i < otherPanel.getComponentCount(); i++){
-          //  otherPanel.getComponent(i).setVisible(false);
-        // }
+    }
+
+    private boolean isTargetAndItemNotNull(){
+        return target != null && item != null;
+    }
+
+    private void setWhichButtonShouldBeVisible(Virologist target){
+        for(int i = 0; i < target.getInv().GetEquipments().size(); i++){
+            if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.CAPE)){
+                cape.setVisible(true);
+            }
+            else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.AXE)){
+                axe.setVisible(true);
+            }
+            else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.GLOVES)){
+                gloves.setVisible(true);
+            }
+            else if(target.getInv().GetEquipments().get(i).getName().equals(StringConstants.BAG)){
+                bag.setVisible(true);
+            }
+        }
     }
 }
 

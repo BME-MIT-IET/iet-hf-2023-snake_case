@@ -1,4 +1,4 @@
-package actionListeners;
+package action_listeners;
 
 import View.Control;
 import commands.Craft;
