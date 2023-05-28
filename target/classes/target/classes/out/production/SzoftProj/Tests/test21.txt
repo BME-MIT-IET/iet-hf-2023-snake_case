@@ -1,6 +1,0 @@
-create field
-create field field0
-create virologist 5 5 0 field0
-create genetical code paralyze
-applyeffect virologist0 paralyze
-move virologist0 field1

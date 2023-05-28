@@ -1,0 +1,46 @@
+create genetical code paralyze
+create genetical code protectvirus
+create genetical code forgetvirus
+create genetical code virusdance
+create genetical code bearvirus
+create equipment cape 0.823
+create equipment bag
+create equipment gloves
+create equipment axe
+create warehouse 5 a 3
+create field warehouse0
+create field warehouse0 field1
+create shelter gloves2 field1
+create field field2
+create field field2
+create field shelter3 field4
+create warehouse 3 n 3 field4 field5
+create field field5
+create laboratory forgetvirus 0 field5 field8
+create field field5 laboratory9
+create laboratory virusdance 0 field6
+create field field6 warehouse7
+create shelter bag1 warehouse7 field12
+create field warehouse7 shelter13
+create field warehouse7 field10 field14
+create shelter cape0 field10 field15
+create field laboratory11
+create field laboratory11 field17
+create field laboratory11 field12 shelter13 field18
+create field shelter13 field19
+create shelter axe3 field18
+create field field19 field20 shelter21
+create warehouse 3 a 2 field20 field22
+create laboratory paralyze 0 field20 warehouse23
+create field shelter21 field22
+create laboratory protectvirus 0 field22 field25
+create field field22 laboratory26
+create field field22
+create field warehouse23 field28
+create field laboratory24 field29
+create field field25
+create warehouse 5 n 4 field27 field28
+create field shelter13 field14 shelter16 laboratory24
+create virologist 2 2 0.2 field6
+create virologist 2 2 0.2 field10
+create virologist 2 2 0.2 field25

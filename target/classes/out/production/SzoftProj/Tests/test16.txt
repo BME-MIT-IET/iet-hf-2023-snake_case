@@ -1,7 +1,0 @@
-create genetical code paralyze
-create laboratory paralyze 0
-create virologist 5 5 0 laboratory0
-create virologist 5 5 1 laboratory0
-collect virologist0
-craft virologist0 paralyze
-attack virologist0 virologist1 paralyze

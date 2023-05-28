@@ -6,6 +6,8 @@ import src.Field;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 //Beagyazott Osztaly, ha mas nem ideiglenesen
@@ -18,9 +20,54 @@ public class MapGraphics extends JPanel {
     private Board board;
     private GameWindow gameWindow;
 
-    public MapGraphics(Board board, GameWindow gameWindow){
+    private MapGraphics that;
+
+    SystemCall system;
+
+    public MapGraphics(Board board, GameWindow gameWindow, SystemCall systemCall){
         this.board = board;
         this.gameWindow = gameWindow;
+        this.system = systemCall;
+        this.that = this;
+        this.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                //beallitja, hogy hova nyomott
+                that.setClickedX(e.getX());
+                that.setClickedY(e.getY());
+
+                //Tesztkiiras
+                system.out().println("You clicked: x:"+that.getClickedX()+" y:"+that.getClickedY());
+
+                //Ha valamire nyomott, ujrarajzolas!            Egyebkent ez nem ide kell feltetlenul, de nem tuom hova tegyuk, egyenlore szerintem jo ide -Dani
+                if(that.checkHit()) {
+                    that.repaint();
+                }
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+        //Meret beallitas
+        this.setPreferredSize(new Dimension(800, 400));
     }
 
     //Minden ujrarajzolaskor ez meghivodik, frissitve a map-et
@@ -174,7 +221,7 @@ public class MapGraphics extends JPanel {
                 if(!board.getAction() && !board.getMove()){
                     gameWindow.noMoreAction();
                 }
-                System.out.println("Field"+ i +"-re nyomott!");
+                system.out().println("Field"+ i +"-re nyomott!");
                 Move move = new Move();
                 String[] args;
                 String bemenet = "move virologist0 field" + i;

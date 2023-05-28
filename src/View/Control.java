@@ -6,17 +6,15 @@ import java.util.ArrayList;
 
 public class Control {
 
-    private final Board board;
     private final Virologist player;
 
     private final GameWindow gameWindow;
     private final View view;
 
-    public Control(Board board, GameWindow gameWindow, View view){
-        this.board = board;
+    public Control(Virologist player, GameWindow gameWindow, View view){
         this.gameWindow = gameWindow;
         this.view = view;
-        player = board.getVirologusok().get(0);
+        this.player = player;
     }
 
     public void invalidateBasicPanel(){

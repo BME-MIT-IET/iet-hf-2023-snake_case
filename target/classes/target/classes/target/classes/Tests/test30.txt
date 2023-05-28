@@ -1,5 +1,0 @@
-create warehouse 3 amino 3
-create virologist 5 5 0 warehouse0
-create equipment bag
-equip virologist0 bag0
-collect virologist0

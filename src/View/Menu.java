@@ -12,19 +12,32 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
+import commands.Start;
 
 public class Menu extends JFrame {
     private JButton start;
     private JButton load;
     private JButton exit;
 
+    private SystemCall system;
+
     private void exitAction(ActionEvent e){
-        System.exit(0);
+        system.exit(0);
     }
 
     private void startAction(ActionEvent e){
-        GameWindow game = new GameWindow(this);
-        game.startGame(this);
+        Start start = new Start();
+        Board board = new Board();
+        String[] args = {};
+        try{
+            start.start(args, board);
+        }
+        catch(Exception ex){
+            system.out().println(ex);
+        }
+        GameWindow game = new GameWindow(system, new View(), board);
+        game.startGame();
+        this.setVisible(false);
     }
 
     //Szerializált dolgok betöltése
@@ -37,27 +50,40 @@ public class Menu extends JFrame {
             ArrayList<Object> minden;
             minden = (ArrayList<Object>)ObjectIn.readObject();
             ObjectIn.close();
-            GameWindow game = new GameWindow(this);
-            System.out.println("Sikeres betoltes!");
+            Start start = new Start();
+            Board board = new Board();
+            String[] args = {};
+            try{
+                start.start(args, board);
+            }
+            catch(Exception ex){
+                system.out().println(ex);
+            }
+            GameWindow game = new GameWindow(system, new View(), board);
+            system.out().println("Sikeres betoltes!");
             game.getBoard().setVirologusok((ArrayList<Virologist>) minden.get(0));
             game.getBoard().setFields((ArrayList<Field>) minden.get(1));
             game.getBoard().setFelszerelesek((ArrayList<Equipment>) minden.get(2));
             game.getBoard().setGenetikaiKodok((ArrayList<GCode>) minden.get(3));
-            game.startGame(this);
+            game.startGame();
+            this.setVisible(false);
 
         } catch (IOException | ClassNotFoundException | ClassCastException ex) {
-            System.out.println(ex);
+            system.out().println(ex);
         }
     }
 
     //Jelenleg nincs nalam a az elozo felevi munkam, majd megoldom szebbre is
-    public Menu() throws IOException {
+    public Menu(SystemCall systemCall) throws IOException {
         this.setLayout(new BorderLayout());
-
+        this.system = systemCall;
         //Gombok letrehozasa
         start = new JButton("START");
+        start.setName("StartButton");
         load = new JButton("LOAD");
+        load.setName("LoadButton");
         exit = new JButton("EXIT");
+        exit.setName("ExitButton");
 
         //ActionListenerek
         start.addActionListener(this::startAction);

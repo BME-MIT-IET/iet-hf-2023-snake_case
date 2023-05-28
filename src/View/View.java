@@ -30,10 +30,15 @@ public class View {
         effectedEffectsText = new JLabel("The effects you are affected by: ");
         geneticalCodesText = new JLabel("The genetical codes you know: ");
         materials = new JLabel("none");
+        materials.setName("MaterialsLabel");
         effectedEffects = new JLabel("none");
+        effectedEffects.setName("EffectedEffectsLabel");
         equipment = new JLabel("none");
+        equipment.setName("EquipmentLabel");
         geneticalCodes = new JLabel("none");
+        geneticalCodes.setName("GeneticalCodesLabel");
         agents = new JLabel("none");
+        agents.setName("AgentsLabel");
 
         //Basic panel reset
         basicPanel.setLayout(new GridBagLayout());
