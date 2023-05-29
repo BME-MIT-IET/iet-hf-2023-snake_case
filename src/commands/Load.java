@@ -34,72 +34,69 @@ public class Load {
             while (sc.hasNextLine()) {
                 String s = sc.nextLine();
                 commands = s.split(" ");
-                if (commands[0].equals("create")) {
-                    Create createLoad = new Create();
-                    createLoad.create(commands, b);
-                } else if (commands[0].equals("attack")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    Attack atkLoad = new Attack();
-                    atkLoad.attack(commands, b);
-                } else if (commands[0].equals("collect")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    Collect collLoad = new Collect();
-                    collLoad.collect(commands, b);
-                } else if (commands[0].equals("move")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    move = b.getMove();
-                    if(!move){
-                        b.setMove(true);
-                    }
-                    Move moveLoad = new Move();
-                    moveLoad.move(commands, b);
-                } else if (commands[0].equals("craft")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    Craft craftLoad = new Craft();
-                    craftLoad.craft(commands, b);
-                } else if (commands[0].equals("drop")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    Drop dropLoad = new Drop();
-                    dropLoad.drop(commands, b);
-                } else if (commands[0].equals("steal")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    Steal stealLoad = new Steal();
-                    stealLoad.steal(commands, b);
-                } else if (commands[0].equals("list")) {
-                    List listLoad = new List();
-                    listLoad.list(commands, b);
-                } else if (commands[0].equals("applyeffect")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    ApplyEffect afLoad = new ApplyEffect();
-                    afLoad.applyEffect(commands, b);
-                } else if (commands[0].equals("equip")) {
-                    action = b.getAction();
-                    if(!action){
-                        b.setAction(true);
-                    }
-                    Equip equipLoad = new Equip();
-                    equipLoad.equip(commands, b);
+                String givenCommand = commands[0];
+                switch(givenCommand){
+                    case "create":
+                        Create createLoad = new Create();
+                        createLoad.create(commands, b);
+                        break;
+                    case "attack":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+
+                        Attack atkLoad = new Attack();
+                        atkLoad.attack(commands, b);
+                        break;
+                    case "collect":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        Collect collLoad = new Collect();
+                        collLoad.collect(commands, b);
+                        break;
+                    case "move":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        move = b.getMove();
+                        b.setMove(moveCheck(move));
+                        Move moveLoad = new Move();
+                        moveLoad.move(commands, b);
+                        break;
+                    case "craft":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        Craft craftLoad = new Craft();
+                        craftLoad.craft(commands, b);
+                        break;
+                    case "drop":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        Drop dropLoad = new Drop();
+                        dropLoad.drop(commands, b);
+                        break;
+                    case "steal":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        Steal stealLoad = new Steal();
+                        stealLoad.steal(commands, b);
+                        break;
+                    case "list":
+                        List listLoad = new List();
+                        listLoad.list(commands, b);
+                        break;
+                    case "applyeffect":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        ApplyEffect afLoad = new ApplyEffect();
+                        afLoad.applyEffect(commands, b);
+                        break;
+                    case "equip":
+                        action = b.getAction();
+                        b.setAction(actionCheck(action));
+                        Equip equipLoad = new Equip();
+                        equipLoad.equip(commands, b);
+                        break;
+                    default:
+                        throw new UnsupportedOperationException();
                 }
             }
             System.setOut(psc);
@@ -143,5 +140,19 @@ public class Load {
         catch(FileNotFoundException fe){
             System.out.println("Invalid test case!");
         }
+    }
+
+    private boolean actionCheck(boolean action){
+        if(!action){
+            return true;
+        }
+        return false;
+    }
+
+    private boolean moveCheck(boolean action){
+        if(!action){
+            return true;
+        }
+        return false;
     }
 }
