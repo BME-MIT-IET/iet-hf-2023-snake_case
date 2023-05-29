@@ -1,6 +1,7 @@
 package commands;
 
 import src.Board;
+import src.StringConstants;
 
 public class Move {
     /*Mozgas
@@ -46,57 +47,47 @@ public class Move {
         	System.out.println("The chosen field is not neighbour of the field you are standing on!");
         	return;
         }
+        movePhysically(args, con, sz);
+    }
 
-        
-        if(args[2].contains("field")){
+    private void movePhysically(String[] args, Board con, int sz){
+        if(args[2].contains(StringConstants.FIELD)){
             String szam2 = args[2].substring(5);
-            if(szam2.length() == 0){
-                System.out.println(NO_FIELD);
-                return;
-            }
-            int hva = Integer.parseInt(szam2);
-            /*Megnezi, hogy ahova lepni szeretnenk, az szomszedja-e a jelenlegi mezonek*/
-            if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
+            if(executeMove(szam2, con, sz)){
                 return;
             }
         }
-        else if(args[2].contains("laboratory")){
+        else if(args[2].contains(StringConstants.LABORATORY)){
             String szam2 = args[2].substring(10);
-            if(szam2.length() == 0){
-                System.out.println(NO_FIELD);
-                return;
-            }
-            int hva = Integer.parseInt(szam2);
-            if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
+            if(executeMove(szam2, con, sz)){
                 return;
             }
         }
-        else if(args[2].contains("warehouse")){
+        else if(args[2].contains(StringConstants.WAREHOUSE)){
             String szam2 = args[2].substring(9);
-            if(szam2.length() == 0){
-                System.out.println(NO_FIELD);
-                return;
-            }
-            int hva = Integer.parseInt(szam2);
-            if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
+            if(executeMove(szam2, con, sz)){
                 return;
             }
         }
-        else if(args[2].contains("shelter")) {
+        else if(args[2].contains(StringConstants.SHELTER)) {
             String szam2 = args[2].substring(7);
-            if(szam2.length() == 0){
-                System.out.println(NO_FIELD);
-                return;
-            }
-            int hva = Integer.parseInt(szam2);
-            if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
-                con.getVirologusok().get(sz).move(con.getMezok().get(hva));
+            if(executeMove(szam2, con, sz)){
                 return;
             }
         }
         System.out.println("The chosen field is not neighbour of the field you are standing on!");
+    }
+
+    private boolean executeMove(String szam2, Board con, int sz){
+        if(szam2.length() == 0){
+            System.out.println(NO_FIELD);
+            return true;
+        }
+        int hva = Integer.parseInt(szam2);
+        if(con.getMezok().get(hva).getNeighbours().contains(con.getVirologusok().get(sz).getField())){
+            con.getVirologusok().get(sz).move(con.getMezok().get(hva));
+            return true;
+        }
+        return false;
     }
 }

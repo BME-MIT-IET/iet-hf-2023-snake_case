@@ -12,10 +12,9 @@ public class BearEffect extends Effect implements Serializable {
         duration = 0;
         timeLeft = 0;
     }
-
+    Random rand  = new Random();
     @Override
     public void effect(Virologist v) {
-        Random rand  = new Random();
         /*Merre mozog a medve, először mindig lép*/
         int randommove = rand.nextInt(v.getField().getNeighbours().size());
         /*Elmozdul a random szomszedos mezore*/
@@ -24,18 +23,7 @@ public class BearEffect extends Effect implements Serializable {
 
         /*Ha vannak azon a mezon akkor megtamad mindenkit ott*/
         if(v.getField().getVirologists().size() > 1){
-            for(int i = 0; i < v.getField().getVirologists().size(); i++){
-                /*Akin nincs beareffect azt megtamadja egy bearvirus-al*/
-                if(!v.getField().getVirologists().get(i).getEffects().searchForEffect(StringConstants.BEARVIRUS)){
-                    /*Ezzel fog támadni, ingyen craftolja, mert végtelen van neki*/
-                    for(int e = 0; e < v.getInv().getGcodes().size(); e++){
-                        if(v.getInv().getGcodes().get(i).getEffect().equals(StringConstants.BEARVIRUS)){
-                            v.craft(v.getInv().getGcodes().get(i));
-                        }
-                    }
-                    v.attack(v, v.getField().getVirologists().get(i), StringConstants.BEARVIRUS);
-                }
-            }
+            bearAttack(v);
         }
         else{
             /*Ha nincs senki a mezon akkor lep megegyet*/
@@ -52,4 +40,19 @@ public class BearEffect extends Effect implements Serializable {
     }
 
     public void removeEffect(Virologist v){}
+
+    public void bearAttack(Virologist v){
+        for(int i = 0; i < v.getField().getVirologists().size(); i++){
+            /*Akin nincs beareffect azt megtamadja egy bearvirus-al*/
+            if(!v.getField().getVirologists().get(i).getEffects().searchForEffect(StringConstants.BEARVIRUS)){
+                /*Ezzel fog támadni, ingyen craftolja, mert végtelen van neki*/
+                for(int e = 0; e < v.getInv().getGcodes().size(); e++){
+                    if(v.getInv().getGcodes().get(i).getEffect().equals(StringConstants.BEARVIRUS)){
+                        v.craft(v.getInv().getGcodes().get(i));
+                    }
+                }
+                v.attack(v, v.getField().getVirologists().get(i), StringConstants.BEARVIRUS);
+            }
+        }
+    }
 }
