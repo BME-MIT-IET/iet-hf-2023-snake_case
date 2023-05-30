@@ -20,4 +20,10 @@ public class VirologistCollectsMaterialDef {
         assert InitializeBasicsDef.getPlayer().getInv().getMaterials().getAmino() == 0;
         assert InitializeBasicsDef.getPlayer().getInv().getMaterials().getNukleo() == 1;
     }
+
+    @Then("The player should not have an nukleotid")
+    public void thePlayerShouldNotHaveAnNukleotid() {
+        assert InitializeBasicsDef.getPlayer().getInv().getMaterials().getAmino() == 0;
+        assert InitializeBasicsDef.getPlayer().getInv().getMaterials().getNukleo() == 0;
+    }
 }
