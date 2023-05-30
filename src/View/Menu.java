@@ -28,7 +28,7 @@ public class Menu extends JFrame {
     private void startAction(ActionEvent e){
         Start start = new Start();
         Board board = new Board();
-        String[] args = {};
+        String[] args = {"mapTestNoBear.txt"};
         try{
             start.start(args, board);
         }

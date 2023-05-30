@@ -39,6 +39,7 @@ public class OtherAttackActionListener implements ActionListener {
         this.kit = null;
         this.mivel = null;
         this.confirm = new JButton("Confirm");
+        confirm.setName("ConfirmButton");
         confirm.addActionListener(this);
         this.control = control;
         virButt = new ArrayList<>();
@@ -59,6 +60,7 @@ public class OtherAttackActionListener implements ActionListener {
             switch(i){
                 case 0:
                     agent0 = new JRadioButton(virologusok.get(0).getInv().getAgents().get(0).getEffect().getMyEffect());
+                    agent0.setName("Agent0RadioButton");
                     agensGroup.add(agent0);
                     agent0.addActionListener(this);
                     agent0.setBackground(Color.GREEN);
@@ -66,6 +68,7 @@ public class OtherAttackActionListener implements ActionListener {
                     break;
                 case 1:
                     agent1 = new JRadioButton(virologusok.get(0).getInv().getAgents().get(1).getEffect().getMyEffect());
+                    agent1.setName("Agent1RadioButton");
                     agensGroup.add(agent1);
                     agent1.addActionListener(this);
                     agent1.setBackground(Color.GREEN);
@@ -73,6 +76,7 @@ public class OtherAttackActionListener implements ActionListener {
                     break;
                 case 2:
                     agent2 = new JRadioButton(virologusok.get(0).getInv().getAgents().get(2).getEffect().getMyEffect());
+                    agent2.setName("Agent2RadioButton");
                     agensGroup.add(agent2);
                     agent2.addActionListener(this);
                     agent2.setBackground(Color.GREEN);
@@ -80,6 +84,7 @@ public class OtherAttackActionListener implements ActionListener {
                     break;
                 case 3:
                     agent3 = new JRadioButton(virologusok.get(0).getInv().getAgents().get(3).getEffect().getMyEffect());
+                    agent3.setName("Agent3RadioButton");
                     agensGroup.add(agent3);
                     agent3.addActionListener(this);
                     agent3.setBackground(Color.GREEN);
@@ -87,6 +92,7 @@ public class OtherAttackActionListener implements ActionListener {
                     break;
                 case 4:
                     agent4 = new JRadioButton(virologusok.get(0).getInv().getAgents().get(4).getEffect().getMyEffect());
+                    agent4.setName("Agent4RadioButton");
                     agensGroup.add(agent4);
                     agent4.addActionListener(this);
                     agent4.setBackground(Color.GREEN);
@@ -100,6 +106,7 @@ public class OtherAttackActionListener implements ActionListener {
             if(virologusok.get(0).getInv().GetEquipments().get(i).getName().equals("axe")){
                 axeIndex = i;
                 axe = new JRadioButton("axe");
+                axe.setName("AxeButton");
                 agensGroup.add(axe);
                 axe.addActionListener(this);
                 axe.setBackground(Color.YELLOW);
@@ -118,12 +125,15 @@ public class OtherAttackActionListener implements ActionListener {
                 if(virologusok.get(e) == virologusokAMezon.get(i)){
                     if(virologusok.get(e).getEffects().searchForEffect(StringConstants.BEARVIRUS)){
                         virologist = new JRadioButton("Bear");
+                        virologist.setName("BearRadioButton");
                     }
                     else if(e == 0){
                         virologist = new JRadioButton("Self");
+                        virologist.setName("SelfRadioButton");
                     }
                     else {
                         virologist = new JRadioButton("Virologist");
+                        virologist.setName("VirologistRadioButton");
                     }
                     virologusGroup.add(virologist);
                     virologist.addActionListener(this);
@@ -188,6 +198,7 @@ public class OtherAttackActionListener implements ActionListener {
                     otherPanel.getComponent(i).setVisible(false);
                 }
                 JLabel notbearlabel = new JLabel("The attacked virologist is not a bear, therefore you can't use the axe against him.");
+                notbearlabel.setName("AttackLabel");
                 otherPanel.add(notbearlabel);
             }
             /*Happy path*/
@@ -201,6 +212,7 @@ public class OtherAttackActionListener implements ActionListener {
                     otherPanel.getComponent(i).setVisible(false);
                 }
                 JLabel attacklabel = new JLabel("I attacked a virologist.");
+                attacklabel.setName("AttackLabel");
                 otherPanel.add(attacklabel);
             }
         }

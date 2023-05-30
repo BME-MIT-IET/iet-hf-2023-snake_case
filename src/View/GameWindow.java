@@ -278,6 +278,7 @@ public class GameWindow extends JFrame {
         //VEGE
 
         gcodes = new JLabel("gcodes");
+        gcodes.setName("CodesLabel");
         gcodes.setVisible(false);
 
         //Buttons
