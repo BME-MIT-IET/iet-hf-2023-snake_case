@@ -205,6 +205,7 @@ public class GameWindowUiTest {
         window.radioButton("Agent0RadioButton").check();
         window.button("ConfirmButton").click();
         window.label("AttackLabel").requireText("I attacked a virologist.");
+        window.label("EffectedEffectsLabel").requireText("protectvirus");
     }
 
     private Point GetMapRelativeCoordinate(Point point){
