@@ -173,9 +173,6 @@ public class OtherAttackActionListener implements ActionListener {
         else if(e.getSource() == axe){
             mivel = "axe";
         }
-        else{
-            mivel = null;
-        }
     }
 
     /*vegignezzuk az osszes gombot hogy melyikre erkezhetett az esemeny*/
