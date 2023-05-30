@@ -9,8 +9,11 @@ import org.fest.swing.core.MouseButton;
 import org.fest.swing.core.MouseClickInfo;
 import org.fest.swing.core.Robot;
 import org.fest.swing.fixture.FrameFixture;
+import org.fest.swing.fixture.JLabelFixture;
+import org.fest.swing.fixture.JPanelFixture;
 import org.junit.After;
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 import src.Board;
 
@@ -39,6 +42,11 @@ public class GameWindowUiTest {
     public void setUp() throws IOException {
         Start start = new Start();
         testBoard = new Board();
+        testBoard.SetNULLVirologusok();
+        testBoard.setNULLFelszerelesek();
+        testBoard.setNULLGenetikaiKodok();
+        testBoard.setNULLMezok();
+        testBoard.setNULLPolyKoordok();
         String[] args = {"mapTestNoBear.txt"};
         try{
             start.start(args, testBoard);
@@ -52,14 +60,11 @@ public class GameWindowUiTest {
         Frame = new GameWindow(mockSystemCall, spyView, testBoard);
         window = new FrameFixture(Frame);
         robot = window.robot;
-        window.show();
         Frame.startGame();
-        map = robot.finder().find(new GenericTypeMatcher<JPanel>(JPanel.class) {
-            protected boolean isMatching(JPanel panel) {
-                // Customize the condition to match your button
-                return "MapPanel".equals(panel.getName());
-            }
-        });
+        JPanelFixture mapFixture = window.panel("MapPanel").requireVisible();
+        map = mapFixture.component();
+        window.show();
+        window.moveTo(new Point(0,0));
     }
 
     @After
@@ -87,6 +92,119 @@ public class GameWindowUiTest {
         window.button("VirusDanceButton").click();
         window.label("MaterialsLabel").requireText("Amino: 1 Nukleo: 1");
         window.label("AgentsLabel").requireText("virusdance");
+    }
+
+    @Test
+    public void WinTest() {
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(573,199)));//1
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("CollectButton").click();
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(566,232)));//2
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(511,241)));//3
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(423,323)));//4
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(560,205)));//5
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("CollectButton").click();
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(337,297)));//6
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(293,307)));//7
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(244,243)));//8
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("CollectButton").click();
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(261,238)));//9
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(275,241)));//10
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(374,163)));//11
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(300,212)));//12
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("CollectButton").click();
+        window.button("EndTurnButton").click();
+
+        window.button("CraftButton").requireDisabled();
+        window.button("DropButton").requireDisabled();
+        window.button("CollectButton").requireDisabled();
+        window.button("AttackButton").requireDisabled();
+        window.button("StealButton").requireDisabled();
+        window.button("EndTurnButton").requireDisabled();
+        window.button("SaveButton").requireDisabled();
+        window.button("ExitButton").requireEnabled();
+        window.label("CodesLabel").requireText("The player has earned an EPIC Victory Royale!");
+        window.button("ExitButton").click();
+        verify(mockSystemCall, times(1)).exit(0);
+    }
+
+    @Test
+    public void AttackTest() {
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(573,199)));//1
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(566,232)));//2
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(511,241)));//3
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(423,323)));//4
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("EndTurnButton").click();
+
+        robot.moveMouse(GetMapRelativeCoordinate(new Point(560,205)));//5
+        robot.pressMouse(MouseButton.LEFT_BUTTON);
+        robot.releaseMouse(MouseButton.LEFT_BUTTON);
+        window.button("CollectButton").click();
+        window.button("EndTurnButton").click();
+        window.button("CraftButton").click();
+        window.button("ProtectButton").click();
+        window.button("EndTurnButton").click();
+        window.button("AttackButton").click();
+        window.radioButton("SelfRadioButton").check();
+        window.radioButton("Agent0RadioButton").check();
+        window.button("ConfirmButton").click();
+        window.label("AttackLabel").requireText("I attacked a virologist.");
     }
 
     private Point GetMapRelativeCoordinate(Point point){
