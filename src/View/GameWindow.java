@@ -175,7 +175,7 @@ public class GameWindow extends JFrame {
         else {
             hideEveryComponentInOtherPanel(otherPanel);
             OtherAttackActionListener atvisz = new OtherAttackActionListener(board, otherPanel, control);
-            atvisz.InitButtons();
+            atvisz.initButtons();
         }
     }
 
