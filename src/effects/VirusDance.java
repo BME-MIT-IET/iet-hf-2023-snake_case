@@ -8,6 +8,7 @@ import java.io.Serializable;
 import java.util.Random;
 
 public class VirusDance extends Effect implements Serializable {
+    private final Random rand  = new Random();
 
     public VirusDance(){
         duration = 3;
@@ -17,7 +18,6 @@ public class VirusDance extends Effect implements Serializable {
 
     @Override
     public void effect(Virologist v){
-        Random rand  = new Random();
         /*Merre mozog*/
         int randommove = rand.nextInt(v.getField().getNeighbours().size());
         /*Elmozdul a random szomszedos mezore*/
