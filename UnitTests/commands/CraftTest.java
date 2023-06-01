@@ -40,24 +40,31 @@ class CraftTest {
         //Letrehozom a equipment-et
         String[] createArgs = {"create", "field"};
         create.create(createArgs, board);
+
         //A virologus letetele a mezore
         createArgs = new String[]{"create", "virologist", "5", "5", "0.1", "field0"};
         create.create(createArgs, board);
+
         //Letrehozom a gcodot
         createArgs = new String[]{"create","genetical","code", "paralyze"};
         create.create(createArgs, board);
+
         //Letrehozom a labort
         createArgs = new String[]{"create","laboratory","paralyze","0","field0"};
         create.create(createArgs, board);
+
         //Virologus mozgatasa a laborba
         String[] moveArgs = new String[]{"move","virologist0","laboratory1"};
         move.move(moveArgs, board);
+
         //Collecteles a virologussal
         String[] collectArgs = new String[]{"collect","virologist0"};
         collect.collect(collectArgs, board);
+
         //EndTurn
         String[] endturnArgs = new String[]{"endturn"};
         endturn.endTurn(endturnArgs,board);
+
         //Paralyze craftolasa
         String[] craftArgs = new String[]{"craft","virologist0", "paralyze"};
         craft.craft(craftArgs, board);
