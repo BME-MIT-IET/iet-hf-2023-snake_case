@@ -1,9 +1,11 @@
 package commands;
 
+import org.junit.BeforeClass;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import src.Board;
 import src.Equipment;
+import src.Shelter;
 import src.Virologist;
 
 import java.util.ArrayList;
@@ -17,6 +19,8 @@ class DropTest {
     Drop drop;
     Equip equip;
     Collect collect;
+    EndTurn endTurn;
+    String[] endTurnArgs = new String[] {"endturn", "testing"};
 
     @BeforeEach
     void init(){
@@ -25,32 +29,40 @@ class DropTest {
         drop = new Drop();
         collect = new Collect();
         equip = new Equip();
+        endTurn = new EndTurn();
     }
 
     @Test
     //Sikeresen eldob egy targyat
     void dropSuccess() {
-        //Field letrehozasa
-        String[] createArgs = {"create", "field"};
+        //Letre kell hozni a targyat
+        String[] createArgs = new String[]{"create", "equipment", "bag"};
         create.create(createArgs, board);
 
-        //Letre kell hozni a targyat
-        createArgs = new String[]{"create", "equipment", "bag"};
+        //Field letrehozasa
+        createArgs = new String[] {"create", "shelter", "bag0"};
         create.create(createArgs, board);
+
+        //Shelter kiszervezese a kesobbi hivatkozasert
+        Shelter shelter = (Shelter) board.getMezok().get(0);
 
         //Letrehozom a virologust
-        createArgs = new String[]{"create", "virologist", "0", "0", "0", "field0"};
+        createArgs = new String[]{"create", "virologist", "0", "0", "0", "shelter0"};
         create.create(createArgs, board);
 
         //Hozzaadom a virologushoz a targyat
-        String[] equipArgs = {"equip", "virologist0", "bag0"};
-        equip.equip(equipArgs ,board);
+        String[] collectArgs = {"collect", "virologist0"};
+        collect.collect(collectArgs ,board);
 
         //Virologus kiemelese
         Virologist v1 = board.getVirologusok().get(0);
 
         //Sikeresen fel lett veve
-        assertEquals(board.getFelszerelesek().get(0), v1.getInv().GetEquipments().get(0));
+        assertEquals(1, v1.getInv().GetEquipments().size());
+        assertEquals(2, shelter.getCounter());
+
+        //End Turn
+        endTurn.endTurn(endTurnArgs, board);
 
         //Eldobjuk, mert van
         String[] dropArgs = new String[]{"drop", "virologist0", "bag"};
@@ -59,6 +71,9 @@ class DropTest {
         ArrayList<Equipment> emptyEquipmentArrayList = new ArrayList<>();
         //Ezutan nem mardhat nala
         assertEquals(emptyEquipmentArrayList, v1.getInv().GetEquipments());
+
+        //Viszont a shelternek, most 3-on kell lennie a counternek
+        assertEquals(3, shelter.getCounter());
     }
 
     @Test
