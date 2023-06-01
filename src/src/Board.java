@@ -5,10 +5,10 @@ import java.util.ArrayList;
 
 public class Board implements Serializable {
     //A jatekmezoket tarolja.
-    private static ArrayList<Field> fields = new ArrayList<>();
-    private static ArrayList<Virologist> virologusok = new ArrayList<>();
-    private static ArrayList<Equipment> felszerelesek = new ArrayList<>();
-    private static ArrayList<GCode> genetikaiKodok = new ArrayList<>();
+    private ArrayList<Field> fields = new ArrayList<>();
+    private ArrayList<Virologist> virologusok = new ArrayList<>();
+    private ArrayList<Equipment> felszerelesek = new ArrayList<>();
+    private ArrayList<GCode> genetikaiKodok = new ArrayList<>();
     
     //A jatekmezo koordinatakat tarolja, egy sor: (n,x1,y1,x2,y2,...,xn,yn)
     private static ArrayList<int[]> polyKoordok = new ArrayList<>();  //Ez szukseges a polygon kirajzolashoz -Dani
