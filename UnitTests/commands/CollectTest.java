@@ -1,7 +1,7 @@
 package commands;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.BeforeEach;
 import src.Board;
 import src.Equipment;
 import src.Virologist;
