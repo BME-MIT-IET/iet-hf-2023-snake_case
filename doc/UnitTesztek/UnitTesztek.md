@@ -67,3 +67,11 @@ A sikeres tesznek a lényege, hogy a virológus maga veszi fel az itemet és dob
 ## Drop teszt 2
 
 A sikertelen tesztnek a lényege, hogy nem vesz fel semmit, így el se tudja dobni, tehát végig üres marad az inventory-ja.
+
+## Coverage
+
+Végeredményben egy ilyen Coverage-et értünk el:
+
+<p align="center" width="100%">
+    <img width="100%" src="UnitTesztek_Coverage.png"> 
+</p>
