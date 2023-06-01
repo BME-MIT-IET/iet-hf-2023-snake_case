@@ -34,4 +34,6 @@ public class Shelter extends Field implements Serializable {
     public void increaseCounter(){
         counter++;
     }
+
+    public int getCounter(){return counter;}
 }
