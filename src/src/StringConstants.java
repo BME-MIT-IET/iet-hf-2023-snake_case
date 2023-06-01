@@ -17,6 +17,6 @@ public final class StringConstants {
     public static final String WAREHOUSE = "warehouse";
 
     public StringConstants(){
-        throw new UnsupportedOperationException();
+        //üres konstruktor
     }
 }
