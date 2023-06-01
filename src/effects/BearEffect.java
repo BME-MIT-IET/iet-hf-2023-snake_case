@@ -39,7 +39,10 @@ public class BearEffect extends Effect implements Serializable {
 
     }
 
-    public void removeEffect(Virologist v){}
+    public void removeEffect(Virologist v){
+        //Azért üres, mert az Effect absztrakt osztályból származik, ezért meg kell valósítania ezt a függvényt, azonban ezem meg vannak hívva máshol
+        //Szándékosan nem csinálnak semmit!
+    }
 
     public void bearAttack(Virologist v){
         for(int i = 0; i < v.getField().getVirologists().size(); i++){

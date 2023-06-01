@@ -25,9 +25,21 @@ public class Move {
             System.out.println("I can't find that virologist.");
             return;
         }
-        int sz = Integer.parseInt(szam);
-        
-        int FID = Integer.parseInt(args[2].replaceAll("[^0-9]", ""));
+        int sz;
+        try {
+            sz = Integer.parseInt(szam);
+        }catch(NumberFormatException ex){
+            System.out.println("Virologist ID is invalid!");
+            return;
+        }
+
+        int FID;
+        try {
+            FID = Integer.parseInt(args[2].replaceAll("[^0-9]", ""));
+        }catch(NumberFormatException ex){
+            System.out.println("Field ID is invalid!");
+            return;
+        }
         if(con.getMezok().get(FID).getNeighbours().contains(con.getVirologusok().get(sz).getField())) {
         	//Teszteli, hogy a virologusnak van e meg akcioja
             //Elobb ellenorzi, hogy mozgott e mar, utana kerul csak akcioba

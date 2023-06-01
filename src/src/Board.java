@@ -76,5 +76,6 @@ public class Board implements Serializable {
     }
 
     public Board(){
+        //üres konstruktor
     }
 }

@@ -47,22 +47,26 @@ public class MapGraphics extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                //kötelezően meg kell jelennie
+                //Szándékosan em csinál semmit!
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                //kötelezően meg kell jelennie
+                //Szándékosan em csinál semmit!
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                //kötelezően meg kell jelennie
+                //Szándékosan em csinál semmit!
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                //kötelezően meg kell jelennie
+                //Szándékosan em csinál semmit!
             }
         });
 

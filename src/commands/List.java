@@ -59,9 +59,13 @@ public class List {
 		if(!virologistExistsCheck(args, board, vID)){
 			return;
 		}
-
-		Virologist v1 = board.getVirologusok().get(Integer.parseInt(vID));
-
+		Virologist v1;
+		try{
+			v1 = board.getVirologusok().get(Integer.parseInt(vID));
+		}catch(NumberFormatException ex){
+			System.out.println("Virologist ID is missing!");
+			return;
+		}
 		/*Lekerdezi, hol all a virologus*/
 		if(args[2].equals(FIELD)){
 			getFieldVirologistStandingOn(v1, board);
@@ -112,7 +116,15 @@ public class List {
 			System.out.println("Field ID is missing!");
 			return;
 		}
-		int fieldID = Integer.parseInt(fID);
+
+		int fieldID;
+		try {
+			fieldID = Integer.parseInt(fID);
+		}catch(NumberFormatException ex){
+			System.out.println("Field ID is invalid!");
+			return;
+		}
+
 
 		/*Kiirja melyik virologusok vannak a mezon*/
 		if (args[2].equals("virologists")) {
@@ -150,12 +162,19 @@ public class List {
 
 	private boolean virologistExistsCheck(String[] args, Board board, String vID){
 
+		int vIDInt;
+		try {
+			vIDInt = Integer.parseInt(vID);
+		}catch(NumberFormatException ex){
+			System.out.println("Virologist ID is invalid!");
+			return false;
+		}
 		/*Nincs szam, vagy a szam nem ad meg egy letezo virologust*/
 		if(vID.equals("")) {
 			System.out.println("Virologist ID is missing!");
 			return false;
 		}
-		else if(Integer.parseInt(vID) >= board.getVirologusok().size() ){
+		else if(vIDInt >= board.getVirologusok().size() ){
 			System.out.println("I can't find that virologist.");
 			return false;
 		}

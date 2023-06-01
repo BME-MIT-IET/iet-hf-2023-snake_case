@@ -16,7 +16,13 @@ public class Drop {
         if(args[1].length() < 10){
             System.out.println("I can't find that virologist");
         }
-        int virologusID = Integer.parseInt(args[1].substring(10));
+        int virologusID;
+        try{
+            virologusID = Integer.parseInt(args[1].substring(10));
+        }catch(NumberFormatException ex){
+            System.out.println("Virologist ID is missing!");
+            return;
+        }
         if(virologusID < 0){
             System.out.println("Invalid virologist");
             return;

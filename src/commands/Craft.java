@@ -19,7 +19,13 @@ public class Craft {
 		}
 
 		String vID = args[1].substring(10);
-        int virologusID = Integer.parseInt(vID);
+		int virologusID;
+		try{
+			virologusID = Integer.parseInt(vID);
+		}catch(NumberFormatException ex){
+			System.out.println("Virologist ID is missing!");
+			return;
+		}
         Virologist v1 = board.getVirologusok().get(virologusID);
 
         //Teszteli, hogy a virologusnak van e meg akcioja
@@ -79,12 +85,19 @@ public class Craft {
 			return true;
 		}
 		String vID = args[1].substring(10);
+		int virologusID;
+		try {
+			virologusID = Integer.parseInt(vID);
+		}catch(NumberFormatException ex){
+			System.out.println("Virologist ID is invalid!");
+			return true;
+		}
 		/*Nincs szam, vagy a szam nem ad meg egy letezo virologust*/
 		if(vID.equals("")) {
 			System.out.println("Virologist ID is missing!");
 			return true;
 		}
-		else if(Integer.parseInt(vID) >= board.getVirologusok().size() ){
+		else if(virologusID >= board.getVirologusok().size() ){
 			System.out.println("I can't find that virologist.");
 			return true;
 		}

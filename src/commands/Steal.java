@@ -18,9 +18,17 @@ public class Steal {
             System.out.println("These are not virolgists!");
             return;
         }
+
         //Virologusok inicializalasa
-        int stealerV = Integer.parseInt(args[1].substring(10));
-        int victimV = Integer.parseInt(args[2].substring(10));
+        int stealerV;
+        int victimV;
+        try {
+            stealerV = Integer.parseInt(args[1].substring(10));
+            victimV = Integer.parseInt(args[2].substring(10));
+        }catch(NumberFormatException ex){
+            System.out.println("Stealer or Victim ID is invalid!");
+            return;
+        }
 
         Virologist stealer = board.getVirologusok().get(stealerV);
         Virologist victim = board.getVirologusok().get(victimV);

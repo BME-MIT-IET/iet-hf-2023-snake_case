@@ -220,15 +220,29 @@ public class Create {
                 if(inputCheckVir(args, board)){
                     return;
                 }
-                int amino = Integer.parseInt(args[2]);
-                int nukleo = Integer.parseInt(args[3]);
+                int amino;
+                int nukleo;
+                try {
+                    amino = Integer.parseInt(args[2]);
+                    nukleo = Integer.parseInt(args[3]);
+                }catch(NumberFormatException ex){
+                    System.out.println("Invalid Animo or Nukleo number!");
+                    return;
+                }
+
                 double dodgeChance = Double.parseDouble(args[4]);
                 String fieldSzam = args[5].replaceAll("[^0-9]", "");            ///elvileg a replaceAll egy lassu muvelet, de szerintem nem lesz baj  -Dani
                 if(fieldSzam.length() == 0){
                     System.out.println("I can't find that field.");
                     return;
                 }
-                int fieldNumber = Integer.parseInt(fieldSzam);
+                int fieldNumber;
+                try {
+                    fieldNumber = Integer.parseInt(fieldSzam);
+                }catch(NumberFormatException ex){
+                    System.out.println("Field ID is invalid!");
+                    return;
+                }
                 Field field = board.getMezok().get(fieldNumber);
             /*--------------------------------------------------------------------------------------------------
 
@@ -301,9 +315,18 @@ public class Create {
                     System.out.println("Not enough arguments!");
                     return;
                 }
-                int cooldown = Integer.parseInt(args[2]);
-                char type = args[3].charAt(0);
-                int amount = Integer.parseInt(args[4]);
+
+                int cooldown;
+                char type;
+                int amount;
+                try {
+                    cooldown = Integer.parseInt(args[2]);
+                    type = args[3].charAt(0);
+                    amount = Integer.parseInt(args[4]);
+                }catch(NumberFormatException ex){
+                    System.out.println("Invalid cooldown or amount!");
+                    return;
+                }
                 if(inputCheckWarehouse(cooldown,type,amount)){
                     return;
                 }

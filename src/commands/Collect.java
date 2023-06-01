@@ -21,18 +21,23 @@ public class Collect {
         	return;
         }
         String vID = args[1].substring(10);
+        int virologusID;
+        try {
+            virologusID = Integer.parseInt(vID);
+        }catch(NumberFormatException ex){
+            System.out.println("Virologist ID is invalid!");
+            return;
+        }
         /*Nincs szam, vagy a szam nem ad meg egy letezo virologust*/
         if(vID.equals("")) {
         	System.out.println("Virologist ID is missing!");
         	return;
         }
-        else if(Integer.parseInt(vID) >= board.getVirologusok().size() ){
+        else if(virologusID >= board.getVirologusok().size() ){
             System.out.println("I can't find that virologist.");
             return;
         }
-        int virologusID = Integer.parseInt(vID);
-        
-        
+
         //Teszteli, hogy a virologusnak van e meg akcioja
         if(virologusID == 0 && board.getAction()) {
         	board.setAction(false);

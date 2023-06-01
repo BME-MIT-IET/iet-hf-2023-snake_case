@@ -48,6 +48,6 @@ public class Effects implements Update, Serializable {
 
     /*Fontos hogy ezt mindig a jatekos korenek a legvegen hivjuk meg mert ha nem leszedheti az effectet a kor kozben*/
     public void update(){
-
+        //Üres szándékosan
     }
 }

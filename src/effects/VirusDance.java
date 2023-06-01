@@ -28,6 +28,7 @@ public class VirusDance extends Effect implements Serializable {
         v.move(v.getField().getNeighbours().get(randommove));
     }
     public void removeEffect(Virologist v){
-
+        //Azért üres, mert az Effect absztrakt osztályból származik, ezért meg kell valósítania ezt a függvényt, azonban ezem meg vannak hívva máshol
+        //Szándékosan nem csinálnak semmit!
     }
 }

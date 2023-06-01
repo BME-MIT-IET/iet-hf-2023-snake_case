@@ -19,6 +19,7 @@ public class GloveEffect extends Effect implements Serializable {
         System.out.println("GloveEffect: My Effect is activated");
     }
     public void removeEffect(Virologist v){
-
+        //Azért üres, mert az Effect absztrakt osztályból származik, ezért meg kell valósítania ezt a függvényt, azonban ezem meg vannak hívva máshol
+        //Szándékosan nem csinálnak semmit!
     }
 }
