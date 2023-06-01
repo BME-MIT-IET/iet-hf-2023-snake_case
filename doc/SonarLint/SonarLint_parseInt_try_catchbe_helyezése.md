@@ -8,5 +8,4 @@ Megoldás: try-catch blokkba teszem ezeket a parseInt() hívásokat.
 ![](SonarLint_parseInt_try_catchbe_helyezése.png)
 
 
-A feladat elvégzése közben észrevettem, hogy van olyan függvény, ahol kezelve vannak a fent említett esetek, ezért ezeket nem javítom ki. Az alábbi módon vannak itt kezelve:
-![](SonarLint_parseInt_egy_kezelese.png)
+Ilyen és ehhez hasonló parseInt() hívások majdnem mindegyik osztályban előfordultam a commands mappában, ezért sokmindent kellett javítanom.

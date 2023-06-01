@@ -40,7 +40,8 @@ public class BearEffect extends Effect implements Serializable {
     }
 
     public void removeEffect(Virologist v){
-        throw new UnsupportedOperationException();
+        //Azért üres, mert az Effect absztrakt osztályból származik, ezért meg kell valósítania ezt a függvényt, azonban ezem meg vannak hívva máshol
+        //Szándékosan nem csinálnak semmit!
     }
 
     public void bearAttack(Virologist v){

@@ -16,9 +16,10 @@ public class Paralyzed extends Effect implements Serializable {
 
     @Override
     public void effect(Virologist v){
-        throw new UnsupportedOperationException();
+        //ha bármit beleírok nem jó a kód
     }
     public void removeEffect(Virologist v){
-        throw new UnsupportedOperationException();
+        //Azért üres, mert az Effect absztrakt osztályból származik, ezért meg kell valósítania ezt a függvényt, azonban ezem meg vannak hívva máshol
+        //Szándékosan nem csinálnak semmit!
     }
 }

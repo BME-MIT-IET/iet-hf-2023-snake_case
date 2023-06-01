@@ -8,4 +8,6 @@ Megoldás: Mivel ezek a függvények üresek, ezért nem is kéne, hogy valaki m
 
 Ezeknek a függvényeknek azért van szükségük a removeEffect implementálására mert az effect abstract osztályból származnak le és ez az osztály tartalamaz egy removeEffect függvényt, ám pár effect ezt nem használja.
 
-Később észrevettem, hogy ez a probléma több osztályban is fennáll, ezért azokat is kijavítottam.
+Megoldás javított: miután megcsináltam a fenti módon a javításokat, a tesztelés során egyes effectek elromlottak. Jobban utánajártam miért lehet ez, és arra jutottam, hogy ezeket a függvényeket polimorffizmussal meghívja az Effect osztály, ezért üresnek kell lenniük és nem is kell semmit csinálniuk, ezért csak egy kommenttel jelzem, hogy legyenek üresek.
+
+![](SonarLint_ures_fuggvenytorzsek_kijavitasa_kommenttel.png)
