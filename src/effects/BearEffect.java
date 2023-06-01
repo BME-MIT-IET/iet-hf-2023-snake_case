@@ -39,7 +39,9 @@ public class BearEffect extends Effect implements Serializable {
 
     }
 
-    public void removeEffect(Virologist v){}
+    public void removeEffect(Virologist v){
+        throw new UnsupportedOperationException();
+    }
 
     public void bearAttack(Virologist v){
         for(int i = 0; i < v.getField().getVirologists().size(); i++){

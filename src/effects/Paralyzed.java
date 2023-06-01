@@ -15,6 +15,10 @@ public class Paralyzed extends Effect implements Serializable {
     }
 
     @Override
-    public void effect(Virologist v){}
-    public void removeEffect(Virologist v){}
+    public void effect(Virologist v){
+        throw new UnsupportedOperationException();
+    }
+    public void removeEffect(Virologist v){
+        throw new UnsupportedOperationException();
+    }
 }

@@ -47,22 +47,22 @@ public class MapGraphics extends JPanel {
 
             @Override
             public void mousePressed(MouseEvent e) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
             public void mouseEntered(MouseEvent e) {
-
+                throw new UnsupportedOperationException();
             }
 
             @Override
             public void mouseExited(MouseEvent e) {
-
+                throw new UnsupportedOperationException();
             }
         });
 

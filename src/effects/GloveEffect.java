@@ -19,6 +19,6 @@ public class GloveEffect extends Effect implements Serializable {
         System.out.println("GloveEffect: My Effect is activated");
     }
     public void removeEffect(Virologist v){
-
+        throw new UnsupportedOperationException();
     }
 }

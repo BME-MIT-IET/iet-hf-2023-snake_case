@@ -20,7 +20,7 @@ public class View {
     private JLabel effectedEffectsText;
     private JLabel effectedEffects;
     public View(){
-
+        throw new UnsupportedOperationException();
     }
 
     public void reDrawBasicPanel(Materials mat, ArrayList<Equipment> eq, ArrayList<Agent> agentsL, ArrayList<GCode> gcodes, JPanel basicPanel, Effects effects){

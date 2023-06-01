@@ -28,6 +28,6 @@ public class VirusDance extends Effect implements Serializable {
         v.move(v.getField().getNeighbours().get(randommove));
     }
     public void removeEffect(Virologist v){
-
+        throw new UnsupportedOperationException();
     }
 }

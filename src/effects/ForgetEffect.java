@@ -21,7 +21,7 @@ public class ForgetEffect extends Effect implements Serializable {
     }
 
     public void removeEffect(Virologist v){
-
+        throw new UnsupportedOperationException();
     }
 
 }
