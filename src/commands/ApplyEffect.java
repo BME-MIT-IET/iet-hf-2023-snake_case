@@ -9,12 +9,19 @@ public class    ApplyEffect {
             return;
         }
         String vID = args[1].substring(10);
+        int vIDInt;
+        try {
+            vIDInt = Integer.parseInt(vID);
+        }catch(NumberFormatException ex){
+            System.out.println("Virologist ID is invalid!");
+            return;
+        }
         /*Nincs szam, vagy a szam nem ad meg egy letezo virologust*/
         if(vID.equals("")) {
             System.out.println("Virologist ID is missing!");
             return;
         }
-        else if(Integer.parseInt(vID) >= board.getVirologusok().size() ){
+        else if(vIDInt >= board.getVirologusok().size() ){
             System.out.println("I can't find that virologist.");
             return;
         }

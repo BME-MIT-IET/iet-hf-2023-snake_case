@@ -15,9 +15,15 @@ public class Attack {
             return;
         }
         //Virologusok inicializalasa
-        int attackerV = Integer.parseInt(args[1].substring(10));
-        int attackedV = Integer.parseInt(args[2].substring(10));
-
+        int attackerV;
+        int attackedV;
+        try {
+            attackerV = Integer.parseInt(args[1].substring(10));
+            attackedV = Integer.parseInt(args[2].substring(10));
+        }catch(NumberFormatException ex){
+            System.out.println("Virologist ID is invalid!");
+            return;
+        }
         Virologist attacker = board.getVirologusok().get(attackerV);
         Virologist attacked = board.getVirologusok().get(attackedV);
 
