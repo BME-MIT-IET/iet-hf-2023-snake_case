@@ -44,12 +44,10 @@ public class Menu extends JFrame {
     //Lefuttat egy rendes startGame funkciót, és utána set-eli a játék szempontjából fontos mentett állásokat
     //Gyakorlatilag nem a betöltött adatokkal generálja a mapot, hanem legenerálja az eredetit és utána set-el.
     private void loadGame(ActionEvent e){
-        try {
-            FileInputStream FileIn = new FileInputStream("save.txt");
-            ObjectInputStream ObjectIn = new ObjectInputStream(FileIn);
+        try (FileInputStream FileIn = new FileInputStream("save.txt");
+             ObjectInputStream ObjectIn = new ObjectInputStream(FileIn)){
             ArrayList<Object> minden;
             minden = (ArrayList<Object>)ObjectIn.readObject();
-            ObjectIn.close();
             Start start = new Start();
             Board board = new Board();
             String[] args = {};

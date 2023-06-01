@@ -24,12 +24,24 @@ public class Load {
             b.setMove(true);
         }
 
-        try{
-            File file = new File(nev);
+
+        File file = new File(nev);
+
+        //Teszteles, hogy rendesen lefutottak-e a parancsok
+        File testerF = new File("testout.txt");
+
+        String szam = n.substring(4);
+        String kimenetTeszt = "CorrectOut/Correct" + szam + ".txt";
+        File helyesF = new File(kimenetTeszt);
+
+        try (Scanner sc = new Scanner(file);
+             Scanner tester = new Scanner(testerF);
+             Scanner helyes = new Scanner(helyesF)){
+
             PrintStream psf = new PrintStream("testout.txt");
             PrintStream psc = System.out;
             System.setOut(psf);
-            Scanner sc = new Scanner(file);
+
             String[] commands;
             while (sc.hasNextLine()) {
                 String s = sc.nextLine();
@@ -101,14 +113,9 @@ public class Load {
             }
             System.setOut(psc);
 
-            //Teszteles, hogy rendesen lefutottak-e a parancsok
-            File testerF = new File("testout.txt");
-            Scanner tester = new Scanner(testerF);
 
-            String szam = n.substring(4);
-            String kimenetTeszt = "CorrectOut/Correct" + szam + ".txt";
-            File helyesF = new File(kimenetTeszt);
-            Scanner helyes = new Scanner(helyesF);
+
+
             boolean failed = false;
             int sorSzamlalo = 1;
             while(tester.hasNextLine()){
@@ -125,15 +132,11 @@ public class Load {
                 }
                 else{
                     System.out.println("The two txt has different number of lines!");
-                    helyes.close();
-                    tester.close();
                     return;
                 }
             }
             if(!failed){
                 System.out.println("The test Nr:" + szam + " succeeded!");
-                helyes.close();
-                tester.close();
             }
 
         }
