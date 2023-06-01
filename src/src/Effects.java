@@ -31,7 +31,7 @@ public class Effects implements Update, Serializable {
         }
     }
 
-    /*Meg nezi hogy egy effect rajta van-e mar a virologuson*/
+    /*Megnezi hogy egy effect rajta van-e mar a virologuson*/
     public boolean searchForEffect(String effect){
         for(Effect ef : myEffects){
             if(ef.getMyEffect().equals(effect)){
