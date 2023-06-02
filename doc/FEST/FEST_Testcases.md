@@ -16,4 +16,4 @@ GameWindow:
 
 3. Győzelem tesztelése: Elnavigálunk az összes laborhoz, megtanuljuk az ott lévő genetikai kódot. Ezzel megnyerjük a játékot.
 
-4. Támadás teszt: Megtanulunk egy genetikai kódot, kraftolunk belőle egy ágenst, amit felhasználva megtámadjuk magunkat.(Azért magunkat, mert az ellenséges virológusok mozgása véletlenszerű, mindig más mezőn vannak) Jelen pillanatban a teszt sikertelen, mert a támadás nem működik.
+4. Támadás teszt: Megtanulunk egy genetikai kódot, kraftolunk belőle egy ágenst, amit felhasználva megtámadjuk magunkat.(Azért magunkat, mert az ellenséges virológusok mozgása véletlenszerű, mindig más mezőn vannak) ~~Jelen pillanatban a teszt sikertelen, mert a támadás nem működik.~~
